@@ -244,6 +244,41 @@ table.roxa tr:nth-child(even) td{background:var(--roxo-bg)}
 .tela .ag .titulo{font-size:16px}
 .progresso{position:fixed;bottom:0;left:0;height:3px;background:var(--ouro);transition:width .25s}
 
+/* ---------- calculadora ---------- */
+.calc-campo{
+  background:var(--carta);border:1px solid var(--linha);border-radius:12px;padding:22px 26px;margin-bottom:26px;
+}
+.calc-campo label{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--suave);font-weight:700;margin-bottom:9px}
+.calc-data{
+  font-family:var(--mono);font-size:22px;font-weight:600;color:var(--tinta);
+  border:1px solid var(--linha-forte);border-radius:8px;padding:11px 14px;background:var(--papel);
+  width:100%;max-width:230px;
+}
+.calc-data:focus{outline:none;border-color:var(--ouro);background:#fff}
+.calc-inicio{margin-top:14px;font-size:13px;color:var(--suave)}
+.calc-inicio b{color:var(--texto);font-weight:600}
+.calc-vazio{padding:34px 26px;text-align:center;color:var(--suave);font-size:13.5px;background:var(--carta);
+  border:1px dashed var(--linha-forte);border-radius:12px}
+.calc-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-bottom:26px}
+.calc-card{background:var(--carta);border:1px solid var(--linha);border-radius:11px;padding:17px 19px;display:flex;flex-direction:column;gap:6px}
+.calc-card .n{font-family:var(--display);font-size:15px;font-weight:700;color:var(--tinta)}
+.calc-card .peca{font-size:11px;color:var(--suave);line-height:1.4;min-height:15px}
+.calc-card .data{font-family:var(--mono);font-size:19px;font-weight:600;color:var(--texto);margin-top:4px}
+.calc-card .sem{font-family:var(--mono);font-size:19px;font-weight:600;color:var(--linha-forte)}
+.calc-card .dia{font-size:11.5px;color:var(--suave)}
+.calc-livre{background:var(--conh-bg);border:1px solid #CBE0D5}
+.calc-livre input{
+  font-family:var(--mono);font-size:15px;font-weight:600;width:64px;padding:5px 8px;border-radius:6px;
+  border:1px solid var(--linha-forte);text-align:center;background:#fff;color:var(--tinta);
+}
+.calc-livre input:focus{outline:none;border-color:var(--conh)}
+.calc-aviso{
+  display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--suave);
+  background:var(--carta);border:1px solid var(--linha);border-radius:10px;padding:13px 16px;line-height:1.55;
+}
+.calc-aviso b{color:var(--texto)}
+.calc-nota{font-size:11.5px;color:var(--suave);margin:-10px 0 22px;font-style:italic}
+
 /* ---------- rodapé fixo ---------- */
 .duvida{
   position:fixed;right:22px;bottom:18px;z-index:40;background:var(--tinta);color:#fff;
@@ -342,6 +377,14 @@ const FASE = {
   recursal:{nome:'Fase recursal',curto:'Recursal',cor:'var(--rec)',bg:'var(--rec-bg)',hex:'#1C4E80',sub:'Da sentença até o trânsito em julgado'},
   execucao:{nome:'Fase de execução',curto:'Execução',cor:'var(--exec)',bg:'var(--exec-bg)',hex:'#A9761A',sub:'Da liquidação até o arquivamento'}
 };
+
+const PRAZOS_FIXOS = [
+  {n:5,  peca:'Embargos de Declaração', sigla:'ED', obs:'Todas as áreas. Vale também para as contrarrazões de ED.'},
+  {n:8,  peca:'Recurso Ordinário', sigla:'RO', obs:'Trabalhista. Vale também para as contrarrazões de RO.'},
+  {n:10, peca:'Recurso Inominado', sigla:'RI', obs:'Cível e previdenciário, em juizado especial. Vale também para as contrarrazões de RI.'},
+  {n:15, peca:'Apelação', sigla:'AP', obs:'Cível e previdenciário, em vara comum. Vale também para as contrarrazões de AP.'},
+  {n:30, peca:null, sigla:null, obs:'Prazo genérico, para despachos que fixam prazo avulso sem peça específica.'}
+];
 
 const SECOES_MANUAL = [
   {id:'regras',      t:'As sete regras',        d:'O que vale para toda publicação, sem exceção.'},
@@ -446,6 +489,8 @@ function pintaIndice(){
     h += '<button class="item'+(s.roxo?' roxo':'')+'" data-rota="m/'+s.id+'" aria-current="'+(rotaAtual==='m/'+s.id)+'">'+
          '<span class="cod">'+(s.roxo?'★':'§')+'</span><span>'+esc(s.t)+'</span></button>';
   });
+  h += '<button class="item" data-rota="calc" aria-current="'+(rotaAtual==='calc')+'">'+
+       '<span class="cod">＋</span><span>Calculadora de prazos</span></button>';
   alvo.innerHTML = h;
 }
 
@@ -586,7 +631,117 @@ function telaManual(id){
   return h+'</div>';
 }
 
-/* ---------- documento completo, para impressão ---------- */
+/* ---------- calculadora de prazos ---------- */
+function ehFimDeSemana(d){ const w=d.getDay(); return w===0 || w===6; }
+
+// primeiro dia apto a contar: dia seguinte à publicação, empurrado para
+// segunda se cair em sábado/domingo. Feriados não são conhecidos pela
+// ferramenta, então nunca são pulados — contam como dia útil normal.
+function inicioContagem(pub){
+  const d = new Date(pub.getTime());
+  d.setDate(d.getDate()+1);
+  while(ehFimDeSemana(d)) d.setDate(d.getDate()+1);
+  return d;
+}
+
+function dataFinalUtil(pub, n){
+  const d = new Date(pub.getTime());
+  d.setDate(d.getDate()+1);
+  let contados = 0;
+  while(true){
+    if(!ehFimDeSemana(d)){
+      contados++;
+      if(contados===n) break;
+    }
+    d.setDate(d.getDate()+1);
+  }
+  // salvaguarda: matematicamente já não cai em fim de semana, mantido por segurança
+  while(ehFimDeSemana(d)) d.setDate(d.getDate()+1);
+  return d;
+}
+
+function fmtData(d){
+  return d.toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric'});
+}
+function fmtDiaSemana(d){
+  const nome = d.toLocaleDateString('pt-BR', {weekday:'long'});
+  return nome.charAt(0).toUpperCase() + nome.slice(1);
+}
+function parseDataInput(v){
+  if(!v) return null;
+  const [a,m,dd] = v.split('-').map(Number);
+  if(!a||!m||!dd) return null;
+  return new Date(a, m-1, dd);
+}
+
+let calcPub = null, calcLivre = 15;
+
+function calcCard(n, peca, sigla, obs, extra){
+  if(!calcPub){
+    return '<div class="calc-card'+(extra?' calc-livre':'')+'">'+
+      '<div class="n">'+n+' dias</div>'+
+      (peca?'<div class="peca">'+esc(sigla)+' · '+esc(peca)+'</div>':'<div class="peca">'+esc(obs||'')+'</div>')+
+      '<div class="sem">—</div><div class="dia">preencha a data</div></div>';
+  }
+  const fim = dataFinalUtil(calcPub, n);
+  return '<div class="calc-card'+(extra?' calc-livre':'')+'">'+
+    '<div class="n">'+n+' dias</div>'+
+    (peca?'<div class="peca">'+esc(sigla)+' · '+esc(peca)+'</div>':'<div class="peca">'+esc(obs||'')+'</div>')+
+    '<div class="data">'+fmtData(fim)+'</div>'+
+    '<div class="dia">'+esc(fmtDiaSemana(fim))+'</div>'+
+    (extra?'':'')+
+    '</div>';
+}
+
+/* renderiza SÓ os resultados (chamada a cada tecla); o input de data
+   nunca é recriado, então nunca perde o foco enquanto a pessoa digita */
+function calcResultadosHTML(){
+  if(!calcPub){
+    return '<div class="calc-vazio">Assim que a data for preenchida, os cinco prazos aparecem aqui.</div>';
+  }
+  let h = '<div class="calc-grade">';
+  PRAZOS_FIXOS.forEach(p=>{ h += calcCard(p.n, p.peca, p.sigla, p.obs); });
+  h += '</div>';
+
+  h += '<div class="calc-nota">* O prazo das contrarrazões/contraminutas é sempre o mesmo prazo do recurso a que se referem.</div>';
+
+  h += '<div class="rot">Prazo livre</div>';
+  h += '<div class="calc-grade" style="grid-template-columns:minmax(230px,320px)">';
+  h += '<div class="calc-card calc-livre"><div class="n">'+
+    '<input type="number" id="calcLivre" min="1" value="'+calcLivre+'"> dias</div>'+
+    '<div class="peca">Digite qualquer quantidade de dias</div>'+
+    '<div class="data">'+fmtData(dataFinalUtil(calcPub, calcLivre))+'</div>'+
+    '<div class="dia">'+esc(fmtDiaSemana(dataFinalUtil(calcPub, calcLivre)))+'</div></div>';
+  h += '</div>';
+
+  h += '<div class="calc-aviso"><span>⚠</span><div><b>Leitura simplificada, não o cálculo oficial do prazo.</b> '+
+    'Pula sábado e domingo, mas não conhece feriados, pontos facultativos nem suspensões — se algum cair dentro do prazo, '+
+    'o resultado real pode ser mais tarde do que o mostrado aqui. Use para consulta rápida; o PZ e o FT que valem para o Astrea '+
+    'são os do cartão de cada teor, na seção de fase de conhecimento, recursal ou de execução.</div></div>';
+  return h;
+}
+
+function calcInicioHTML(){
+  if(!calcPub) return '';
+  const ini = inicioContagem(calcPub);
+  return 'Início da contagem (dia seguinte à publicação, regra do CPC): <b>'+fmtData(ini)+', '+esc(fmtDiaSemana(ini))+'</b>';
+}
+
+function telaCalculadora(){
+  let h = '<div class="man"><h2>Calculadora de prazos</h2>'+
+    '<p class="intro">Ponto de consulta rápida para o responsável pelas publicações. Preencha a data e os cinco prazos abaixo se atualizam sozinhos.</p>';
+
+  h += '<div class="calc-campo"><label>Data da publicação</label>'+
+    '<input class="calc-data" type="date" id="calcData" value="'+(calcPub?calcPub.toISOString().slice(0,10):'')+'">'+
+    '<div class="calc-inicio" id="calcInicio">'+calcInicioHTML()+'</div>'+
+    '</div>';
+
+  h += '<div id="calcResultados">'+calcResultadosHTML()+'</div>';
+  h += '</div>';
+  return h;
+}
+
+/* ---------- documento completo, para impressão ---------- *//* ---------- documento completo, para impressão ---------- */
 function telaTudo(){
   let h = '<div class="man"><h2>Publicações</h2><p class="intro">Manual completo e cartões de consulta. '+T.length+' teores, três fases e um fluxo extraordinário. Contagem sempre em dias úteis. Dúvida em qualquer ponto: fale com o Ygor.</p></div>';
   SECOES_MANUAL.forEach(sx=>{ h += telaManual(sx.id); });
@@ -600,6 +755,7 @@ function telaTudo(){
 /* ---------- roteamento ---------- */
 function migalhaDe(rota){
   if(rota==='inicio') return 'Início · todos os cartões';
+  if(rota==='calc') return 'Calculadora de prazos';
   if(rota.startsWith('t/')){
     const t = T.find(x=>x.sec===rota.slice(2));
     return t ? FASE[t.fase].nome+' · '+t.sec+' '+t.titulo : 'Início';
@@ -612,6 +768,7 @@ function ir(rota, semScroll){
   rotaAtual = rota;
   const palco = document.getElementById('palco');
   palco.innerHTML = rota==='inicio' ? telaInicio()
+                  : rota==='calc' ? telaCalculadora()
                   : rota.startsWith('t/') ? telaTeor(rota.slice(2))
                   : telaManual(rota.slice(2));
   document.getElementById('migalha').textContent = migalhaDe(rota);
@@ -650,6 +807,24 @@ document.addEventListener('click', e=>{
   if(r){ ir(r.dataset.rota); return; }
   const c = e.target.closest('[data-area]');
   if(c){ filtroArea = c.dataset.area; pintaFiltros(); pintaIndice(); if(rotaAtual==='inicio') ir('inicio',true); return; }
+});
+document.addEventListener('input', e=>{
+  if(e.target.id==='calcData'){
+    calcPub = parseDataInput(e.target.value);
+    document.getElementById('calcInicio').innerHTML = calcInicioHTML();
+    document.getElementById('calcResultados').innerHTML = calcResultadosHTML();
+  }
+  if(e.target.id==='calcLivre'){
+    const v = parseInt(e.target.value,10);
+    calcLivre = (v && v>0) ? v : 1;
+    // só o valor do dia/semana muda; reconstruir tudo faria o campo perder o foco
+    const card = e.target.closest('.calc-livre');
+    if(calcPub && card){
+      const fim = dataFinalUtil(calcPub, calcLivre);
+      card.querySelector('.data').textContent = fmtData(fim);
+      card.querySelector('.dia').textContent = fmtDiaSemana(fim);
+    }
+  }
 });
 document.getElementById('busca').addEventListener('input', e=>{
   busca = e.target.value.trim();
@@ -691,7 +866,7 @@ window.addEventListener('hashchange', ()=>{
 /* ---------- arranque ---------- */
 pintaFiltros();
 const inicial = location.hash.slice(1);
-ir(inicial && (inicial==='inicio' || T.some(t=>'t/'+t.sec===inicial) || SECOES_MANUAL.some(s=>'m/'+s.id===inicial)) ? inicial : 'inicio');
+ir(inicial && (inicial==='inicio' || inicial==='calc' || T.some(t=>'t/'+t.sec===inicial) || SECOES_MANUAL.some(s=>'m/'+s.id===inicial)) ? inicial : 'inicio');
 </script>
 </body>
 </html>
