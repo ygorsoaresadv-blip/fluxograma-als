@@ -340,6 +340,213 @@ table.oab td.principal{font-weight:700;color:var(--tinta)}
   .man h2{margin-top:0}
   .cartao:hover{transform:none;box-shadow:none}
 }
+
+/* ============================================================
+   MÓDULOS NOVOS · triagem, passo a passo, checklist, treino
+   Reaproveitam os mesmos tokens do restante do arquivo.
+   ============================================================ */
+
+/* ---------- portas de entrada na tela inicial ---------- */
+.portas{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0 4px}
+.porta{
+  display:block;width:100%;text-align:left;background:var(--carta);border:1px solid var(--linha);
+  border-radius:12px;padding:18px 18px 16px;transition:border-color .15s,box-shadow .15s;
+}
+.porta:hover{border-color:var(--tinta);box-shadow:0 6px 20px rgba(12,59,46,.09)}
+.porta .marca-porta{
+  width:26px;height:26px;border-radius:7px;background:var(--tinta);color:var(--ouro);
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;margin-bottom:11px;
+}
+.porta.destaque{border-color:var(--tinta);border-width:2px;padding:17px 17px 15px}
+.porta.destaque .marca-porta{background:var(--ouro);color:#1A1508}
+.porta h4{font-family:var(--display);font-size:20px;font-weight:600;margin:0 0 5px;line-height:1.14}
+.porta p{margin:0;font-size:12.5px;color:var(--suave);line-height:1.5}
+
+/* ---------- triagem guiada ---------- */
+.tri-topo{display:flex;align-items:center;gap:12px;margin:0 0 22px}
+.tri-passos{flex:1;height:4px;background:var(--linha);border-radius:99px;overflow:hidden}
+.tri-passos i{display:block;height:100%;background:var(--ouro);transition:width .25s}
+.tri-conta{font-family:var(--mono);font-size:11px;color:var(--suave);flex:none}
+
+.tri-pergunta{
+  background:var(--carta);border:1px solid var(--linha);border-radius:14px;padding:26px 26px 22px;
+}
+.tri-pergunta h3{
+  font-family:var(--display);font-size:clamp(24px,3.4vw,32px);font-weight:600;
+  line-height:1.14;margin:0 0 6px;letter-spacing:-.005em;
+}
+.tri-dica{font-size:13px;color:var(--suave);margin:0 0 20px;line-height:1.55;max-width:58ch}
+.tri-ops{display:flex;flex-direction:column;gap:7px}
+.tri-op{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+  padding:13px 15px;border:1px solid var(--linha);border-radius:9px;background:var(--papel);
+  font-size:14px;line-height:1.42;transition:border-color .13s,background .13s;
+}
+.tri-op:hover{border-color:var(--tinta);background:var(--carta)}
+.tri-op .seta{font-family:var(--mono);color:var(--suave);flex:none;font-size:12px}
+.tri-op:hover .seta{color:var(--tinta)}
+.tri-op.roxa{border-color:var(--roxo-linha);background:var(--roxo-bg);color:#3E1D64}
+.tri-op.roxa:hover{border-color:var(--roxo)}
+.tri-op.fora{color:var(--suave)}
+.tri-volta{margin-top:18px;display:flex;gap:8px}
+
+.tri-res{background:var(--carta);border:1px solid var(--linha);border-radius:14px;padding:24px 26px;margin-bottom:14px}
+.tri-res .achou{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--suave);font-weight:700;margin-bottom:10px}
+.tri-res h3{font-family:var(--display);font-size:27px;font-weight:600;margin:0 0 4px;line-height:1.12}
+.tri-res .sec-cod{font-family:var(--mono);font-size:12px;font-weight:600}
+.tri-res p{margin:8px 0 16px;font-size:14px;color:var(--suave);line-height:1.58;max-width:64ch;text-align:justify;hyphens:auto}
+.tri-res .linha-btn{display:flex;gap:8px;flex-wrap:wrap}
+.tri-mais{
+  border:1px dashed var(--linha-forte);border-radius:10px;padding:14px 16px;font-size:13px;
+  color:var(--suave);line-height:1.55;margin-bottom:14px;
+}
+
+/* ---------- checklist do cartão ---------- */
+.check{
+  margin:26px 0 0;background:var(--carta);border:1px solid var(--linha);border-radius:12px;overflow:hidden;
+}
+.check-topo{
+  display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--linha);
+}
+.check-topo .t{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;flex:1}
+.check-barra{width:88px;height:4px;background:var(--linha);border-radius:99px;overflow:hidden;flex:none}
+.check-barra i{display:block;height:100%;background:var(--conh);transition:width .2s}
+.check-conta{font-family:var(--mono);font-size:11px;color:var(--suave);flex:none;min-width:34px;text-align:right}
+.check-lista{list-style:none;margin:0;padding:6px 0}
+.check-lista li{margin:0}
+.check-item{
+  display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;
+  padding:9px 18px;font-size:13.5px;line-height:1.5;
+}
+.check-item:hover{background:var(--papel)}
+.check-box{
+  width:17px;height:17px;border:1.5px solid var(--linha-forte);border-radius:4px;flex:none;margin-top:2px;
+  display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;
+}
+.check-item[aria-checked="true"] .check-box{background:var(--conh);border-color:var(--conh)}
+.check-item[aria-checked="true"] .check-txt{color:var(--suave);text-decoration:line-through}
+.check-item .check-txt b{font-weight:600}
+.check-rodape{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:11px 18px;border-top:1px solid var(--linha);font-size:11.5px;color:var(--suave);
+}
+.btn-mini{
+  font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:600;
+  padding:5px 10px;border-radius:5px;border:1px solid var(--linha-forte);color:var(--tinta);background:var(--carta);
+}
+.btn-mini:hover{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.btn-mini.ok{background:var(--conh);border-color:var(--conh);color:#fff}
+
+/* botão de copiar dentro da agenda */
+.ag-copiar{
+  position:absolute;top:12px;right:12px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:600;padding:4px 8px;border-radius:5px;border:1px solid var(--linha);color:var(--suave);
+}
+.ag-copiar:hover{border-color:var(--tinta);color:var(--tinta)}
+.ag-copiar.ok{border-color:var(--conh);color:var(--conh)}
+
+/* ---------- passo a passo geral ---------- */
+.rota{counter-reset:rota;margin:6px 0 0}
+.rota-item{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:0 0 26px;position:relative}
+.rota-item:before{
+  content:"";position:absolute;left:21px;top:34px;bottom:0;width:1px;background:var(--linha);
+}
+.rota-item:last-child:before{display:none}
+.rota-num{
+  width:34px;height:34px;border-radius:50%;background:var(--tinta);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;
+  position:relative;z-index:1;
+}
+.rota-item.alerta .rota-num{background:var(--roxo)}
+.rota-item h3{font-family:var(--display);font-size:22px;font-weight:600;margin:3px 0 6px;line-height:1.16}
+.rota-item p{margin:0 0 8px;font-size:14px;line-height:1.6;color:var(--texto);max-width:66ch;text-align:justify;hyphens:auto}
+.rota-item p:last-child{margin-bottom:0}
+.rota-item .fino{color:var(--suave);font-size:13px}
+
+/* ---------- calculadora ---------- */
+.calc-abas{display:flex;gap:6px;margin:4px 0 20px;flex-wrap:wrap}
+.calc-aba{
+  font-size:12px;font-weight:600;padding:8px 14px;border-radius:8px;
+  border:1px solid var(--linha-forte);color:var(--suave);background:var(--carta);
+}
+.calc-aba[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.calc-linha{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-bottom:6px}
+.calc-campo2{display:flex;flex-direction:column;gap:6px}
+.calc-campo2 label{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--suave)}
+.calc-campo2 input,.calc-campo2 select{
+  font-family:var(--corpo);font-size:14px;padding:9px 11px;border:1px solid var(--linha-forte);
+  border-radius:8px;background:var(--carta);color:var(--texto);min-width:180px;
+}
+.calc-campo2 input:focus,.calc-campo2 select:focus{border-color:var(--ouro);outline:none}
+
+.saida{
+  background:var(--tinta);color:#EAF0EC;border-radius:12px;padding:20px 22px;margin:18px 0 10px;
+}
+.saida .rot-s{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro);font-weight:700;margin-bottom:12px}
+.saida .titulo-agenda{
+  font-family:var(--mono);font-size:clamp(15px,2.6vw,21px);font-weight:600;color:#fff;
+  word-break:break-word;line-height:1.35;
+}
+.saida .abaixo{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;padding-top:13px;border-top:1px solid rgba(255,255,255,.16)}
+.saida .par{font-size:12px;color:#9FB5AA;line-height:1.5}
+.saida .par b{display:block;color:#fff;font-family:var(--mono);font-size:13.5px;font-weight:600;margin-top:2px}
+.saida .btn-copia{
+  margin-top:14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  padding:8px 14px;border-radius:7px;background:var(--ouro);color:#1A1508;
+}
+.saida .btn-copia.ok{background:#7FC8A9;color:#0C3B2E}
+
+.pulos{margin:12px 0 0;font-size:12.5px;color:var(--suave);line-height:1.6}
+.pulos ul{margin:6px 0 0;padding-left:18px}
+.pulos li{margin-bottom:2px}
+.pulo-tag{font-family:var(--mono);font-size:11px;color:var(--fatal);font-weight:600}
+
+/* ---------- treino ---------- */
+.trn-cabeca{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.trn-placar{font-family:var(--mono);font-size:12px;color:var(--suave)}
+.trn-placar b{color:var(--tinta);font-size:15px}
+.trn-caixa{background:var(--carta);border:1px solid var(--linha);border-radius:14px;padding:24px 26px}
+.trn-enunciado{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--suave);font-weight:700;margin-bottom:10px}
+.trn-texto{font-size:16px;line-height:1.6;margin:0 0 20px;max-width:66ch;text-align:justify;hyphens:auto}
+.trn-ops{display:flex;flex-direction:column;gap:7px}
+.trn-op{
+  display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;padding:12px 14px;
+  border:1px solid var(--linha);border-radius:9px;background:var(--papel);font-size:14px;line-height:1.45;
+}
+.trn-op:hover:not([disabled]){border-color:var(--tinta);background:var(--carta)}
+.trn-op .cod{font-family:var(--mono);font-size:11px;color:var(--suave);flex:none;margin-top:2px;min-width:24px}
+.trn-op.certa{border-color:var(--conh);background:var(--conh-bg)}
+.trn-op.errada{border-color:var(--fatal);background:#F7ECEC}
+.trn-op[disabled]{cursor:default}
+.trn-feedback{margin-top:16px;padding:14px 16px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.trn-feedback.bom{background:var(--conh-bg);border:1px solid var(--conh)}
+.trn-feedback.ruim{background:#F7ECEC;border:1px solid var(--fatal)}
+.trn-feedback b{font-weight:600}
+.trn-fim{text-align:center;padding:34px 20px}
+.trn-fim .nota{font-family:var(--display);font-size:56px;font-weight:600;line-height:1;color:var(--tinta)}
+.trn-fim p{color:var(--suave);font-size:14px;margin:10px auto 20px;max-width:46ch}
+
+/* ---------- ajuda para perguntar ao Ygor ---------- */
+.ygor{
+  margin-top:22px;border:1px solid var(--linha);border-left:3px solid var(--ouro);
+  border-radius:0 10px 10px 0;padding:14px 18px;background:var(--carta);
+}
+.ygor .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--suave);margin-bottom:7px}
+.ygor ul{margin:0;padding-left:17px;font-size:13px;color:var(--texto);line-height:1.62}
+
+@media (max-width:760px){
+  .portas{grid-template-columns:1fr}
+  .calc-campo2 input,.calc-campo2 select{min-width:0;width:100%}
+  .calc-campo2{flex:1 1 100%}
+  .tri-pergunta{padding:20px 18px 18px}
+  .trn-caixa{padding:20px 18px}
+}
+@media print{
+  .portas,.tri-topo,.tri-ops,.tri-volta,.check-rodape,.ag-copiar,.calc-abas,.trn-ops{display:none!important}
+  .check{page-break-inside:avoid}
+  .rota-item{page-break-inside:avoid}
+}
+
 </style>
 </head>
 <body>
@@ -390,6 +597,447 @@ table.oab td.principal{font-weight:700;color:var(--tinta)}
 const D = {"teores":[{"sec":"7.1","fase":"conhecimento","area":"TODAS AS ÁREAS","titulo":"Distribuição do processo","id":"A publicação apenas informa que o processo foi distribuído e em qual vara ele caiu. Não há determinação, não há prazo e não há nada a ser feito por ninguém.","agendas":[],"semAgenda":"NENHUMA AGENDA A CRIAR","nota":"Este é o único teor em que a ausência de agenda é o resultado correto. Se a publicação trouxer qualquer determinação além da informação de distribuição, ela não é este cartão: procure o teor correspondente ou fale com o Ygor."},{"sec":"7.2","fase":"conhecimento","area":"TODAS AS ÁREAS","titulo":"Despacho inaugural que designa audiência","id":"Primeiro pronunciamento do juiz depois da distribuição, designando audiência com data, hora e modalidade. No cível costuma ser conciliação no CEJUSC; no trabalhista, audiência una.","agendas":[{"tipo":"AUDIÊNCIA","titulo":"Área + tipo de audiência + modalidade\nCÍVEL AUD CONCILIAÇÃO CEJUSC VIRTUAL  ·  RT AUD UNA PRESENCIAL","data":"Data e hora da audiência","resp":"Sócio (André)"},{"tipo":"PRAZO","titulo":"CONTATO CLIENTE AUDIÊNCIA","data":"30 dias antes da audiência","resp":"Estagiária jurídica"}],"nota":"Preencha sempre fórum, modalidade e o sócio como responsável. No contato, registre nos comentários se o cliente confirmou o comparecimento dele e das testemunhas, e o nome de cada testemunha. Depois reagende para 15 dias antes, depois 7 e depois 1."},{"sec":"7.3","fase":"conhecimento","area":"TODAS · EXCETO JUIZADO","titulo":"Despacho inaugural que nega a justiça gratuita","id":"O juiz indefere a gratuidade, ou seja, decide que a parte terá de pagar as custas. Costuma vir com determinação de recolhimento em prazo certo. Cabe agravo de instrumento.","agendas":[{"tipo":"PRAZO","titulo":"AI PZ dd/mm; FT dd/mm","data":"Dia da publicação\nPZ: 5 dias úteis antes do fatal","resp":"Advogado da área.\nNo trabalhista, o sênior (Gustavo Freire)"}],"nota":"É recurso, então o campo Data recebe o dia da publicação. O prazo interno de 5 dias úteis é o mais largo do material, porque o agravo é peça de tribunal. Nos juizados especiais não cabe agravo: não crie a agenda e fale com o Ygor."},{"sec":"7.4","fase":"conhecimento","area":"TODAS AS ÁREAS","titulo":"Despacho que concede a gratuidade mas pede documentos","id":"O juiz defere a gratuidade mas pede documentos que comprovem a hipossuficiência: imposto de renda, extratos, carteira de trabalho, comprovante de renda. Gera duas agendas com donos diferentes.","agendas":[{"tipo":"PRAZO","titulo":"JUNTAR DOCS COMPLEMENTARES HIPO\nPZ dd/mm; FT dd/mm","data":"PZ: 3 dias úteis antes do fatal","resp":"Advogado da área"},{"tipo":"PRAZO","titulo":"SOLICITAR AO CLIENTE OS DOCS PEDIDOS PELO JUIZ\nPZ dd/mm; FT dd/mm","data":"PZ: 2 dias úteis depois da publicação\nFT: 3 dias úteis antes do PZ do advogado","resp":"Estagiária jurídica"}],"nota":"Os documentos precisam chegar antes de o advogado começar, e não no mesmo dia. A cobrança ao cliente é do jurídico, porque o contrato já está fechado. Não é recurso: campo Data com o PZ, direto no responsável."},{"sec":"7.5","fase":"conhecimento","area":"TODAS · EXCETO JUIZADO","titulo":"Despacho inaugural que nega a tutela de urgência","id":"O juiz indefere o pedido de providência imediata, aquela que valeria antes do fim do processo. Cuidado: decisão que nega pedido nosso e não trata de urgência não é este caso, é o cartão 8.1.","agendas":[{"tipo":"PRAZO","titulo":"AI PZ dd/mm; FT dd/mm","data":"Dia da publicação\nPZ: 5 dias úteis antes do fatal","resp":"Advogado da área.\nNo trabalhista, o sênior (Gustavo Freire)"}],"nota":"Conduta idêntica à do cartão 7.3. Um mesmo despacho inaugural pode conter os três casos ao mesmo tempo (negar gratuidade, pedir documentos e negar tutela): quando isso acontecer, crie todas as agendas correspondentes."},{"sec":"7.6","fase":"conhecimento","area":"TODAS AS ÁREAS","titulo":"Agendamento de perícia","id":"O juízo designa perícia e informa data, hora, local e tipo: insalubridade, periculosidade ou médica. Perícia é o exame feito por especialista nomeado pelo juiz, e o cliente precisa comparecer pessoalmente.","agendas":[{"tipo":"AUDIÊNCIA","titulo":"PERÍCIA + tipo (INSALUBRIDADE, PERICULOSIDADE ou MÉDICA)","data":"Data e hora da perícia","resp":"Sócio (André), só para controle"},{"tipo":"PRAZO","titulo":"CONTATO CLIENTE PERÍCIA","data":"A confirmar\nProposta: 10 dias úteis antes","resp":"Estagiária jurídica"},{"tipo":"PRAZO","titulo":"COMUNICAR ELLEN","data":"A confirmar\nProposta: 5 dias úteis antes","resp":"Estagiária jurídica"}],"nota":"Endereço da perícia sempre no campo de observação. Ao cliente: peça comparecimento, explique que ele descreverá suas atividades e onde trabalhava, e se for médica oriente que leve todos os documentos médicos. Na terceira agenda, verifique se a Ellen foi contratada e se o perito a comunicou por e-mail; em caso negativo, envie e-mail pedindo que compareça."},{"sec":"7.7","fase":"conhecimento","area":"TODAS · A CONFIRMAR","titulo":"Determinação para indicar quesitos","id":"O juízo determina que as partes apresentem quesitos, que são as perguntas que o perito terá de responder no laudo, e em regra abre a oportunidade de indicar assistente técnico.","agendas":[{"tipo":"AUDIÊNCIA","titulo":"PERÍCIA + tipo (INSALUBRIDADE, PERICULOSIDADE ou MÉDICA)","data":"Data e hora da perícia","resp":"Sócio (André), só para controle"},{"tipo":"PRAZO","titulo":"CONTATO CLIENTE PERÍCIA","data":"A confirmar\nProposta: 10 dias úteis antes","resp":"Estagiária jurídica"},{"tipo":"PRAZO","titulo":"COMUNICAR ELLEN","data":"A confirmar\nProposta: 5 dias úteis antes","resp":"Estagiária jurídica"}],"nota":"Cartão pendente de confirmação. No fluxograma de origem, a conduta é idêntica à do cartão 7.6, o que sugere repetição na montagem. Pela lógica dos demais cartões, deveria existir também um prazo próprio para protocolar os quesitos. Enquanto isso não for definido, fale com o Ygor antes de criar as agendas."},{"sec":"7.8","fase":"conhecimento","area":"TRABALHISTA","titulo":"Juntada de laudo pericial","id":"O perito entregou o laudo e o juízo abre prazo para as partes se manifestarem. Manifestar-se, aqui, significa impugnar: apontar erros, omissões e contradições do laudo.","agendas":[{"tipo":"PRAZO","titulo":"SOLICITAR QUESITOS DE IMPUGNAÇÃO ELLEN\nPZ dd/mm; FT dd/mm","data":"FT: 3 dias úteis antes do fatal da impugnação\nPZ a confirmar. Proposta: dia útil seguinte à publicação","resp":"Estagiária jurídica"},{"tipo":"PRAZO","titulo":"IMPUGNAÇÃO AO LAUDO PZ dd/mm; FT dd/mm","data":"FT: 5 dias úteis da publicação\nPZ: o dia do fatal da agenda da Ellen","resp":"Advogado júnior trabalhista (Ygor Pinheiro)"}],"nota":"As duas datas se encaixam: quando o advogado começa a escrever, os quesitos da assistente já estão no escritório. Esta peça não passa por revisão e vai direto ao advogado júnior. Perícia previdenciária não entra neste fluxo."},{"sec":"8.1","fase":"recursal","area":"TODAS AS ÁREAS","titulo":"Decisão interlocutória ou terminativa de mérito","id":"O juiz nega pedido nosso ou concede o da parte contrária, sem se tratar de tutela de urgência. A interlocutória resolve questão pontual e não encerra a ação. A terminativa encerra o processo sem analisar o pedido central, em regra por obstáculo processual.","agendas":[{"tipo":"PRAZO","titulo":"ED PZ dd/mm; FT dd/mm","data":"Dia da publicação\nPrazo legal: 5 dias\nPZ: 3 dias úteis antes do fatal","resp":"Trabalhista: sênior (Gustavo Freire)\nCível: Juliana Tchani\nPrevidenciário: Elisangela"}],"nota":"É recurso, então o campo Data recebe o dia da publicação. Se o responsável concluir que é caso de embargos, ele mesmo cancela o prazo de recurso eventualmente agendado. Você não cancela agenda por conta própria."},{"sec":"8.2","fase":"recursal","area":"TRABALHISTA","titulo":"Sentença trabalhista","id":"Decisão que julga o pedido e encerra a fase de conhecimento na vara do trabalho. É o teor que gera mais agendas de todo o material: quatro, porque além dos dois caminhos de recurso já se abre a preparação da execução.","agendas":[{"tipo":"PRAZO","titulo":"ED PZ dd/mm; FT dd/mm","data":"Dia da publicação\n5 dias · PZ: fatal menos 3 úteis","resp":"Advogado sênior (Gustavo Freire)"},{"tipo":"PRAZO","titulo":"RO PZ dd/mm; FT dd/mm","data":"Dia da publicação\n8 dias · PZ: fatal menos 3 úteis","resp":"Advogado sênior (Gustavo Freire)"},{"tipo":"PRAZO","titulo":"INICIAR CUMPRIMENTO DE SENTENÇA","data":"20 dias úteis depois da sentença","resp":"Advogado júnior (Ygor Pinheiro)"},{"tipo":"PRAZO","titulo":"LIQUIDAR SENTENÇA","data":"15 dias úteis depois da sentença","resp":"Contador externo (Rui)"}],"nota":"As duas primeiras seguem a regra do mesmo dia, no nome do delegador. As duas últimas não são recursais, vão direto ao responsável e não levam PZ e FT no título. Atenção: os 20 e os 15 dias contam da data da sentença, não da publicação."},{"sec":"8.3","fase":"recursal","area":"CÍVEL","titulo":"Sentença cível","id":"Decisão que julga o pedido e encerra a fase de conhecimento na vara cível ou no juizado. O recurso depende do rito: no juizado é o recurso inominado, com 10 dias; na vara comum é a apelação, com 15 dias.","agendas":[{"tipo":"PRAZO","titulo":"ED PZ dd/mm; FT dd/mm","data":"Dia da publicação\n5 dias · PZ: fatal menos 3 úteis","resp":"Advogada cível (Juliana Tchani)"},{"tipo":"PRAZO","titulo":"RI PZ dd/mm; FT dd/mm   ou   AP PZ dd/mm; FT dd/mm","data":"Dia da publicação\nRI 10 dias · AP 15 dias\nPZ: fatal menos 3 úteis","resp":"Advogada cível (Juliana Tchani)"}],"nota":"Juizado gera recurso inominado (RI); vara comum gera apelação (AP). Se não estiver claro em qual rito o processo tramita, pergunte ao Ygor antes de nomear. Se a advogada entender que não cabe recurso, ela mesma esclarece os motivos nos comentários da agenda."},{"sec":"8.4","fase":"recursal","area":"PREVIDENCIÁRIO","titulo":"Sentença previdenciária","id":"Decisão que julga o pedido de benefício e encerra a fase de conhecimento. A escolha entre recurso inominado e apelação segue a mesma lógica do cível: juizado especial federal gera RI; vara comum gera AP.","agendas":[{"tipo":"PRAZO","titulo":"ED PZ dd/mm; FT dd/mm","data":"Dia da publicação\n5 dias · PZ: fatal menos 3 úteis","resp":"Advogada previdenciária (Elisangela)"},{"tipo":"PRAZO","titulo":"RI PZ dd/mm; FT dd/mm   ou   AP PZ dd/mm; FT dd/mm","data":"Dia da publicação\nRI 10 dias · AP 15 dias\nPZ: fatal menos 3 úteis","resp":"Advogada previdenciária (Elisangela)"}],"nota":"Conduta idêntica à do cartão 8.3. Muda apenas a responsável, porque o previdenciário é integralmente da advogada da área, do começo ao fim do processo."},{"sec":"8.5","fase":"recursal","area":"TRABALHISTA","titulo":"Acórdão trabalhista","id":"Acórdão é a decisão do tribunal, tomada por um colegiado de desembargadores, que julga o recurso. No trabalhista, além dos embargos, ele abre uma verificação obrigatória sobre a execução.","agendas":[{"tipo":"PRAZO","titulo":"ED PZ dd/mm; FT dd/mm","data":"Dia da publicação\n5 dias · PZ: fatal menos 3 úteis","resp":"Advogado sênior (Gustavo Freire)"},{"tipo":"PRAZO","titulo":"VERIFICAR SE HÁ CUMP. PROVISÓRIO DE SENTENÇA","data":"9 dias úteis depois da publicação do acórdão","resp":"Advogado júnior (Ygor Pinheiro)"}],"nota":"A segunda agenda não é recursal e não tem fatal. O que acontece depois não é tarefa sua: sem cumprimento provisório em curso, o advogado júnior abre a agenda de início de cumprimento para ele e a de liquidação para o contador; havendo, abre a manifestação de cálculos de adequação e a agenda para o contador adequar."},{"sec":"8.6","fase":"recursal","area":"CÍVEL","titulo":"Acórdão cível","id":"Decisão do tribunal que julga a apelação ou o recurso inominado em processo cível. Gera duas agendas com duas responsáveis diferentes, porque no cível o cumprimento de sentença não fica com a advogada que conduz o processo.","agendas":[{"tipo":"PRAZO","titulo":"ED PZ dd/mm; FT dd/mm","data":"Dia da publicação\n5 dias · PZ: fatal menos 3 úteis","resp":"Advogada cível (Juliana Tchani)"},{"tipo":"PRAZO","titulo":"INICIAR CUMPRIMENTO DE SENTENÇA","data":"16º dia útil da publicação do acórdão","resp":"Advogada previdenciária (Elisangela)"}],"nota":"No cível, cálculos e cumprimento de sentença são da Elisangela, ainda que todo o resto do processo seja conduzido pela Juliana. A data do 16º dia está fixada assim no fluxograma e não deve ser recalculada por você."},{"sec":"8.7","fase":"recursal","area":"PREVIDENCIÁRIO","titulo":"Acórdão previdenciário","id":"Decisão do tribunal ou da turma recursal que julga o recurso em processo previdenciário. Conduta igual à do acórdão cível, com a diferença de que as duas agendas ficam com a mesma pessoa.","agendas":[{"tipo":"PRAZO","titulo":"ED PZ dd/mm; FT dd/mm","data":"Dia da publicação\n5 dias · PZ: fatal menos 3 úteis","resp":"Advogada previdenciária (Elisangela)"},{"tipo":"PRAZO","titulo":"INICIAR CUMPRIMENTO DE SENTENÇA","data":"16º dia útil da publicação do acórdão","resp":"Advogada previdenciária (Elisangela)"}],"nota":"A primeira agenda é recursal e recebe o dia da publicação no campo Data. A segunda não tem fatal, não leva PZ e FT no título e vai direto para a responsável."},{"sec":"8.8","fase":"recursal","area":"TODAS AS ÁREAS","titulo":"Intimação para apresentar contrarrazões","id":"A parte contrária recorreu e o juízo ou o tribunal abre prazo para que o escritório responda ao recurso dela. Contrarrazões não pedem reforma da decisão: apenas defendem que ela seja mantida.","agendas":[{"tipo":"PRAZO","titulo":"CONTRARRAZÕES + sigla do recurso, PZ dd/mm; FT dd/mm\nExemplo: CONTRARRAZÕES RO PZ 12/09; FT 18/09","data":"Dia da publicação\nFT: o mesmo prazo do recurso contrarrazoado\nPZ: 3 dias úteis antes do fatal","resp":"Advogado da área.\nNo trabalhista, o sênior (Gustavo Freire)"}],"nota":"O prazo do fatal acompanha o recurso respondido: RO 8 dias, AP 15 dias, RI 10 dias, ED 5 dias. Contrarrazões seguem a mesma regra dos recursos, então o campo Data recebe o dia da publicação."},{"sec":"9.1","fase":"execucao","area":"TRABALHISTA","titulo":"Intimação para manifestação de cálculos","id":"A decisão já é definitiva e agora se discute o valor. O juízo abre prazo para as partes se manifestarem sobre os cálculos. No trabalhista são duas etapas, porque o contador externo produz os subsídios antes de o advogado escrever a peça.","agendas":[{"tipo":"PRAZO","titulo":"ELABORAR SUBSÍDIOS DE CÁLCULOS PZ dd/mm; FT dd/mm","data":"PZ: dia útil seguinte à publicação\nFT: 2 dias úteis antes do fatal","resp":"Contador externo (Rui)"},{"tipo":"PRAZO","titulo":"MANIFES CÁLCULOS PZ dd/mm; FT dd/mm","data":"PZ: 2 dias úteis antes do fatal\nFT: o fatal do processo","resp":"Advogado júnior (Ygor Pinheiro)"}],"nota":"O fatal do contador é exatamente o prazo interno do advogado: o contador entrega no dia em que o advogado começa. Nenhuma das duas é recursal, então o campo Data recebe o PZ e cada agenda vai direto ao seu responsável."},{"sec":"9.2","fase":"execucao","area":"CÍVEL","titulo":"Intimação para manifestação de cálculos","id":"Mesmo teor do cartão anterior, em processo cível. Aqui não há etapa do contador externo: o prazo vai direto para a advogada, que examina os cálculos ela mesma.","agendas":[{"tipo":"PRAZO","titulo":"MANIFES CÁLCULOS PZ dd/mm; FT dd/mm","data":"PZ: 2 dias úteis antes do fatal\nFT: o fatal do processo","resp":"Advogada previdenciária (Elisangela)"}],"nota":"Não é da advogada cível. No cível, cálculos e cumprimento de sentença são da Elisangela. O contador externo atua apenas em ações trabalhistas."},{"sec":"9.3","fase":"execucao","area":"TODAS AS ÁREAS","titulo":"Informe de expedição de alvará","id":"O juízo comunica que foi expedido alvará, que é a ordem judicial autorizando o levantamento de um valor depositado. A partir daqui o assunto é dinheiro entrando em conta, e a agenda vai para o financeiro.","agendas":[{"tipo":"PRAZO","titulo":"ACOMPANHAR CREDITO EM CONTA + valor\n(Liquidação ou Crédito Parcial)","data":"5 dias úteis depois da publicação","resp":"Financeiro (Igor Marran)"}],"nota":"Além do valor, informe na própria agenda se o crédito dá quitação à lide ou se é apenas parcial: essa informação define tudo o que vem depois. Dando quitação, a pasta é encerrada com êxito, o financeiro agenda o repasse ao cliente e encaminha a prestação de contas para conferência."},{"sec":"9.4","fase":"execucao","area":"TRABALHISTA E CÍVEL","titulo":"Intimação para manifestar sobre pagamento","id":"O comando judicial pede que o exequente ou reclamante se manifeste sobre o pagamento realizado pela parte contrária. Em outras palavras: confira se o que foi depositado corresponde ao que era devido.","agendas":[{"tipo":"PRAZO","titulo":"CONFERIR PAGTO E SANEAR O FEITO PZ dd/mm; FT dd/mm","data":"PZ: 2 dias úteis antes do fatal\nFT: o fatal do processo","resp":"Trabalhista: Ygor Pinheiro\nCível: Elisangela"}],"nota":"As regras de conteúdo são do responsável, não suas. Valor correto: indicar dados bancários, sempre do Itaú. Quitação: encerrar a pasta com êxito e informar o valor. Valor a menor: executar a diferença. Diferenças inferiores a R$ 300,00 são desconsideradas."},{"sec":"9.5","fase":"execucao","area":"TRABALHISTA","titulo":"Deferimento de parcelamento do artigo 916 do CPC","id":"A parte contrária pediu para pagar a dívida em parcelas, com base no artigo 916 do Código de Processo Civil, e o juízo deferiu. O dispositivo permite depositar 30 por cento do valor e parcelar o restante.","agendas":[{"tipo":"PRAZO","titulo":"MANIFESTAÇÃO PZ dd/mm; FT dd/mm","data":"PZ: 2 dias úteis antes do fatal\nFT: o fatal do processo","resp":"Advogado júnior (Ygor Pinheiro)"}],"nota":"Registre na observação que o teor é de parcelamento do artigo 916. O conteúdo é do responsável: requerer o levantamento dos 30 por cento e que as demais parcelas sejam depositadas na conta do escritório, se execução definitiva. Se a reclamada só requerer o parcelamento sem depositar os 30 por cento, discordar e pedir SISBAJUD com urgência."},{"sec":"9.6","fase":"execucao","area":"TODAS AS ÁREAS","titulo":"Arquivamento ou extinção da execução","id":"O juízo comunica que o processo foi arquivado ou que a execução foi extinta. É o último teor do fluxo: depois dele, em regra, não há mais publicação naquele processo.","agendas":[{"tipo":"PRAZO","titulo":"CIÊNCIA ARQUIVAMENTO/EXTINÇÃO","data":"5 dias úteis depois da publicação","resp":"Estagiária jurídica"}],"nota":"Esta agenda é sua. A análise é verificar se o pagamento da condenação foi efetivamente realizado e se a pasta está encerrada no sistema. Se o pagamento não aparecer ou a pasta seguir aberta sem motivo, fale com o Ygor antes de dar ciência."}],"manual":{"pessoas":[["Sócio","André","Todas as audiências, de todas as áreas. Também figura como responsável nas perícias, apenas para efeito de controle."],["Advogado sênior trabalhista, delegador e revisor","Gustavo Freire","Todos os recursos e contrarrazões do trabalhista. Ele delega a execução e revisa antes do protocolo."],["Advogado pleno trabalhista","Mateus","Nada diretamente de você. Só recebe o que o delegador repassa."],["Advogado júnior trabalhista","Ygor Pinheiro","Cumprimento de sentença, manifestação de cálculos, impugnação ao laudo, manifestação sobre pagamento e parcelamento, no trabalhista. É também o ponto único de dúvida do escritório."],["Advogada cível","Juliana Tchani","Todo o cível, exceto cálculos e cumprimento de sentença. Recebe também as execuções trabalhistas repassadas, pela etiqueta roxa."],["Coordenadora do pré-jurídico e advogada previdenciária","Elisangela","Todo o previdenciário, e os cálculos e cumprimentos de sentença do cível."],["Contador externo","Rui","Liquidação de sentença e subsídios de cálculos, somente em ações trabalhistas."],["Financeiro","Igor Marran","Acompanhamento de crédito em conta e repasse ao cliente."],["Assistente técnica pericial (externa)","Ellen","Não recebe agenda no Astrea. É acionada por e-mail, por meio de agenda no nome da estagiária jurídica."],["Estagiária jurídica","Você","Tratamento das publicações, contato com o cliente depois do contrato fechado e ciência de arquivamento."],["Estagiária do pré-jurídico","","Apoio ao financeiro e contato com o cliente antes do fechamento do contrato. Não entra no fluxo de publicações."]],"regras":[{"n":1,"t":"Toda contagem é em dias úteis","p":["Sem exceção, em todas as áreas e em todos os prazos deste manual. Quando o manual disser \"3 dias\", leia \"3 dias úteis\".","O calendário forense já está configurado no Astrea, com feriados nacionais, estaduais e da comarca, de modo que o próprio sistema calcula a data. Você não precisa contar no calendário de parede, mas precisa conferir se a data que o sistema trouxe cai em dia útil."]},{"n":2,"t":"O campo Data é o prazo interno, e o título carrega as duas datas","p":["Toda agenda de prazo tem duas datas que importam. O <b>prazo interno (PZ)</b> é a data em que o escritório quer a peça pronta. O <b>prazo fatal (FT)</b> é o último dia possível para protocolar, definido por lei.","O campo Data do Astrea recebe sempre o PZ, e o título da agenda traz as duas.","A folga entre PZ e FT existe para absorver imprevisto: doença, sistema fora do ar, peça mais difícil do que parecia. Ela é a margem de segurança do escritório, e por isso a data interna nunca é a data fatal."],"exemplo":"ED PZ 15/09; FT 20/09"},{"n":3,"t":"Recurso e contrarrazões entram na agenda no mesmo dia da publicação","p":["Para recursos (ED, AI, RO, AP, RI) e para contrarrazões, o título continua trazendo PZ e FT como manda a regra 2, mas <b>o campo Data recebe o dia da própria publicação</b>, e não o PZ.","A razão é simples: quem vai delegar precisa ver o prazo hoje, para repassar hoje, e assim quem for elaborar tem o prazo inteiro à disposição, em vez de descobrir a tarefa só na véspera do prazo interno.","Quem ajusta a data depois não é você. No trabalhista, o advogado sênior adia a agenda para o PZ no momento em que delega. No cível e no previdenciário, a própria advogada da área toma ciência e adia.","Para todos os demais prazos, vale o inverso: <b>o campo Data recebe o PZ e a agenda vai direto para o responsável nominal</b>, sem passar pelo delegador."]},{"n":4,"t":"Cada agenda tem um único responsável, definido pela área","p":["Nunca deixe uma agenda sem responsável e nunca coloque duas pessoas. Se a publicação gerar duas providências com donos diferentes, crie duas agendas separadas. É o que acontece, por exemplo, no despacho que pede documentos complementares e na manifestação de cálculos trabalhista."]},{"n":5,"t":"Você não calcula o prazo fatal","p":["O prazo fatal vem da publicação e do Astrea, que já conhece o prazo legal de cada peça e o calendário forense. O seu trabalho é ler o fatal, contar para trás os dias úteis que o cartão indica para chegar ao prazo interno, e escrever as duas datas no título.","Se o fatal não estiver claro na publicação, ou se o sistema trouxer uma data que pareça errada, <b>não arbitre uma data</b>: pergunte ao Ygor."]},{"n":6,"t":"Toda publicação é concluída, mesmo quando não gera agenda","p":["Depois de criar as agendas, conclua a publicação no Astrea. É isso que faz o registro entrar no histórico da pasta do processo.","Há publicações que não geram agenda nenhuma, como a de distribuição do processo, e mesmo elas precisam ser concluídas, para que fique registrado que foram lidas e tratadas."]},{"n":7,"t":"Dúvida é sempre com o Ygor","p":["O ponto único de dúvida é o advogado júnior trabalhista, para as três áreas, inclusive cível e previdenciário. Vale tanto para publicação que você não conseguiu classificar quanto para dúvida de data, de responsável ou de nome de agenda.","Não pergunte ao advogado da área e não deduza pelo teor parecido de outra publicação."]}],"nomenclatura":{"intro":["O Astrea tem quatro tipos de item de agenda, mas o escritório usa apenas dois: <b>Prazo</b> e <b>Audiência</b>. Evento e Tarefa existem no sistema e não são utilizados.","Prazo é o tipo padrão para tudo que tem data limite de protocolo ou de providência. Audiência é reservada para atos com hora marcada, incluindo a perícia.","O título da agenda de prazo segue sempre a mesma estrutura: sigla ou nome da providência, PZ e a data interna, ponto e vírgula, FT e a data fatal. Não é necessário incluir número do processo nem área no título, porque o Astrea já exibe esses dados na própria tela do prazo."],"linhas":[["Recurso ou contrarrazões","RO PZ 12/09; FT 18/09","Dia da publicação","Advogado da área. No trabalhista, sempre o sênior"],["Prazo com data fatal, não recursal","MANIFES CÁLCULOS PZ 10/09; FT 12/09","A data do PZ","Responsável nominal indicado no cartão"],["Providência sem data fatal","INICIAR CUMPRIMENTO DE SENTENÇA","A data calculada no cartão","Responsável nominal indicado no cartão"],["Audiência ou perícia","RT AUD UNA PRESENCIAL","Data e hora do ato","Sócio (André)"]],"nota":"Providência sem data fatal não recebe PZ nem FT no título. É o caso de iniciar cumprimento de sentença, liquidar sentença, acompanhar crédito em conta e ciência de arquivamento. Nesses casos existe apenas uma data de providência, que vai no campo Data, e o título fica só com o nome da providência."},"foraDoManual":[["Prazos que nascem de ata de audiência","São agendados pelo advogado júnior trabalhista, a partir da própria ata, e não a partir de publicação."],["Réplica e manifestação sobre contestação e documentos","O prazo é agendado pelo advogado júnior no momento da audiência."],["Revisão e devolução de minuta entre advogados","O delegador revisa antes do protocolo, e quem elaborou protocola depois da devolutiva. É rotina interna dos advogados e não passa por você."],["Agravo de petição, recurso de revista e agravo em recurso de revista","São medidas de iniciativa dos próprios advogados, usadas em casos raros."],["Custas, preparo e deserção","Tratados caso a caso pelo advogado responsável."],["Requisição de pequeno valor, precatório e exigências do INSS","Rotina previdenciária conduzida integralmente pela advogada da área."],["Perícia previdenciária","Não segue o fluxo de acionamento da assistente técnica."],["Suspensões de prazo e recesso forense","Já configurados no calendário forense do Astrea, sem cálculo manual."]],"glossario":[{"g":"Datas e agendas","itens":[["Publicação","Comunicação oficial do juízo sobre o processo. É o que chega para você tratar."],["Teor","O conteúdo da publicação, ou seja, o que o juiz determinou. É por ele que você identifica a conduta."],["Conduta","O conjunto de agendas que aquele teor exige."],["Prazo fatal, ou FT","O último dia possível para protocolar a peça. Definido por lei. Perdê-lo, em regra, é perder o direito."],["Prazo interno, ou PZ","A data em que o escritório quer a peça pronta, sempre anterior ao fatal. É o que vai no campo Data do Astrea."],["Dias úteis","Contagem que exclui sábados, domingos e feriados. É a única contagem usada neste manual."],["Agenda do tipo Prazo","Item do Astrea usado para tudo que tem data limite de protocolo ou de providência."],["Agenda do tipo Audiência","Item do Astrea usado para atos com hora marcada, incluindo perícia."],["Responsável","A pessoa que vai executar. Sempre uma só por agenda."],["Delegador","No trabalhista, o advogado sênior que recebe os recursos e distribui a execução."],["Revisor","Quem confere a peça antes do protocolo. No trabalhista, é o mesmo advogado sênior."],["Pasta","O registro do processo dentro do Astrea, onde ficam o histórico e os documentos."]]},{"g":"Peças e recursos","itens":[["ED, embargos de declaração","Pede ao próprio juiz ou tribunal que esclareça obscuridade, contradição ou omissão da decisão. Não serve para rediscutir o mérito. Prazo de 5 dias."],["AI, agravo de instrumento","Recurso contra decisão interlocutória, dirigido ao tribunal. Aparece sobretudo contra o indeferimento da gratuidade e contra a negativa de tutela de urgência. Não cabe nos juizados especiais."],["RO, recurso ordinário","Recurso contra a sentença trabalhista, dirigido ao Tribunal Regional do Trabalho. Prazo de 8 dias."],["AP, apelação","Recurso contra a sentença em vara comum, cível ou previdenciária. Prazo de 15 dias."],["RI, recurso inominado","Recurso contra a sentença nos juizados especiais, dirigido à turma recursal. Prazo de 10 dias."],["Contrarrazões","Peça de resposta ao recurso da parte contrária. Não pede reforma, apenas defende que a decisão seja mantida. O prazo é o mesmo do recurso respondido."],["Impugnação ao laudo","Peça que aponta erros, omissões e contradições do laudo pericial."]]},{"g":"Decisões e fases","itens":[["Despacho inaugural","O primeiro pronunciamento do juiz depois da distribuição, em que ele organiza o início do processo."],["Decisão interlocutória","Resolve questão pontual no meio do processo, sem encerrá-lo."],["Decisão terminativa de mérito","Encerra o processo sem analisar o pedido central, em regra por obstáculo processual."],["Sentença","Decisão do juiz de primeiro grau que julga o pedido e encerra a fase de conhecimento."],["Acórdão","Decisão de um colegiado de desembargadores, no tribunal, que julga o recurso."],["Tutela de urgência","Providência concedida antes do fim do processo, quando há urgência e probabilidade do direito."],["Justiça gratuita","Benefício que dispensa a parte de pagar custas processuais."],["Hipossuficiência","A condição de quem não tem condições financeiras de pagar as custas. É o que os documentos complementares comprovam."],["Liquidação de sentença","Etapa em que se apura o valor exato devido, depois de a decisão já ter definido o direito."],["Cumprimento de sentença","Fase em que se cobra o valor devido. Provisório quando ainda cabe recurso, definitivo quando a decisão já é imutável."],["Alvará","Ordem judicial que autoriza o levantamento de valor depositado no processo."],["SISBAJUD","Sistema pelo qual o juiz determina o bloqueio de valores em contas bancárias do devedor."]]},{"g":"Atos e pessoas do processo","itens":[["Audiência una","Audiência trabalhista que reúne conciliação, instrução e julgamento em um único ato."],["CEJUSC","Centro judiciário de solução consensual de conflitos, onde ocorrem as audiências de conciliação no cível."],["JEC","Juizado especial cível, rito mais simples e rápido, com regras próprias de recurso."],["Perícia","Exame técnico feito por especialista nomeado pelo juiz. Pode ser de insalubridade, periculosidade ou médica."],["Quesitos","As perguntas que o perito terá de responder no laudo."],["Assistente técnico","Especialista contratado pela parte para acompanhar a perícia e formular quesitos. No escritório, é a Ellen."],["Perito","Especialista nomeado pelo juiz, que produz o laudo."],["Exequente ou reclamante","A parte que cobra ou que ajuizou a ação. Em regra, o cliente do escritório."],["Reclamada","A parte contrária, na ação trabalhista."]]}],"etiqueta":{"intro":"As execuções trabalhistas que não se resolvem com facilidade são repassadas à advogada cível (Juliana Tchani). O processo então recebe esta etiqueta roxa no Astrea, logo abaixo do nome das partes:","regra":["<b>Se o processo tem a etiqueta roxa, você não precisa ler o teor da publicação.</b>","Abra um único prazo, com o título <span class=\"mono-inline\">CIÊNCIA E PROVIDÊNCIA</span>, para o dia seguinte, no nome da advogada cível. Nada mais: nenhuma outra agenda, nenhum contato com o cliente, nenhuma conferência de prazo fatal."],"campos":[["Tipo de agenda","Prazo"],["Título","CIÊNCIA E PROVIDÊNCIA, sem PZ e sem FT"],["Data","Dia seguinte ao da publicação. Se ele não for dia útil, o próximo dia útil"],["Responsável","Advogada cível (Juliana Tchani)"],["Demais campos","Nada mais precisa ser preenchido"],["Depois disso","Concluir a publicação, como em qualquer outro teor"]],"avisos":[["A etiqueta se sobrepõe a todos os cartões","Havendo etiqueta roxa, nenhum cartão de fase de conhecimento, recursal ou de execução se aplica, ainda que o teor corresponda exatamente a um deles. Aqui, a etiqueta decide sozinha."],["Você nunca coloca nem retira a etiqueta","Quem repassa o processo para a advogada cível são os advogados, e são eles que etiquetam. Se achar que um processo deveria estar etiquetado e não está, não etiquete: fale com o Ygor."],["A etiqueta é do processo, não da publicação","Enquanto ela estiver lá, toda publicação daquele processo segue esta regra, uma por uma, sempre com o mesmo título e a mesma responsável."]]}},"tribunais":{"tj":{"titulo":"Justiça Estadual — Tribunais de Justiça (TJ)","segmento":"Segmento J = 8","fonte":"Resolução CNJ nº 65/2008, Anexo I (numeração única de processos). Código no padrão NNNNNNN-DD.AAAA.J.TR.OOOO.","colunas":["Código (J.TR)","Sigla","Tribunal","UF"],"linhas":[["8.01","TJAC","Tribunal de Justiça do Acre","AC"],["8.02","TJAL","Tribunal de Justiça de Alagoas","AL"],["8.03","TJAP","Tribunal de Justiça do Amapá","AP"],["8.04","TJAM","Tribunal de Justiça do Amazonas","AM"],["8.05","TJBA","Tribunal de Justiça da Bahia","BA"],["8.06","TJCE","Tribunal de Justiça do Ceará","CE"],["8.07","TJDFT","Tribunal de Justiça do Distrito Federal e Territórios","DF"],["8.08","TJES","Tribunal de Justiça do Espírito Santo","ES"],["8.09","TJGO","Tribunal de Justiça de Goiás","GO"],["8.10","TJMA","Tribunal de Justiça do Maranhão","MA"],["8.11","TJMT","Tribunal de Justiça de Mato Grosso","MT"],["8.12","TJMS","Tribunal de Justiça de Mato Grosso do Sul","MS"],["8.13","TJMG","Tribunal de Justiça de Minas Gerais","MG"],["8.14","TJPA","Tribunal de Justiça do Pará","PA"],["8.15","TJPB","Tribunal de Justiça da Paraíba","PB"],["8.16","TJPR","Tribunal de Justiça do Paraná","PR"],["8.17","TJPE","Tribunal de Justiça de Pernambuco","PE"],["8.18","TJPI","Tribunal de Justiça do Piauí","PI"],["8.19","TJRJ","Tribunal de Justiça do Rio de Janeiro","RJ"],["8.20","TJRN","Tribunal de Justiça do Rio Grande do Norte","RN"],["8.21","TJRS","Tribunal de Justiça do Rio Grande do Sul","RS"],["8.22","TJRO","Tribunal de Justiça de Rondônia","RO"],["8.23","TJRR","Tribunal de Justiça de Roraima","RR"],["8.24","TJSC","Tribunal de Justiça de Santa Catarina","SC"],["8.25","TJSE","Tribunal de Justiça de Sergipe","SE"],["8.26","TJSP","Tribunal de Justiça de São Paulo","SP"],["8.27","TJTO","Tribunal de Justiça do Tocantins","TO"]]},"trf":{"titulo":"Justiça Federal — Tribunais Regionais Federais (TRF)","segmento":"Segmento J = 4","fonte":"Resolução CNJ nº 65/2008, alterada pela Resolução CNJ nº 477/2022 (criação do TRF6 – MG, desmembrado do TRF1).","colunas":["Código (J.TR)","Sigla","Tribunal","Sede","UFs abrangidas"],"linhas":[["4.01","TRF1","Tribunal Regional Federal da 1ª Região","Brasília/DF","AC, AM, AP, BA, DF, GO, MA, MT, PA, PI, RO, RR, TO"],["4.02","TRF2","Tribunal Regional Federal da 2ª Região","Rio de Janeiro/RJ","RJ, ES"],["4.03","TRF3","Tribunal Regional Federal da 3ª Região","São Paulo/SP","SP, MS"],["4.04","TRF4","Tribunal Regional Federal da 4ª Região","Porto Alegre/RS","RS, SC, PR"],["4.05","TRF5","Tribunal Regional Federal da 5ª Região","Recife/PE","PE, AL, CE, PB, RN, SE"],["4.06","TRF6","Tribunal Regional Federal da 6ª Região","Belo Horizonte/MG","MG"]]},"trt":{"titulo":"Justiça do Trabalho — Tribunais Regionais do Trabalho (TRT)","segmento":"Segmento J = 5","fonte":"Resolução CNJ nº 65/2008, art. 5º, IV (TRTs identificados de 01 a 24).","colunas":["Código (J.TR)","Sigla","Estado(s) / Abrangência"],"linhas":[["5.01","TRT1","Rio de Janeiro"],["5.02","TRT2","São Paulo (Grande São Paulo / Capital)"],["5.03","TRT3","Minas Gerais"],["5.04","TRT4","Rio Grande do Sul"],["5.05","TRT5","Bahia"],["5.06","TRT6","Pernambuco"],["5.07","TRT7","Ceará"],["5.08","TRT8","Pará e Amapá"],["5.09","TRT9","Paraná"],["5.10","TRT10","Distrito Federal e Tocantins"],["5.11","TRT11","Amazonas e Roraima"],["5.12","TRT12","Santa Catarina"],["5.13","TRT13","Paraíba"],["5.14","TRT14","Rondônia e Acre"],["5.15","TRT15","São Paulo (Campinas / interior e Sul de Minas)"],["5.16","TRT16","Maranhão"],["5.17","TRT17","Espírito Santo"],["5.18","TRT18","Goiás"],["5.19","TRT19","Alagoas"],["5.20","TRT20","Sergipe"],["5.21","TRT21","Rio Grande do Norte"],["5.22","TRT22","Piauí"],["5.23","TRT23","Mato Grosso"],["5.24","TRT24","Mato Grosso do Sul"]]},"oab":{"titulo":"Inscrições OAB — André","nota":"Inscrição principal: OAB/SP. As demais são suplementares (serventias disponíveis).","colunas":["Situação","UF","Nº Inscrição","Tipo","Seccional"],"linhas":[["Principal","SP","284388","A","OAB/SP"],["Suplementar","ES","41423","S","OAB/ES"],["Suplementar","MG","239631","S","OAB/MG"],["Suplementar","PR","122267","S","OAB/PR"],["Suplementar","RJ","262345","S","OAB/RJ"],["Suplementar","SC","70447","S","OAB/SC"],["Suplementar","PE","69640","-","OAB/PE"]]}}};
 const T = D.teores, MAN = D.manual, TRIB = D.tribunais;
 
+/* ============================================================
+   MÓDULOS NOVOS
+   1. palavras que aparecem nas publicações, para a busca
+   2. triagem guiada
+   3. contagem de dias úteis com feriados
+   4. calculadora com gerador de título
+   5. checklist de tratamento
+   6. treino
+   ============================================================ */
+
+/* ---------- 1. vocabulário de busca ----------
+   Palavras que costumam aparecer no texto da publicação. Servem só para
+   a busca encontrar o cartão a partir das palavras do juiz, e não
+   aparecem em lugar nenhum da tela. */
+const CHAVES = {
+  '7.1':'distribuido distribuicao autuado autuacao livre distribuicao remetido a vara cadastrado protocolo inicial',
+  '7.2':'designo audiencia conciliacao instrucao julgamento una cejusc pauta comparecimento virtual presencial videoconferencia sala',
+  '7.3':'indefiro gratuidade justica gratuita custas recolhimento hipossuficiencia beneficio da gratuidade agravo de instrumento recolher',
+  '7.4':'defiro gratuidade comprove documentos imposto de renda extrato ctps carteira de trabalho holerite comprovante de renda hipossuficiencia complementares',
+  '7.5':'tutela de urgencia liminar antecipacao indefiro a tutela providencia liminar pedido liminar',
+  '7.6':'designo pericia perito insalubridade periculosidade medica exame local data da pericia nomeio perito',
+  '7.7':'quesitos assistente tecnico apresentem quesitos indiquem assistente prazo para quesitos',
+  '7.8':'laudo pericial juntada do laudo manifestem sobre o laudo impugnacao ao laudo conclusao do perito',
+  '8.1':'decisao interlocutoria terminativa extincao sem resolucao de merito indefiro rejeito julgo extinto obstaculo processual embargos de declaracao',
+  '8.2':'sentenca julgo procedente improcedente parcialmente procedente condeno reclamada vara do trabalho recurso ordinario',
+  '8.3':'sentenca civel julgo procedente apelacao recurso inominado juizado especial civel vara civel',
+  '8.4':'sentenca previdenciaria inss beneficio auxilio aposentadoria juizado especial federal restabelecimento',
+  '8.5':'acordao trt tribunal regional do trabalho dou provimento nego provimento turma desembargador ementa',
+  '8.6':'acordao tj tribunal de justica apelacao julgada camara desembargador ementa provimento',
+  '8.7':'acordao previdenciario turma recursal trf inss provimento ementa',
+  '8.8':'contrarrazoes contraminuta intime se para responder ao recurso apresentar resposta recurso da parte contraria prazo para resposta',
+  '9.1':'calculos liquidacao manifestem sobre os calculos homologacao contador conta de liquidacao valores apurados execucao trabalhista',
+  '9.2':'calculos civel manifestem sobre os calculos cumprimento de sentenca valores apurados',
+  '9.3':'alvara expedido levantamento deposito judicial guia liberacao de valores transferencia',
+  '9.4':'pagamento deposito quitacao manifestar sobre o pagamento satisfeito adimplemento saneamento do feito diferenca',
+  '9.5':'parcelamento artigo 916 art 916 trinta por cento parcelas mensais deferido o parcelamento',
+  '9.6':'arquivamento arquivem se extinta a execucao baixa definitiva encerramento arquivo findo'
+};
+
+/* ---------- 2. triagem guiada ---------- */
+const TRIAGEM = {
+  inicio:{
+    p:'O processo tem a etiqueta roxa C/ JULIANA TCHANI?',
+    d:'Abra a pasta no Astrea e olhe logo abaixo do nome das partes. Esta é sempre a primeira verificação, antes de ler qualquer coisa.',
+    o:[
+      {r:'Sim, o processo está etiquetado', roxo:true, rota:'m/etiqueta'},
+      {r:'Não, não há etiqueta roxa', vai:'q1'}
+    ]
+  },
+  q1:{
+    p:'Agora leia o teor. Sobre o que ele fala?',
+    d:'Escolha pelo assunto principal. Se a publicação tratar de mais de uma coisa, comece pela primeira e depois refaça a triagem para as outras.',
+    o:[
+      {r:'Só avisa que o processo foi distribuído e em que vara caiu', fim:['7.1']},
+      {r:'Marca data e hora de audiência ou de perícia', vai:'q2'},
+      {r:'É despacho do começo do processo, com determinações ao autor', vai:'q3'},
+      {r:'É decisão, sentença ou acórdão que julga alguma coisa', vai:'q4'},
+      {r:'Fala de laudo pericial ou de quesitos', vai:'q5'},
+      {r:'A parte contrária recorreu e abriram prazo para o escritório responder', fim:['8.8']},
+      {r:'Trata de dinheiro: cálculos, alvará, pagamento ou parcelamento', vai:'q6'},
+      {r:'Diz que o processo foi arquivado ou que a execução foi extinta', fim:['9.6']},
+      {r:'Nenhuma dessas', ygor:true}
+    ]
+  },
+  q2:{
+    p:'Qual ato foi marcado?',
+    d:'Os dois viram agenda do tipo Audiência no nome do sócio, mas as agendas seguintes são diferentes.',
+    o:[
+      {r:'Audiência: conciliação, instrução ou audiência una', fim:['7.2']},
+      {r:'Perícia: insalubridade, periculosidade ou médica', fim:['7.6']}
+    ]
+  },
+  q3:{
+    p:'O que o despacho determina?',
+    d:'Um mesmo despacho inaugural pode trazer mais de uma dessas determinações ao mesmo tempo. Marque a primeira e, no resultado, confira as outras.',
+    o:[
+      {r:'Indefere a justiça gratuita e manda recolher custas', fim:['7.3'], junto:['7.4','7.5']},
+      {r:'Concede a gratuidade, mas pede documentos de renda', fim:['7.4'], junto:['7.3','7.5']},
+      {r:'Indefere a tutela de urgência ou a liminar', fim:['7.5'], junto:['7.3','7.4']},
+      {r:'Determina outra coisa', ygor:true}
+    ]
+  },
+  q4:{
+    p:'Que tipo de decisão é?',
+    d:'Sentença é do juiz de primeiro grau e encerra a fase de conhecimento. Acórdão é do tribunal e julga o recurso. Interlocutória resolve questão pontual no meio do caminho.',
+    o:[
+      {r:'Decisão no meio do processo, ou que extingue sem julgar o pedido', fim:['8.1']},
+      {r:'Sentença', vai:'q4a'},
+      {r:'Acórdão do tribunal', vai:'q4b'}
+    ]
+  },
+  q4a:{
+    p:'Sentença de qual área?',
+    d:'A área está na pasta do processo, no Astrea. Ela define o recurso e a responsável.',
+    o:[
+      {r:'Trabalhista', fim:['8.2']},
+      {r:'Cível', fim:['8.3']},
+      {r:'Previdenciário', fim:['8.4']}
+    ]
+  },
+  q4b:{
+    p:'Acórdão de qual área?',
+    d:'A área está na pasta do processo, no Astrea.',
+    o:[
+      {r:'Trabalhista', fim:['8.5']},
+      {r:'Cível', fim:['8.6']},
+      {r:'Previdenciário', fim:['8.7']}
+    ]
+  },
+  q5:{
+    p:'O que a publicação diz sobre a perícia?',
+    d:'',
+    o:[
+      {r:'Manda apresentar quesitos ou indicar assistente técnico', fim:['7.7']},
+      {r:'Avisa que o laudo foi juntado e abre prazo para manifestação', fim:['7.8']}
+    ]
+  },
+  q6:{
+    p:'Qual é o assunto exato?',
+    d:'Todos são de fase de execução, mas cada um tem responsável diferente.',
+    o:[
+      {r:'Abre prazo para manifestação sobre os cálculos', vai:'q6a'},
+      {r:'Informa que foi expedido alvará', fim:['9.3']},
+      {r:'Manda manifestar sobre o pagamento feito pela parte contrária', fim:['9.4']},
+      {r:'Defere parcelamento do artigo 916 do CPC', fim:['9.5']}
+    ]
+  },
+  q6a:{
+    p:'Manifestação de cálculos em processo de qual área?',
+    d:'No trabalhista existe uma etapa a mais, do contador externo, antes do advogado.',
+    o:[
+      {r:'Trabalhista', fim:['9.1']},
+      {r:'Cível', fim:['9.2']},
+      {r:'Previdenciário', ygor:true}
+    ]
+  }
+};
+
+let triNo = 'inicio', triHist = [], triFim = null, triJunto = [], triManter = false;
+
+/* ---------- 3. dias úteis, feriados e recesso ---------- */
+function pascoa(a){
+  const n=a%19, c=Math.floor(a/100), d=a%100;
+  const e=Math.floor(c/4), f=c%4, g=Math.floor((c+8)/25), h=Math.floor((c-g+1)/3);
+  const i=(19*n+c-e-h+15)%30;
+  const k=Math.floor(d/4), l=d%4;
+  const m=(32+2*f+2*k-i-l)%7;
+  const p=Math.floor((n+11*i+22*m)/451);
+  const mes=Math.floor((i+m-7*p+114)/31);
+  const dia=((i+m-7*p+114)%31)+1;
+  return new Date(a, mes-1, dia);
+}
+function chaveData(d){
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+const _feriadosCache = {};
+function feriadosDoAno(ano){
+  if(_feriadosCache[ano]) return _feriadosCache[ano];
+  const m = {};
+  const fixos = [
+    [0,1,'Confraternização Universal'],[3,21,'Tiradentes'],[4,1,'Dia do Trabalho'],
+    [8,7,'Independência'],[9,12,'Nossa Senhora Aparecida'],[10,2,'Finados'],
+    [10,15,'Proclamação da República'],[10,20,'Consciência Negra'],[11,25,'Natal']
+  ];
+  fixos.forEach(f=>{ m[chaveData(new Date(ano,f[0],f[1]))] = f[2]; });
+  const pa = pascoa(ano);
+  const mv = [[-48,'Carnaval'],[-47,'Carnaval'],[-2,'Sexta-feira Santa'],[60,'Corpus Christi']];
+  mv.forEach(v=>{
+    const d = new Date(pa.getTime()); d.setDate(d.getDate()+v[0]);
+    m[chaveData(d)] = v[1];
+  });
+  _feriadosCache[ano] = m;
+  return m;
+}
+function emRecesso(d){
+  const mes = d.getMonth(), dia = d.getDate();
+  return (mes===11 && dia>=20) || (mes===0 && dia<=20);
+}
+/* devolve null se o dia conta, ou o motivo pelo qual ele não conta */
+function motivoNaoConta(d){
+  const w = d.getDay();
+  if(w===0) return 'domingo';
+  if(w===6) return 'sábado';
+  if(emRecesso(d)) return 'recesso forense (20/12 a 20/01)';
+  const f = feriadosDoAno(d.getFullYear())[chaveData(d)];
+  return f ? f : null;
+}
+/* conta n dias úteis para frente, começando no dia seguinte à data base */
+function somaUteis(base, n){
+  const d = new Date(base.getTime());
+  const pulados = [];
+  let contados = 0;
+  let guarda = 0;
+  while(contados < n && guarda < 2000){
+    d.setDate(d.getDate()+1); guarda++;
+    const mot = motivoNaoConta(d);
+    if(mot) pulados.push({d:new Date(d.getTime()), mot:mot});
+    else contados++;
+  }
+  return {data:d, pulados:pulados};
+}
+/* conta n dias úteis para trás, a partir da data base, sem contá-la */
+function subUteis(base, n){
+  const d = new Date(base.getTime());
+  const pulados = [];
+  let contados = 0;
+  let guarda = 0;
+  while(contados < n && guarda < 2000){
+    d.setDate(d.getDate()-1); guarda++;
+    const mot = motivoNaoConta(d);
+    if(mot) pulados.push({d:new Date(d.getTime()), mot:mot});
+    else contados++;
+  }
+  return {data:d, pulados:pulados};
+}
+function fmtCurta(d){
+  return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');
+}
+function listaPulos(pulados){
+  if(!pulados.length) return '';
+  const feriados = pulados.filter(p=>p.mot!=='sábado' && p.mot!=='domingo');
+  const fds = pulados.length - feriados.length;
+  let h = '<div class="pulos">A contagem pulou '+pulados.length+' dia'+(pulados.length>1?'s':'')+': ';
+  h += fds ? fds+' de fim de semana' : '';
+  if(feriados.length){
+    h += (fds?' e ':'')+feriados.length+' que não conta'+(feriados.length>1?'m':'')+':';
+    h += '<ul>'+feriados.map(p=>'<li><span class="pulo-tag">'+fmtCurta(p.d)+'</span> · '+esc(p.mot)+'</li>').join('')+'</ul>';
+  }else{ h += '.'; }
+  return h+'</div>';
+}
+
+/* peças, com a folga em dias úteis que cada cartão manda descontar do fatal */
+const PECAS = [
+  {sig:'ED',   nome:'Embargos de declaração',              folga:3, legal:5,    rec:true,  cart:'8.1'},
+  {sig:'RO',   nome:'Recurso ordinário, trabalhista',      folga:3, legal:8,    rec:true,  cart:'8.2'},
+  {sig:'RI',   nome:'Recurso inominado, juizado',          folga:3, legal:10,   rec:true,  cart:'8.3'},
+  {sig:'AP',   nome:'Apelação, vara comum',                folga:3, legal:15,   rec:true,  cart:'8.3'},
+  {sig:'AI',   nome:'Agravo de instrumento',               folga:5, legal:null, rec:true,  cart:'7.3'},
+  {sig:'CONTRARRAZÕES', nome:'Contrarrazões, some a sigla do recurso respondido', folga:3, legal:null, rec:true, cart:'8.8'},
+  {sig:'JUNTAR DOCS COMPLEMENTARES HIPO', nome:'Documentos de hipossuficiência', folga:3, legal:null, rec:false, cart:'7.4'},
+  {sig:'IMPUGNAÇÃO AO LAUDO', nome:'Impugnação ao laudo pericial', folga:3, legal:5, rec:false, cart:'7.8'},
+  {sig:'MANIFES CÁLCULOS', nome:'Manifestação de cálculos', folga:2, legal:null, rec:false, cart:'9.1'},
+  {sig:'CONFERIR PAGTO E SANEAR O FEITO', nome:'Manifestação sobre pagamento', folga:2, legal:null, rec:false, cart:'9.4'},
+  {sig:'MANIFESTAÇÃO', nome:'Parcelamento do artigo 916',  folga:2, legal:null, rec:false, cart:'9.5'}
+];
+
+/* ---------- 5. checklist ---------- */
+const CHECK = {};
+function passosDoCartao(t){
+  const l = [];
+  l.push('Conferi que o processo <b>não</b> tem a etiqueta roxa');
+  l.push('Li o teor inteiro e ele corresponde a este cartão');
+  if(t.agendas.length){
+    l.push('Anotei o prazo fatal que a publicação ou o Astrea informa');
+    t.agendas.forEach(a=>{
+      const nome = a.titulo.split('\n')[0];
+      l.push('Criei a agenda <b>'+esc(nome)+'</b> · '+esc(a.resp.split('\n')[0]));
+    });
+  }
+  l.push('Conclui a publicação no Astrea');
+  return l;
+}
+function blocoCheck(t){
+  const st = CHECK[t.sec] || (CHECK[t.sec] = {});
+  const passos = passosDoCartao(t);
+  const feitos = passos.filter((_,i)=>st[i]).length;
+  let h = '<div class="check" data-check="'+t.sec+'">'+
+    '<div class="check-topo"><span class="t">Passo a passo desta publicação</span>'+
+    '<span class="check-barra"><i style="width:'+(feitos/passos.length*100)+'%"></i></span>'+
+    '<span class="check-conta">'+feitos+'/'+passos.length+'</span></div><ul class="check-lista">';
+  passos.forEach((p,i)=>{
+    h += '<li><button class="check-item" data-marca="'+t.sec+'|'+i+'" aria-checked="'+(st[i]?'true':'false')+'" role="checkbox">'+
+         '<span class="check-box">'+(st[i]?'✓':'')+'</span><span class="check-txt">'+p+'</span></button></li>';
+  });
+  h += '</ul><div class="check-rodape"><span>A lista serve para uma publicação por vez e zera quando você fecha o arquivo.</span>'+
+       '<button class="btn-mini" data-zera="'+t.sec+'">Limpar</button></div></div>';
+  return h;
+}
+function blocoYgor(t){
+  return '<div class="ygor"><div class="k">Se for perguntar ao Ygor, tenha em mãos</div><ul>'+
+    '<li>O número do processo e a área</li>'+
+    '<li>A data da publicação e o prazo fatal que o Astrea mostra</li>'+
+    '<li>O trecho do teor que gerou a dúvida</li>'+
+    '<li>Qual cartão você achou parecido, e por que ficou em dúvida</li>'+
+    '</ul></div>';
+}
+
+/* ---------- telas novas ---------- */
+function telaTriagem(){
+  let h = '<div class="man"><h2>Triagem guiada</h2>'+
+    '<p class="intro">Para quando você leu a publicação e não sabe qual cartão usar. Responda às perguntas e o material leva você ao cartão certo.</p></div>';
+
+  if(triFim){
+    const cartoes = triFim.map(s=>T.find(x=>x.sec===s)).filter(Boolean);
+    cartoes.forEach(t=>{
+      const f = FASE[t.fase];
+      h += '<div class="tri-res">'+
+        '<div class="achou">Cartão correspondente</div>'+
+        '<h3><span class="sec-cod" style="color:'+f.hex+'">'+t.sec+'</span> '+esc(t.titulo)+'</h3>'+
+        '<p>'+esc(t.id)+'</p>'+
+        '<div class="linha-btn">'+
+          '<button class="btn ouro" data-rota="t/'+t.sec+'">Abrir o cartão e as agendas</button>'+
+          '<button class="btn" data-tri="reiniciar">Nova triagem</button>'+
+        '</div></div>';
+    });
+    if(triJunto.length){
+      h += '<div class="tri-mais"><b>Confira também.</b> Um mesmo despacho inaugural pode trazer mais de uma determinação. '+
+        'Se a publicação também fizer alguma destas coisas, crie igualmente as agendas do cartão correspondente: '+
+        triJunto.map(s=>{
+          const t = T.find(x=>x.sec===s);
+          return t ? '<button class="btn-mini" data-rota="t/'+t.sec+'" style="margin:3px 4px 0 0">'+t.sec+' · '+esc(t.titulo)+'</button>' : '';
+        }).join('')+'</div>';
+    }
+    return h;
+  }
+
+  const no = TRIAGEM[triNo];
+  if(!no){
+    return h + '<div class="tri-res"><div class="achou">Sem cartão correspondente</div>'+
+      '<h3>Fale com o Ygor antes de criar qualquer agenda</h3>'+
+      '<p>Publicação que não se encaixa em nenhum cartão é exatamente o caso da regra 7. Não deduza pelo teor parecido de outra publicação e não arbitre uma data.</p>'+
+      blocoYgor(null)+
+      '<div class="linha-btn" style="margin-top:16px"><button class="btn" data-tri="reiniciar">Nova triagem</button>'+
+      '<button class="btn" data-rota="m/regras">Ver as sete regras</button></div></div>';
+  }
+
+  const total = 4;
+  const pos = Math.min(triHist.length+1, total);
+  h += '<div class="tri-topo"><span class="tri-conta">Pergunta '+pos+'</span>'+
+       '<span class="tri-passos"><i style="width:'+(pos/total*100)+'%"></i></span></div>';
+  h += '<div class="tri-pergunta"><h3>'+esc(no.p)+'</h3>'+
+       (no.d?'<p class="tri-dica">'+esc(no.d)+'</p>':'')+
+       '<div class="tri-ops">';
+  no.o.forEach((op,i)=>{
+    h += '<button class="tri-op'+(op.roxo?' roxa':'')+(op.ygor?' fora':'')+'" data-tri="'+triNo+'|'+i+'">'+
+         '<span class="seta">'+(op.ygor?'?':'→')+'</span><span>'+esc(op.r)+'</span></button>';
+  });
+  h += '</div>';
+  if(triHist.length){
+    h += '<div class="tri-volta"><button class="btn" data-tri="voltar">Voltar</button>'+
+         '<button class="btn" data-tri="reiniciar">Recomeçar</button></div>';
+  }
+  h += '</div>';
+  return h;
+}
+
+function telaPassos(){
+  const etapas = [
+    {t:'Abra a publicação no Astrea',
+     p:['Trabalhe uma publicação por vez, do começo ao fim, e só então passe para a próxima. Publicação tratada pela metade é a origem mais comum de agenda esquecida.']},
+    {t:'Olhe a etiqueta do processo antes de ler o teor',
+     alerta:true,
+     p:['Se aparecer a etiqueta roxa C/ JULIANA TCHANI logo abaixo do nome das partes, pare. Você não precisa ler o teor: abra um único prazo CIÊNCIA E PROVIDÊNCIA para o dia seguinte, no nome da advogada cível, conclua a publicação e siga para a próxima.']},
+    {t:'Leia o teor inteiro e encontre o cartão',
+     p:['Leia até o fim, inclusive a parte final, que é onde costumam estar as determinações. Depois procure o cartão: pela busca, pelo índice à esquerda ou pela triagem guiada.',
+        'Se nenhum cartão servir, não force o encaixe. Fale com o Ygor.']},
+    {t:'Anote o prazo fatal e calcule o prazo interno',
+     p:['O fatal vem da publicação e do Astrea, que já conhece o prazo legal e o calendário forense. Você não o calcula.',
+        'O que você calcula é o prazo interno: conte para trás, em dias úteis, o número de dias que o cartão indica. A calculadora deste material monta o título já pronto.']},
+    {t:'Crie cada agenda indicada no cartão',
+     p:['Uma agenda por providência, com um único responsável cada. Confira o tipo (Prazo ou Audiência), o título, a data que vai no campo Data e o responsável — os quatro estão no cartão.',
+        'Se o cartão pede três agendas, crie as três, mesmo quando duas parecerem parecidas.']},
+    {t:'Conclua a publicação',
+     p:['Concluir é o que faz o registro entrar no histórico da pasta. Vale inclusive para as publicações que não geram agenda nenhuma.']}
+  ];
+  let h = '<div class="man"><h2>Como tratar uma publicação</h2>'+
+    '<p class="intro">O caminho completo, do momento em que a publicação aparece no Astrea até a conclusão. Vale para as três áreas e para os '+T.length+' teores.</p></div>';
+  h += '<div class="rota">';
+  etapas.forEach(e=>{
+    h += '<div class="rota-item'+(e.alerta?' alerta':'')+'"><div class="rota-num">'+(e.alerta?'!':'')+'</div><div>'+
+         '<h3>'+esc(e.t)+'</h3>'+e.p.map(p=>'<p>'+esc(p)+'</p>').join('')+'</div></div>';
+  });
+  h += '</div>';
+  h += '<div class="man"><div class="atencao" style="background:var(--conh-bg);border-color:var(--conh)">'+
+    '<div class="k" style="color:var(--conh)">Atenção</div>'+
+    '<p>Você nunca cancela uma agenda por conta própria, nunca coloca ou retira a etiqueta roxa e nunca arbitra uma data que o sistema não trouxe. '+
+    'Nesses três casos, e em qualquer dúvida, o caminho é o mesmo: falar com o Ygor.</p></div></div>';
+  return h;
+}
+
+/* ---------- 6. treino ---------- */
+let trnFila = [], trnIdx = 0, trnAcertos = 0, trnResposta = null;
+function embaralha(a){
+  const b = a.slice();
+  for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; }
+  return b;
+}
+function montaTreino(){
+  trnFila = embaralha(T).slice(0,8).map(t=>{
+    const distratores = embaralha(T.filter(x=>x.sec!==t.sec && x.fase===t.fase));
+    const extras = embaralha(T.filter(x=>x.sec!==t.sec && x.fase!==t.fase));
+    const opcoes = embaralha([t].concat(distratores.slice(0,2)).concat(extras.slice(0,1)));
+    return {certa:t, opcoes:opcoes};
+  });
+  trnIdx = 0; trnAcertos = 0; trnResposta = null;
+}
+function telaTreino(){
+  if(!trnFila.length) montaTreino();
+  let h = '<div class="man"><h2>Treino</h2>'+
+    '<p class="intro">Oito publicações descritas como elas costumam chegar. Escolha o cartão que trataria cada uma. Serve para você chegar na segunda-feira já reconhecendo os teores.</p></div>';
+
+  if(trnIdx >= trnFila.length){
+    const pct = Math.round(trnAcertos/trnFila.length*100);
+    h += '<div class="trn-caixa trn-fim"><div class="nota">'+trnAcertos+'/'+trnFila.length+'</div>'+
+      '<p>'+(pct>=75
+        ? 'Bom domínio dos teores. Continue conferindo o cartão antes de criar as agendas, porque o que decide não é o reconhecimento, e sim o que está escrito no cartão.'
+        : 'Vale repassar os cartões pelo índice antes de tratar publicação sozinha. Nenhum erro aqui custa prazo; no Astrea, custa.')+'</p>'+
+      '<button class="btn ouro" data-trn="novo">Novo treino</button></div>';
+    return h;
+  }
+
+  const q = trnFila[trnIdx];
+  h += '<div class="trn-cabeca"><span class="trn-placar">Pergunta <b>'+(trnIdx+1)+'</b> de '+trnFila.length+'</span>'+
+       '<span class="trn-placar">Acertos: <b>'+trnAcertos+'</b></span>'+
+       '<button class="btn-mini" data-trn="novo">Recomeçar</button></div>';
+  h += '<div class="trn-caixa"><div class="trn-enunciado">A publicação diz, em resumo</div>'+
+       '<p class="trn-texto">'+esc(q.certa.id)+'</p><div class="trn-ops">';
+  q.opcoes.forEach(o=>{
+    let cls = '';
+    if(trnResposta){
+      if(o.sec===q.certa.sec) cls = ' certa';
+      else if(o.sec===trnResposta) cls = ' errada';
+    }
+    h += '<button class="trn-op'+cls+'"'+(trnResposta?' disabled':'')+' data-trn="r|'+o.sec+'">'+
+         '<span class="cod">'+o.sec+'</span><span>'+esc(o.titulo)+'</span></button>';
+  });
+  h += '</div>';
+  if(trnResposta){
+    const ok = trnResposta === q.certa.sec;
+    h += '<div class="trn-feedback '+(ok?'bom':'ruim')+'">'+
+      '<b>'+(ok?'Certo.':'Não é esse.')+'</b> '+esc(q.certa.nota)+
+      '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">'+
+      '<button class="btn" data-rota="t/'+q.certa.sec+'">Ver o cartão '+q.certa.sec+'</button>'+
+      '<button class="btn ouro" data-trn="proxima">'+(trnIdx+1<trnFila.length?'Próxima':'Ver resultado')+'</button>'+
+      '</div></div>';
+  }
+  h += '</div>';
+  return h;
+}
+
+
 const FASE = {
   conhecimento:{nome:'Fase de conhecimento',curto:'Conhecimento',cor:'var(--conh)',bg:'var(--conh-bg)',hex:'#1B6B4C',sub:'Da distribuição até a sentença'},
   recursal:{nome:'Fase recursal',curto:'Recursal',cor:'var(--rec)',bg:'var(--rec-bg)',hex:'#1C4E80',sub:'Da sentença até o trânsito em julgado'},
@@ -436,10 +1084,11 @@ function areasDe(t){
 function casa(t){
   if(filtroArea !== 'todas' && !areasDe(t).includes(filtroArea)) return false;
   if(!busca) return true;
-  const b = norm(busca);
-  const alvo = norm([t.sec,t.titulo,t.id,t.nota,t.area,
+  const alvo = norm([t.sec,t.titulo,t.id,t.nota,t.area,(CHAVES[t.sec]||''),
     t.agendas.map(a=>a.tipo+' '+a.titulo+' '+a.data+' '+a.resp).join(' ')].join(' '));
-  return alvo.includes(b);
+  // cada palavra digitada precisa aparecer em algum lugar do cartão, e não a
+  // frase inteira: assim um trecho copiado da publicação também encontra
+  return norm(busca).split(/\s+/).filter(Boolean).every(p=>alvo.indexOf(p)>=0);
 }
 
 /* ---------- régua PZ / FT: o elemento-assinatura ---------- */
@@ -489,7 +1138,13 @@ function regua(txt, hex){
 /* ---------- índice ---------- */
 function pintaIndice(){
   const alvo = document.getElementById('indice');
-  let h = '';
+  let h = '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>Comece por aqui</div>';
+  [['passos','Como tratar uma publicação','1'],
+   ['triagem','Triagem guiada','?'],
+   ['treino','Treino','★']].forEach(x=>{
+    h += '<button class="item" data-rota="'+x[0]+'" aria-current="'+(rotaAtual===x[0])+'">'+
+         '<span class="cod">'+x[2]+'</span><span>'+x[1]+'</span></button>';
+  });
   let achou = 0;
   Object.keys(FASE).forEach(f=>{
     const lista = T.filter(t=>t.fase===f && casa(t));
@@ -525,11 +1180,24 @@ function telaInicio(){
   let h = '<div class="hero">'+
     '<div class="sup">Escritório · fluxo de publicações</div>'+
     '<h2>Da publicação<br>à agenda certa.</h2>'+
-    '<p class="sub">Abra a publicação, leia o teor, encontre o cartão, crie as agendas indicadas e conclua a publicação. '+
-    'São '+T.length+' teores, três fases e um fluxo extraordinário. Contagem sempre em dias úteis.</p>'+
+    '<p class="sub">Abra a publicação, confira a etiqueta do processo, leia o teor, encontre o cartão, crie as agendas indicadas e conclua a publicação. '+
+    'São '+T.length+' teores, três fases e um fluxo extraordinário. Toda contagem é em dias úteis. '+
+    'Se em algum momento você não souber o que fazer, a resposta é falar com o Ygor.</p>'+
     '<div class="regua-hero"><div class="rot">As duas datas de todo prazo</div>'+
     regua('Dia da publicação, no caso de recurso\nPZ: a data em que o escritório quer a peça pronta\nFT: o último dia possível para protocolar','#0C3B2E')+
     '</div></div>';
+
+  h += '<div class="portas">'+
+    '<button class="porta destaque" data-rota="triagem"><span class="marca-porta">?</span>'+
+      '<h4>Não sei qual cartão é</h4>'+
+      '<p>Responda a três ou quatro perguntas sobre o teor e chegue ao cartão certo.</p></button>'+
+    '<button class="porta" data-rota="passos"><span class="marca-porta">1</span>'+
+      '<h4>Como tratar uma publicação</h4>'+
+      '<p>O caminho inteiro, da abertura no Astrea até a conclusão.</p></button>'+
+    '<button class="porta" data-rota="calc"><span class="marca-porta">+</span>'+
+      '<h4>Calcular o prazo interno</h4>'+
+      '<p>Informe o fatal e receba o título da agenda já pronto para copiar.</p></button>'+
+    '</div>';
 
   h += '<div class="roxo-alerta"><span class="pilula">C/ JULIANA TCHANI</span><div class="txt">'+
        '<h3>Viu a etiqueta roxa? Pare por aqui.</h3>'+
@@ -588,6 +1256,8 @@ function telaTeor(sec, modoApresentacao){
       '<div class="k" style="color:'+hex+'">Atenção</div><p>'+esc(t.nota)+'</p></div>';
 
   if(!modoApresentacao){
+    h += blocoCheck(t);
+    h += blocoYgor(t);
     const i = T.indexOf(t), ant = T[i-1], prox = T[i+1];
     h += '<div class="navpe">'+
       (ant?'<button data-rota="t/'+ant.sec+'"><span class="k">Anterior</span><span class="n">'+esc(ant.titulo)+'</span></button>':'<span></span>')+
@@ -652,33 +1322,8 @@ function telaManual(id){
 }
 
 /* ---------- calculadora de prazos ---------- */
-function ehFimDeSemana(d){ const w=d.getDay(); return w===0 || w===6; }
-
-// primeiro dia apto a contar: dia seguinte à publicação, empurrado para
-// segunda se cair em sábado/domingo. Feriados não são conhecidos pela
-// ferramenta, então nunca são pulados — contam como dia útil normal.
-function inicioContagem(pub){
-  const d = new Date(pub.getTime());
-  d.setDate(d.getDate()+1);
-  while(ehFimDeSemana(d)) d.setDate(d.getDate()+1);
-  return d;
-}
-
-function dataFinalUtil(pub, n){
-  const d = new Date(pub.getTime());
-  d.setDate(d.getDate()+1);
-  let contados = 0;
-  while(true){
-    if(!ehFimDeSemana(d)){
-      contados++;
-      if(contados===n) break;
-    }
-    d.setDate(d.getDate()+1);
-  }
-  // salvaguarda: matematicamente já não cai em fim de semana, mantido por segurança
-  while(ehFimDeSemana(d)) d.setDate(d.getDate()+1);
-  return d;
-}
+let calcModo = 'pz';
+let calcPub = null, calcFT = null, calcPeca = 0, calcLivre = 15;
 
 function fmtData(d){
   return d.toLocaleDateString('pt-BR', {day:'2-digit',month:'2-digit',year:'numeric'});
@@ -693,70 +1338,118 @@ function parseDataInput(v){
   if(!a||!m||!dd) return null;
   return new Date(a, m-1, dd);
 }
+function valorData(d){ return d ? d.toISOString().slice(0,10) : ''; }
 
-let calcPub = null, calcLivre = 15;
+const CALC_AVISO =
+  '<div class="calc-aviso"><span>⚠</span><div><b>Conferência rápida, não a contagem oficial.</b> '+
+  'A ferramenta pula sábados, domingos, os feriados nacionais, o Carnaval, a Sexta-feira Santa, o Corpus Christi e o recesso de 20/12 a 20/01. '+
+  'Ela não conhece feriados estaduais e municipais, pontos facultativos nem suspensões determinadas pelo tribunal. '+
+  'A data que vale é sempre a que o Astrea calcula; se as duas divergirem, siga o Astrea e avise o Ygor.</div></div>';
 
-function calcCard(n, peca, sigla, obs, extra){
+/* modo 1: do fatal para o prazo interno, com o título pronto */
+function calcSaidaPZ(){
+  const p = PECAS[calcPeca];
+  if(!calcFT){
+    return '<div class="calc-vazio">Preencha o prazo fatal que o Astrea mostra e o título da agenda aparece aqui, pronto para copiar.</div>';
+  }
+  const r = subUteis(calcFT, p.folga);
+  const pz = r.data;
+  const titulo = p.sig + ' PZ ' + fmtCurta(pz) + '; FT ' + fmtCurta(calcFT);
+  const campoData = p.rec
+    ? 'O dia da própria publicação, e não o PZ'
+    : fmtData(pz) + ', o PZ';
+
+  let h = '<div class="saida"><div class="rot-s">Título da agenda</div>'+
+    '<div class="titulo-agenda" id="tituloAgenda">'+esc(titulo)+'</div>'+
+    '<div class="abaixo">'+
+      '<div class="par">Prazo interno<b>'+fmtData(pz)+'</b></div>'+
+      '<div class="par">Prazo fatal<b>'+fmtData(calcFT)+'</b></div>'+
+      '<div class="par">Folga<b>'+p.folga+' dias úteis</b></div>'+
+      '<div class="par">Campo Data<b style="font-family:var(--corpo);font-size:12px;font-weight:500">'+esc(campoData)+'</b></div>'+
+    '</div>'+
+    '<button class="btn-copia" id="btnCopiaTitulo" data-copia="'+esc(titulo)+'">Copiar o título</button>'+
+    '</div>';
+
+  h += '<div class="calc-nota">'+
+    (p.rec
+      ? 'Recursos e contrarrazões seguem a regra 3: o título traz PZ e FT, mas o campo Data do Astrea recebe o dia da publicação, para que o delegador veja o prazo hoje.'
+      : 'Prazo não recursal: o campo Data recebe o PZ e a agenda vai direto para o responsável indicado no cartão.')+
+    (p.legal ? ' Prazo legal desta peça: '+p.legal+' dias.' : '')+
+    ' Confira o responsável no cartão '+p.cart+'.</div>';
+
+  h += listaPulos(r.pulados);
+  h += '<div style="margin-top:14px"><button class="btn" data-rota="t/'+p.cart+'">Abrir o cartão '+p.cart+'</button></div>';
+  h += CALC_AVISO;
+  return h;
+}
+
+/* modo 2: da publicação para o fatal */
+function calcCard(n, peca, sigla, obs){
   if(!calcPub){
-    return '<div class="calc-card'+(extra?' calc-livre':'')+'">'+
+    return '<div class="calc-card">'+
       '<div class="n">'+n+' dias</div>'+
       (peca?'<div class="peca">'+esc(sigla)+' · '+esc(peca)+'</div>':'<div class="peca">'+esc(obs||'')+'</div>')+
       '<div class="sem">—</div><div class="dia">preencha a data</div></div>';
   }
-  const fim = dataFinalUtil(calcPub, n);
-  return '<div class="calc-card'+(extra?' calc-livre':'')+'">'+
+  const fim = somaUteis(calcPub, n).data;
+  return '<div class="calc-card">'+
     '<div class="n">'+n+' dias</div>'+
     (peca?'<div class="peca">'+esc(sigla)+' · '+esc(peca)+'</div>':'<div class="peca">'+esc(obs||'')+'</div>')+
     '<div class="data">'+fmtData(fim)+'</div>'+
-    '<div class="dia">'+esc(fmtDiaSemana(fim))+'</div>'+
-    (extra?'':'')+
-    '</div>';
+    '<div class="dia">'+esc(fmtDiaSemana(fim))+'</div></div>';
 }
-
-/* renderiza SÓ os resultados (chamada a cada tecla); o input de data
-   nunca é recriado, então nunca perde o foco enquanto a pessoa digita */
-function calcResultadosHTML(){
+function calcSaidaFT(){
   if(!calcPub){
     return '<div class="calc-vazio">Assim que a data for preenchida, os cinco prazos aparecem aqui.</div>';
   }
-  let h = '<div class="calc-grade">';
+  const ini = somaUteis(calcPub, 1).data;
+  let h = '<div class="calc-inicio">Primeiro dia da contagem: <b>'+fmtData(ini)+', '+esc(fmtDiaSemana(ini))+'</b></div>';
+  h += '<div class="calc-grade">';
   PRAZOS_FIXOS.forEach(p=>{ h += calcCard(p.n, p.peca, p.sigla, p.obs); });
   h += '</div>';
+  h += '<div class="calc-nota">* O prazo das contrarrazões é sempre o mesmo do recurso a que respondem.</div>';
 
-  h += '<div class="calc-nota">* O prazo das contrarrazões/contraminutas é sempre o mesmo prazo do recurso a que se referem.</div>';
-
+  const livre = somaUteis(calcPub, calcLivre);
   h += '<div class="rot">Prazo livre</div>';
   h += '<div class="calc-grade" style="grid-template-columns:minmax(230px,320px)">';
   h += '<div class="calc-card calc-livre"><div class="n">'+
     '<input type="number" id="calcLivre" min="1" value="'+calcLivre+'"> dias</div>'+
     '<div class="peca">Digite qualquer quantidade de dias</div>'+
-    '<div class="data">'+fmtData(dataFinalUtil(calcPub, calcLivre))+'</div>'+
-    '<div class="dia">'+esc(fmtDiaSemana(dataFinalUtil(calcPub, calcLivre)))+'</div></div>';
+    '<div class="data">'+fmtData(livre.data)+'</div>'+
+    '<div class="dia">'+esc(fmtDiaSemana(livre.data))+'</div></div>';
   h += '</div>';
-
-  h += '<div class="calc-aviso"><span>⚠</span><div><b>Leitura simplificada, não o cálculo oficial do prazo.</b> '+
-    'Pula sábado e domingo, mas não conhece feriados, pontos facultativos nem suspensões — se algum cair dentro do prazo, '+
-    'o resultado real pode ser mais tarde do que o mostrado aqui. Use para consulta rápida; o PZ e o FT que valem para o Astrea '+
-    'são os do cartão de cada teor, na seção de fase de conhecimento, recursal ou de execução.</div></div>';
+  h += listaPulos(somaUteis(calcPub, 30).pulados);
+  h += CALC_AVISO;
   return h;
 }
 
-function calcInicioHTML(){
-  if(!calcPub) return '';
-  const ini = inicioContagem(calcPub);
-  return 'Início da contagem (dia seguinte à publicação, regra do CPC): <b>'+fmtData(ini)+', '+esc(fmtDiaSemana(ini))+'</b>';
+function calcSaidaHTML(){
+  return calcModo === 'pz' ? calcSaidaPZ() : calcSaidaFT();
 }
 
 function telaCalculadora(){
   let h = '<div class="man"><h2>Calculadora de prazos</h2>'+
-    '<p class="intro">Ponto de consulta rápida para o responsável pelas publicações. Preencha a data e os cinco prazos abaixo se atualizam sozinhos.</p>';
+    '<p class="intro">Duas contas, as duas em dias úteis. A primeira é a que você faz todo dia: a publicação já traz o prazo fatal, e você precisa do prazo interno para escrever o título da agenda.</p>';
 
-  h += '<div class="calc-campo"><label>Data da publicação</label>'+
-    '<input class="calc-data" type="date" id="calcData" value="'+(calcPub?calcPub.toISOString().slice(0,10):'')+'">'+
-    '<div class="calc-inicio" id="calcInicio">'+calcInicioHTML()+'</div>'+
+  h += '<div class="calc-abas">'+
+    '<button class="calc-aba" data-cmodo="pz" aria-pressed="'+(calcModo==='pz')+'">Do fatal para o prazo interno</button>'+
+    '<button class="calc-aba" data-cmodo="ft" aria-pressed="'+(calcModo==='ft')+'">Da publicação para o fatal</button>'+
     '</div>';
 
-  h += '<div id="calcResultados">'+calcResultadosHTML()+'</div>';
+  if(calcModo === 'pz'){
+    h += '<div class="calc-linha">'+
+      '<div class="calc-campo2"><label for="calcFT">Prazo fatal, o que o Astrea mostra</label>'+
+      '<input type="date" id="calcFT" value="'+valorData(calcFT)+'"></div>'+
+      '<div class="calc-campo2"><label for="calcPeca">Peça ou providência</label>'+
+      '<select id="calcPeca">'+
+        PECAS.map((p,i)=>'<option value="'+i+'"'+(i===calcPeca?' selected':'')+'>'+esc(p.sig)+' · '+esc(p.nome)+'</option>').join('')+
+      '</select></div></div>';
+  }else{
+    h += '<div class="calc-linha"><div class="calc-campo2"><label for="calcData">Data da publicação</label>'+
+      '<input type="date" id="calcData" value="'+valorData(calcPub)+'"></div></div>';
+  }
+
+  h += '<div id="calcSaida">'+calcSaidaHTML()+'</div>';
   h += '</div>';
   return h;
 }
@@ -820,6 +1513,7 @@ function tribFiltrar(termo){
 /* ---------- documento completo, para impressão ---------- */
 function telaTudo(){
   let h = '<div class="man"><h2>Publicações</h2><p class="intro">Manual completo e cartões de consulta. '+T.length+' teores, três fases e um fluxo extraordinário. Contagem sempre em dias úteis. Dúvida em qualquer ponto: fale com o Ygor.</p></div>';
+  h += telaPassos();
   SECOES_MANUAL.forEach(sx=>{ h += telaManual(sx.id); });
   Object.keys(FASE).forEach(f=>{
     h += '<div class="man"><h2>'+FASE[f].nome+'</h2><p class="intro">'+FASE[f].sub+'</p></div>';
@@ -833,6 +1527,9 @@ function migalhaDe(rota){
   if(rota==='inicio') return 'Início · todos os cartões';
   if(rota==='calc') return 'Calculadora de prazos';
   if(rota==='tribunais') return 'Tribunais e OAB';
+  if(rota==='triagem') return 'Triagem guiada';
+  if(rota==='passos') return 'Como tratar uma publicação';
+  if(rota==='treino') return 'Treino';
   if(rota.startsWith('t/')){
     const t = T.find(x=>x.sec===rota.slice(2));
     return t ? FASE[t.fase].nome+' · '+t.sec+' '+t.titulo : 'Início';
@@ -842,10 +1539,19 @@ function migalhaDe(rota){
 }
 
 function ir(rota, semScroll){
+  // abrir a triagem pelo menu ou pela home sempre recomeça na primeira pergunta;
+  // só as respostas da própria triagem preservam o ponto em que a pessoa está
+  if(rota==='triagem'){
+    if(!triManter){ triNo='inicio'; triHist=[]; triFim=null; triJunto=[]; }
+    triManter = false;
+  }
   rotaAtual = rota;
   const palco = document.getElementById('palco');
   palco.innerHTML = rota==='inicio' ? telaInicio()
                   : rota==='calc' ? telaCalculadora()
+                  : rota==='triagem' ? telaTriagem()
+                  : rota==='passos' ? telaPassos()
+                  : rota==='treino' ? telaTreino()
                   : rota==='tribunais' ? telaTribunais()
                   : rota.startsWith('t/') ? telaTeor(rota.slice(2))
                   : telaManual(rota.slice(2));
@@ -885,26 +1591,112 @@ document.addEventListener('click', e=>{
   if(r){ ir(r.dataset.rota); return; }
   const c = e.target.closest('[data-area]');
   if(c){ filtroArea = c.dataset.area; pintaFiltros(); pintaIndice(); if(rotaAtual==='inicio') ir('inicio',true); return; }
+
+  const tr = e.target.closest('[data-tri]');
+  if(tr){
+    const v = tr.dataset.tri;
+    if(v==='reiniciar'){ ir('triagem'); return; }
+    if(v==='voltar'){ triNo = triHist.pop() || 'inicio'; triFim=null; triJunto=[]; triManter=true; ir('triagem'); return; }
+    const par = v.split('|'), op = TRIAGEM[par[0]].o[+par[1]];
+    if(op.rota){ ir(op.rota); return; }
+    triHist.push(par[0]); triJunto = [];
+    if(op.fim){ triFim = op.fim; triJunto = op.junto || []; }
+    else if(op.ygor){ triNo = '__ygor'; triFim = null; }
+    else { triNo = op.vai; triFim = null; }
+    triManter = true;
+    ir('triagem');
+    return;
+  }
+
+  const tn = e.target.closest('[data-trn]');
+  if(tn){
+    const v = tn.dataset.trn;
+    if(v==='novo'){ montaTreino(); ir('treino'); return; }
+    if(v==='proxima'){ trnIdx++; trnResposta = null; ir('treino'); return; }
+    if(v.indexOf('r|')===0){
+      if(trnResposta) return;
+      trnResposta = v.slice(2);
+      if(trnResposta === trnFila[trnIdx].certa.sec) trnAcertos++;
+      ir('treino', true);
+      return;
+    }
+  }
+
+  const mk = e.target.closest('[data-marca]');
+  if(mk){
+    const par = mk.dataset.marca.split('|'), sec = par[0], i = par[1];
+    const st = CHECK[sec] || (CHECK[sec] = {});
+    st[i] = !st[i];
+    repintaCheck(sec);
+    return;
+  }
+  const zr = e.target.closest('[data-zera]');
+  if(zr){ CHECK[zr.dataset.zera] = {}; repintaCheck(zr.dataset.zera); return; }
+
+  const cm = e.target.closest('[data-cmodo]');
+  if(cm){ calcModo = cm.dataset.cmodo; ir('calc', true); return; }
+
+  const cp = e.target.closest('[data-copia]');
+  if(cp){ copiaTexto(cp.dataset.copia, cp); return; }
 });
+
+function repintaCheck(sec){
+  const cx = document.querySelector('[data-check="'+sec+'"]');
+  const t = T.find(x=>x.sec===sec);
+  if(cx && t) cx.outerHTML = blocoCheck(t);
+}
+
+function copiaTexto(txt, botao){
+  const antes = botao.textContent;
+  const feito = ()=>{
+    botao.textContent = 'Copiado';
+    botao.classList.add('ok');
+    setTimeout(()=>{ botao.textContent = antes; botao.classList.remove('ok'); }, 1500);
+  };
+  const manual = ()=>{
+    const ta = document.createElement('textarea');
+    ta.value = txt;
+    ta.setAttribute('readonly','');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); feito(); }
+    catch(err){ botao.textContent = 'Copie com Ctrl+C'; setTimeout(()=>{botao.textContent = antes;}, 2200); }
+    document.body.removeChild(ta);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(feito, manual);
+  }else{ manual(); }
+}
 document.addEventListener('input', e=>{
   if(e.target.id==='tribBusca'){
     tribFiltrar(e.target.value);
   }
+  if(e.target.id==='calcFT'){
+    calcFT = parseDataInput(e.target.value);
+    document.getElementById('calcSaida').innerHTML = calcSaidaHTML();
+  }
   if(e.target.id==='calcData'){
     calcPub = parseDataInput(e.target.value);
-    document.getElementById('calcInicio').innerHTML = calcInicioHTML();
-    document.getElementById('calcResultados').innerHTML = calcResultadosHTML();
+    document.getElementById('calcSaida').innerHTML = calcSaidaHTML();
   }
   if(e.target.id==='calcLivre'){
     const v = parseInt(e.target.value,10);
     calcLivre = (v && v>0) ? v : 1;
-    // só o valor do dia/semana muda; reconstruir tudo faria o campo perder o foco
+    // só a data muda; reconstruir tudo faria o campo perder o foco
     const card = e.target.closest('.calc-livre');
     if(calcPub && card){
-      const fim = dataFinalUtil(calcPub, calcLivre);
+      const fim = somaUteis(calcPub, calcLivre).data;
       card.querySelector('.data').textContent = fmtData(fim);
       card.querySelector('.dia').textContent = fmtDiaSemana(fim);
     }
+  }
+});
+document.addEventListener('change', e=>{
+  if(e.target.id==='calcPeca'){
+    calcPeca = parseInt(e.target.value,10) || 0;
+    document.getElementById('calcSaida').innerHTML = calcSaidaHTML();
   }
 });
 document.getElementById('busca').addEventListener('input', e=>{
@@ -947,7 +1739,8 @@ window.addEventListener('hashchange', ()=>{
 /* ---------- arranque ---------- */
 pintaFiltros();
 const inicial = location.hash.slice(1);
-ir(inicial && (inicial==='inicio' || inicial==='calc' || inicial==='tribunais' || T.some(t=>'t/'+t.sec===inicial) || SECOES_MANUAL.some(s=>'m/'+s.id===inicial)) ? inicial : 'inicio');
+const ROTAS_FIXAS = ['inicio','calc','tribunais','triagem','passos','treino'];
+ir(inicial && (ROTAS_FIXAS.indexOf(inicial)>=0 || T.some(t=>'t/'+t.sec===inicial) || SECOES_MANUAL.some(s=>'m/'+s.id===inicial)) ? inicial : 'inicio');
 </script>
 </body>
 </html>
