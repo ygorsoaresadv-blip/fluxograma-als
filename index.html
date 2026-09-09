@@ -62,7 +62,8 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .busca::placeholder{color:#8FA79B}
 .busca:focus{background:rgba(255,255,255,.13);border-color:var(--ouro);outline:none}
 
-.filtros{padding:0 18px 16px;display:flex;flex-wrap:wrap;gap:5px}
+.filtros{padding:0 18px 8px;display:flex;flex-wrap:wrap;gap:5px}
+.filtro-conta{padding:0 18px 14px;font-size:11px;color:#8FA79B}
 .chip{
   font-size:10px;letter-spacing:.09em;font-weight:600;text-transform:uppercase;
   padding:4px 9px;border-radius:99px;border:1px solid rgba(255,255,255,.24);color:#C3D3CB;
@@ -562,6 +563,7 @@ table.oab td.principal{font-weight:700;color:var(--tinta)}
       <input class="busca" id="busca" type="search" placeholder="Buscar teor, peça ou pessoa…" aria-label="Buscar" autocomplete="off">
     </div>
     <div class="filtros" id="filtros" role="group" aria-label="Filtrar por área"></div>
+    <div class="filtro-conta" id="filtroConta" aria-live="polite"></div>
     <div id="indice"></div>
   </nav>
 
@@ -1157,6 +1159,9 @@ function pintaIndice(){
     });
   });
   if(!achou) h += '<div class="vazio-busca">Nenhum cartão com esse termo. Se a publicação não se encaixa, fale com o Ygor.</div>';
+  const nomeArea = {todas:'todas as áreas', trabalhista:'trabalhista', civel:'cível', previdenciario:'previdenciário'}[filtroArea];
+  const fc = document.getElementById('filtroConta');
+  if(fc) fc.textContent = achou+(achou===1?' cartão':' cartões')+' · '+nomeArea+(busca?' · filtrado por "'+busca+'"':'');
   h += '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>Manual</div>';
   SECOES_MANUAL.forEach(s=>{
     h += '<button class="item'+(s.roxo?' roxo':'')+'" data-rota="m/'+s.id+'" aria-current="'+(rotaAtual==='m/'+s.id)+'">'+
