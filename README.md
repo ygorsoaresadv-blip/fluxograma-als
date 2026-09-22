@@ -20,10 +20,13 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
   tratar publicação sozinha.
 - **Manual completo**: as sete regras gerais, quem é quem, como nomear e datar uma agenda,
   glossário de siglas e termos, e o que não passa pelo tratamento de publicações.
-- **Compêndio de súmulas**: 544 súmulas do TST e do STF em matéria trabalhista, com teor
-  integral, status atual, temas e histórico de redações. Busca por número (`331`, `SV 22`),
-  por palavra-chave ou por frase entre aspas, filtros de tribunal, status e tema, e botões
-  para copiar o teor pronto para citação ou o link direto da súmula.
+- **Compêndio de jurisprudência**: 1.690 verbetes do TST e do STF em matéria trabalhista —
+  544 súmulas, 709 orientações jurisprudenciais (SDI-1, SDI-2, SDC e Tribunal Pleno, incluindo
+  as transitórias), 120 precedentes normativos e 317 temas de recursos repetitivos (IRR, IAC
+  e IRDR) — com teor integral, status atual, temas e histórico de redações. A busca entende a
+  espécie pelo número (`331`, `OJ 191`, `SDI-2 54`, `PN 119`, `tema 128`, `SV 22`), aceita
+  palavra-chave e frase entre aspas, e há filtros de espécie, tribunal, órgão, status e tema.
+  Cada verbete tem botão para copiar o teor pronto para citação e para copiar o link direto.
 - **Fluxo extraordinário da etiqueta roxa** (`C/ JULIANA TCHANI`), que se sobrepõe a todos os cartões.
 - **Tribunais e OAB**: código de segmento e sigla de TJ, TRF e TRT, e as inscrições do André.
 
@@ -37,29 +40,48 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 | Filtrar por área | Trabalhista, cível ou previdenciário, nas pastilhas do topo do índice |
 | Montar o título da agenda | **Calculadora**, aba *Do fatal para o prazo interno* |
 | Acompanhar o tratamento | O passo a passo dentro de cada cartão, que zera ao fechar o arquivo |
-| Consultar uma súmula | Botão **Compêndio** no topo, ou `Compêndio de súmulas` no índice |
-| Achar a súmula pelo número | Na busca do compêndio: `331`, `SV 22`, `STF 440` |
-| Achar a súmula pelo teor | Palavras soltas, ou frase entre aspas, como `"empresa interposta"` |
-| Ver se o termo buscado também é súmula | A busca da coluna esquerda mostra quantas súmulas casam e leva até elas |
-| Citar uma súmula em peça | Botão **Copiar teor** no rodapé do cartão; sai com tribunal, número, teor e fonte |
+| Consultar a jurisprudência | Botão **Compêndio** no topo, ou `Compêndio de jurisprudência` no índice |
+| Achar o verbete pelo número | Na busca do compêndio: `331`, `OJ 191`, `SDI-2 54`, `PN 119`, `tema 128`, `SV 22` |
+| Achar o verbete pelo teor | Palavras soltas, ou frase entre aspas, como `"empresa interposta"` |
+| Ver só uma espécie | Pastilhas de **Espécie**; no celular ficam atrás do botão *filtros* |
+| Ver só as OJs de uma seção | Pastilhas de **Órgão**: SDI-1, SDI-2, SDC ou Tribunal Pleno |
+| Ver se o termo buscado também é jurisprudência | A busca da coluna esquerda mostra quantos verbetes casam e leva até eles |
+| Citar em peça | Botão **Copiar teor** no rodapé do cartão; sai com tribunal, número, teor e fonte |
 | Apresentar para a equipe | Botão **Apresentar**, no pé do índice; navegue com `←` `→` ou barra de espaço, saia com `Esc` |
 | Imprimir ou gerar PDF | Botão **Imprimir tudo**, no pé do índice; monta o documento inteiro |
-| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as telas novas usam `#triagem`, `#passos`, `#calc` e `#treino`, e cada súmula tem o seu, como `#s/tst-331` |
+| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as telas novas usam `#triagem`, `#passos`, `#calc` e `#treino`, e cada verbete tem o seu, como `#s/tst-331`, `#s/oj-sdi1-191`, `#s/pn-119` e `#s/irr-128` |
 
 Funciona em celular. A contagem de prazos é sempre em dias úteis.
 
-## Sobre o compêndio de súmulas
+## Sobre o compêndio de jurisprudência
 
-É conferência rápida, não a fonte. O status e o teor mudam por resolução do tribunal, e o
-acervo aqui foi verificado em 21/09/2026, a partir da pesquisa de jurisprudência do TST e do
-portal de súmulas do STF. Antes de citar em peça, confira na fonte oficial — o link está no
-rodapé de cada cartão. As súmulas canceladas continuam no acervo, com a tarja cinza, porque
-aparecem em publicação antiga e em acórdão; para escondê-las, use *Ver só as que estão em vigor*.
+É conferência rápida, não a fonte. O status e o teor mudam por resolução do tribunal. Antes de
+citar em peça, confira na fonte oficial — o link está no rodapé de cada cartão.
+
+| Espécie | Quantos | De onde veio | Conferido em |
+|---|---|---|---|
+| Súmulas do TST e do STF | 544 | Pesquisa de jurisprudência do TST e portal de súmulas do STF | 21/09/2026 |
+| Orientações jurisprudenciais | 709 | Pesquisa de jurisprudência do TST | 22/09/2026 |
+| Precedentes normativos | 120 | Pesquisa de jurisprudência do TST | 22/09/2026 |
+| Temas de recursos repetitivos | 317 | Índice Temático de Precedentes Qualificados no TST | 22/09/2026 |
+
+O que foi cancelado continua no acervo, com a tarja cinza, porque aparece em publicação antiga
+e em acórdão; para esconder, use *Ver só o que está em vigor*. Os temas de recursos repetitivos
+sem tese fixada ficam com a tarja azul e a etiqueta **Sem tese fixada**: o que vale ali é a
+questão jurídica afetada, e vários deles têm determinação de suspensão de processos no TST,
+avisada no próprio cartão.
+
+**O tema de cada verbete é etiqueta de navegação, não classificação oficial.** As súmulas
+trouxeram o tema já conferido; nas OJs, nos precedentes normativos e nos temas repetitivos ele
+é atribuído aqui por vocabulário jurídico. A regra foi conferida contra as 544 súmulas já
+classificadas e acerta ao menos um tema em 85% delas; 8% do acervo cai em *Outros*. O teor é
+sempre o texto oficial, e é ele que se cita.
 
 O acervo vive em um bloco `<script id="sumulasDados" type="application/json">` dentro do
 próprio `index.html`, e só é interpretado quando faz falta, para não atrasar a abertura. Por
-causa dele o arquivo passou de 128 KB para cerca de 830 KB, o que o GitHub Pages entrega
-compactado e o navegador lê em fração de segundo.
+causa dele o arquivo passou de 128 KB para cerca de 1,5 MB, o que o GitHub Pages entrega
+compactado e o navegador lê em fração de segundo — cerca de 170 ms para abrir e 50 ms para
+interpretar o acervo, uma única vez.
 
 ## Sobre a calculadora
 
@@ -88,10 +110,17 @@ Ao criar um cartão novo, lembre de três lugares: o objeto `D.teores`, o vocabu
 em `CHAVES` e a árvore de perguntas em `TRIAGEM`. Sem o segundo, a busca não acha o cartão
 pelas palavras da publicação; sem o terceiro, a triagem não chega até ele.
 
-Ao mexer no compêndio, altere apenas o bloco `sumulasDados`. Cada súmula é um objeto com
-`id`, `tribunal`, `tipo`, `numero`, `teor`, `status`, `temas`, `historico`, `fonte_url` e
-`verificado_em`. Os filtros de status e a lista de temas se montam sozinhos a partir dos
-dados: um tema novo vira pastilha sem que se toque no código.
+Ao mexer no compêndio, altere apenas o bloco `sumulasDados`, que guarda
+`{verificadoEm, fontes, registros}`. Cada verbete é um objeto com `id`, `tribunal`, `tipo`,
+`numero`, `teor`, `status` e `temas`, e, conforme a espécie, `orgao`, `questao`, `referencia`,
+`historico`, `observacao`, `suspensao`, `alerta` e `fonte` (chave do mapa `fontes`) ou
+`fonte_url`. Campo vazio é omitido, para não repetir `null` mil e seiscentas vezes.
+
+Os `tipo` reconhecidos são `sumula`, `sumula_vinculante`, `oj`, `oj_transitoria`, `pn`, `irr`,
+`iac` e `irdr`; os `status`, `em_vigor`, `cancelada`, `convertida`, `afetado` e `superada`. As
+pastilhas de status e a lista de temas se montam sozinhas a partir dos dados: um tema novo vira
+pastilha sem que se toque no código. Espécie nova, porém, pede uma linha em `SUM_ESPECIES` e o
+nome por extenso em `sumNome`.
 
 ## Dúvidas sobre o conteúdo
 
