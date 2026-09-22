@@ -20,6 +20,10 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
   tratar publicação sozinha.
 - **Manual completo**: as sete regras gerais, quem é quem, como nomear e datar uma agenda,
   glossário de siglas e termos, e o que não passa pelo tratamento de publicações.
+- **Compêndio de súmulas**: 544 súmulas do TST e do STF em matéria trabalhista, com teor
+  integral, status atual, temas e histórico de redações. Busca por número (`331`, `SV 22`),
+  por palavra-chave ou por frase entre aspas, filtros de tribunal, status e tema, e botões
+  para copiar o teor pronto para citação ou o link direto da súmula.
 - **Fluxo extraordinário da etiqueta roxa** (`C/ JULIANA TCHANI`), que se sobrepõe a todos os cartões.
 - **Tribunais e OAB**: código de segmento e sigla de TJ, TRF e TRT, e as inscrições do André.
 
@@ -33,11 +37,29 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 | Filtrar por área | Trabalhista, cível ou previdenciário, nas pastilhas do topo do índice |
 | Montar o título da agenda | **Calculadora**, aba *Do fatal para o prazo interno* |
 | Acompanhar o tratamento | O passo a passo dentro de cada cartão, que zera ao fechar o arquivo |
-| Apresentar para a equipe | Botão **Apresentar**; navegue com `←` `→` ou barra de espaço, saia com `Esc` |
-| Imprimir ou gerar PDF | Botão **Imprimir tudo**; monta o documento inteiro |
-| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, e as telas novas usam `#triagem`, `#passos`, `#calc` e `#treino` |
+| Consultar uma súmula | Botão **Compêndio** no topo, ou `Compêndio de súmulas` no índice |
+| Achar a súmula pelo número | Na busca do compêndio: `331`, `SV 22`, `STF 440` |
+| Achar a súmula pelo teor | Palavras soltas, ou frase entre aspas, como `"empresa interposta"` |
+| Ver se o termo buscado também é súmula | A busca da coluna esquerda mostra quantas súmulas casam e leva até elas |
+| Citar uma súmula em peça | Botão **Copiar teor** no rodapé do cartão; sai com tribunal, número, teor e fonte |
+| Apresentar para a equipe | Botão **Apresentar**, no pé do índice; navegue com `←` `→` ou barra de espaço, saia com `Esc` |
+| Imprimir ou gerar PDF | Botão **Imprimir tudo**, no pé do índice; monta o documento inteiro |
+| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as telas novas usam `#triagem`, `#passos`, `#calc` e `#treino`, e cada súmula tem o seu, como `#s/tst-331` |
 
 Funciona em celular. A contagem de prazos é sempre em dias úteis.
+
+## Sobre o compêndio de súmulas
+
+É conferência rápida, não a fonte. O status e o teor mudam por resolução do tribunal, e o
+acervo aqui foi verificado em 21/09/2026, a partir da pesquisa de jurisprudência do TST e do
+portal de súmulas do STF. Antes de citar em peça, confira na fonte oficial — o link está no
+rodapé de cada cartão. As súmulas canceladas continuam no acervo, com a tarja cinza, porque
+aparecem em publicação antiga e em acórdão; para escondê-las, use *Ver só as que estão em vigor*.
+
+O acervo vive em um bloco `<script id="sumulasDados" type="application/json">` dentro do
+próprio `index.html`, e só é interpretado quando faz falta, para não atrasar a abertura. Por
+causa dele o arquivo passou de 128 KB para cerca de 830 KB, o que o GitHub Pages entrega
+compactado e o navegador lê em fração de segundo.
 
 ## Sobre a calculadora
 
@@ -65,6 +87,11 @@ Assim o histórico do repositório passa a ser o registro de por que o fluxo é 
 Ao criar um cartão novo, lembre de três lugares: o objeto `D.teores`, o vocabulário de busca
 em `CHAVES` e a árvore de perguntas em `TRIAGEM`. Sem o segundo, a busca não acha o cartão
 pelas palavras da publicação; sem o terceiro, a triagem não chega até ele.
+
+Ao mexer no compêndio, altere apenas o bloco `sumulasDados`. Cada súmula é um objeto com
+`id`, `tribunal`, `tipo`, `numero`, `teor`, `status`, `temas`, `historico`, `fonte_url` e
+`verificado_em`. Os filtros de status e a lista de temas se montam sozinhos a partir dos
+dados: um tema novo vira pastilha sem que se toque no código.
 
 ## Dúvidas sobre o conteúdo
 
