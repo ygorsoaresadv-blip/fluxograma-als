@@ -5,8 +5,6 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 
 ## O que tem dentro
 
-- **Triagem guiada.** Três ou quatro perguntas sobre o teor levam ao cartão certo, sem
-  exigir que a pessoa já saiba o nome da peça. Começa sempre pela etiqueta roxa.
 - **Como tratar uma publicação.** As seis etapas do trabalho, da abertura no Astrea até a
   conclusão, na ordem em que acontecem.
 - **22 cartões de teor**, um por tipo de publicação, agrupados nas três fases do processo
@@ -16,25 +14,24 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
   devolve o título da agenda pronto para copiar, e da publicação para o prazo fatal.
   Conhece fins de semana, feriados nacionais, Carnaval, Sexta-feira Santa, Corpus Christi
   e o recesso de 20/12 a 20/01, e mostra quais dias pulou.
-- **Treino**: oito publicações descritas como chegam, para reconhecer os teores antes de
-  tratar publicação sozinha.
-- **Manual completo**: as sete regras gerais, quem é quem, como nomear e datar uma agenda,
-  glossário de siglas e termos, e o que não passa pelo tratamento de publicações.
+- **Manual completo**: as seis regras gerais, quem é quem e o glossário de siglas e termos.
 - **Compêndio de jurisprudência**: 1.690 verbetes do TST e do STF em matéria trabalhista —
   544 súmulas, 709 orientações jurisprudenciais (SDI-1, SDI-2, SDC e Tribunal Pleno, incluindo
   as transitórias), 120 precedentes normativos e 317 temas de recursos repetitivos (IRR, IAC
-  e IRDR) — com teor integral, status atual, temas e histórico de redações. A busca entende a
+  e IRDR) — com teor integral, status atual, temas e histórico de redações. A busca, em estilo Spotlight, entende a
   espécie pelo número (`331`, `OJ 191`, `SDI-2 54`, `PN 119`, `tema 128`, `SV 22`), aceita
-  palavra-chave e frase entre aspas, e há filtros de espécie, tribunal, órgão, status e tema.
+  palavra-chave e frase entre aspas, e há atalhos de espécie, uma chave para ver só o que está em
+  vigor e, em *Mais filtros*, tribunal, órgão, tema, status e ordem. Os resultados vêm em lista e
+  cada verbete se abre no próprio lugar.
   Cada verbete tem botão para copiar o teor pronto para citação e para copiar o link direto.
 - **Fluxo extraordinário da etiqueta roxa** (`C/ JULIANA TCHANI`), que se sobrepõe a todos os cartões.
+  A Dra. Juliana Tchani recebe exclusivamente esses processos; o cível é do Dr. Mateus.
 - **Tribunais e OAB**: código de segmento e sigla de TJ, TRF e TRT, e as inscrições do André.
 
 ## Como usar
 
 | Ação | Como |
 |---|---|
-| Não sei qual cartão é | **Triagem guiada**, na página inicial ou no índice |
 | Buscar um teor | Digite na busca da coluna esquerda, ou tecle `/` |
 | Buscar pelas palavras do juiz | A busca aceita trechos da publicação, como `manifestem sobre os cálculos` |
 | Filtrar por área | Trabalhista, cível ou previdenciário, nas pastilhas do topo do índice |
@@ -43,15 +40,14 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 | Consultar a jurisprudência | Botão **Compêndio** no topo, ou `Compêndio de jurisprudência` no índice |
 | Achar o verbete pelo número | Na busca do compêndio: `331`, `OJ 191`, `SDI-2 54`, `PN 119`, `tema 128`, `SV 22` |
 | Achar o verbete pelo teor | Palavras soltas, ou frase entre aspas, como `"empresa interposta"` |
-| Ver só uma espécie | Pastilhas de **Espécie**; no celular ficam atrás do botão *filtros* |
-| Ver só as OJs de uma seção | Pastilhas de **Órgão**: SDI-1, SDI-2, SDC ou Tribunal Pleno |
+| Ver só uma espécie | Atalhos logo abaixo da busca: Súmulas, OJs, Precedentes, Temas repetitivos |
+| Ver só as OJs de uma seção | **Mais filtros** → Órgão: SDI-1, SDI-2, SDC ou Tribunal Pleno |
+| Percorrer os resultados pelo teclado | Setas ↑ ↓ a partir da busca; Enter abre o verbete, Esc volta à busca |
 | Ver se o termo buscado também é jurisprudência | A busca da coluna esquerda mostra quantos verbetes casam e leva até eles |
 | Citar em peça | Botão **Copiar teor** no rodapé do cartão; sai com tribunal, número, teor e fonte |
-| Apresentar para a equipe | Botão **Apresentar**, no pé do índice; navegue com `←` `→` ou barra de espaço, saia com `Esc` |
-| Imprimir ou gerar PDF | Botão **Imprimir tudo**, no pé do índice; monta o documento inteiro |
-| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as telas novas usam `#triagem`, `#passos`, `#calc` e `#treino`, e cada verbete tem o seu, como `#s/tst-331`, `#s/oj-sdi1-191`, `#s/pn-119` e `#s/irr-128` |
+| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as outras telas usam `#passos`, `#calc` e `#tribunais`, e cada verbete tem o seu, como `#s/tst-331`, `#s/oj-sdi1-191`, `#s/pn-119` e `#s/irr-128` |
 
-Funciona em celular. A contagem de prazos é sempre em dias úteis.
+Funciona em celular e acompanha o modo claro ou escuro do sistema. A contagem de prazos é sempre em dias úteis.
 
 ## Sobre o compêndio de jurisprudência
 
@@ -106,9 +102,8 @@ O arquivo já se chama `index.html` e o `.nojekyll` evita que o GitHub tente pro
 Ao mudar uma conduta, altere o cartão correspondente e registre o motivo na mensagem do commit.
 Assim o histórico do repositório passa a ser o registro de por que o fluxo é como é.
 
-Ao criar um cartão novo, lembre de três lugares: o objeto `D.teores`, o vocabulário de busca
-em `CHAVES` e a árvore de perguntas em `TRIAGEM`. Sem o segundo, a busca não acha o cartão
-pelas palavras da publicação; sem o terceiro, a triagem não chega até ele.
+Ao criar um cartão novo, lembre de dois lugares: o objeto `D.teores` e o vocabulário de busca
+em `CHAVES`. Sem o segundo, a busca não acha o cartão pelas palavras da publicação.
 
 Ao mexer no compêndio, altere apenas o bloco `sumulasDados`, que guarda
 `{verificadoEm, fontes, registros}`. Cada verbete é um objeto com `id`, `tribunal`, `tipo`,
@@ -118,8 +113,8 @@ Ao mexer no compêndio, altere apenas o bloco `sumulasDados`, que guarda
 
 Os `tipo` reconhecidos são `sumula`, `sumula_vinculante`, `oj`, `oj_transitoria`, `pn`, `irr`,
 `iac` e `irdr`; os `status`, `em_vigor`, `cancelada`, `convertida`, `afetado` e `superada`. As
-pastilhas de status e a lista de temas se montam sozinhas a partir dos dados: um tema novo vira
-pastilha sem que se toque no código. Espécie nova, porém, pede uma linha em `SUM_ESPECIES` e o
+opções de status e a lista de temas se montam sozinhas a partir dos dados: um tema novo vira
+opção sem que se toque no código. Espécie nova, porém, pede uma linha em `SUM_ESPECIES` e o
 nome por extenso em `sumNome`.
 
 ## Dúvidas sobre o conteúdo
