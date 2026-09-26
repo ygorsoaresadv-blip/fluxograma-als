@@ -47,7 +47,7 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 | Citar em peça | Botão **Copiar teor** no rodapé do cartão; sai com tribunal, número, teor e fonte |
 | Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as outras telas usam `#passos`, `#calc` e `#tribunais`, e cada verbete tem o seu, como `#s/tst-331`, `#s/oj-sdi1-191`, `#s/pn-119` e `#s/irr-128` |
 
-Funciona em celular e acompanha o modo claro ou escuro do sistema. A contagem de prazos é sempre em dias úteis.
+Funciona em celular e mantém sempre o tema claro, nas cores da identidade do escritório. A contagem de prazos é sempre em dias úteis.
 
 ## Sobre o compêndio de jurisprudência
 
