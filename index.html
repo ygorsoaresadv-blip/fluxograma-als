@@ -1987,9 +1987,11 @@ function triExtrai(txt){
   d.classe = triCampo(t, /Classe:\s*([^\n]+)/i);
   d.inteiro = triCampo(t, /Inteiro teor:\s*(\S+)/i);
   d.partes = [];
-  t.replace(/Parte:\s*(.+?)\s+Polo:\s*([A-Za-zÀ-ú]+)/gi, (_,n,p)=>{ d.partes.push(n.trim()+' ('+p.trim().toLowerCase()+')'); return _; });
+  // "Parte: NOME Polo: ATIVO", ou só "Parte: NOME", conforme o diário
+  t.replace(/Parte:[ \t]*([^\n]+?)(?:[ \t]+Polo:[ \t]*([A-Za-zÀ-ú]+))?[ \t]*(?=\n|$)/gi, (_,n,p)=>{ d.partes.push(n.trim()+(p?' ('+p.trim().toLowerCase()+')':'')); return _; });
   d.advogados = [];
-  t.replace(/Advogad[oa]s?:\s*([^\n]+)/gi, (_,a)=>{ d.advogados.push(a.trim()); return _; });
+  // o último advogado às vezes divide a linha com "Classe:"
+  t.replace(/Advogad[oa]s?:[ \t]*([^\n]+?)(?=[ \t]+Classe:|\n|$)/gi, (_,a)=>{ d.advogados.push(a.trim()); return _; });
   const iC = t.search(/Conte[uú]do:/i);
   d.conteudo = (iC>=0 ? t.slice(iC).replace(/^Conte[uú]do:\s*/i,'') : t).replace(/\n?Inteiro teor:[^\n]*/i,'').trim();
 
@@ -2439,6 +2441,23 @@ function triDataAto(conteudo, chave, pub){
   return perto || futuras.find(x=>x.hora) || futuras[0] || null;
 }
 
+/* data da sentença (cartão 8.2): anterior à publicação e de até um ano antes dela.
+   Datas de jurisprudência citada ("Data do Julgamento: 12/05/2014") são ignoradas;
+   o fecho da sentença ("São Paulo, 24/09/2026") tem preferência. Sem data confiável,
+   devolve null e a estagiária preenche. */
+const TRI_CITACAO = /(julgamento|registro|publicacao|disponibiliza|dejt|dje|relator|rel\.|acordao|turma|camara|sumula|tema|\b(?:tst|trt|stj|stf|tj[a-z]{2})\b|recurso|agravo|embargos|processo)/;
+function triDataSentenca(conteudo, pub){
+  const n = norm(conteudo);
+  const umAno = 366*24*3600*1000;
+  const boas = triDatasTexto(conteudo).filter(x=>{
+    if(pub && (x.d > pub || pub - x.d > umAno)) return false;
+    return !TRI_CITACAO.test(n.slice(Math.max(0, x.i-70), x.i));
+  });
+  const fecho = boas.filter(x=>/[a-z]{3,}, ?(?:em )?$/.test(n.slice(Math.max(0, x.i-40), x.i)));
+  const escolhida = fecho.length ? fecho[fecho.length-1] : boas[boas.length-1];
+  return escolhida ? escolhida.d : null;
+}
+
 function triDetalhes(d){
   const c = d.conteudo, n = norm(c);
   const pr = triPrazoJuiz(c);
@@ -2449,9 +2468,7 @@ function triDetalhes(d){
     : /hibrid/.test(n) ? 'HÍBRIDA' : /presencial/.test(n) ? 'PRESENCIAL' : '';
   const perTipo = /insalubr/.test(n) ? 'INSALUBRIDADE' : /periculos/.test(n) ? 'PERICULOSIDADE' : /medic/.test(n) ? 'MÉDICA' : '';
   const end = c.match(/(?:endere[cç]o|local)(?: da per[ií]cia)?\s*[:\-]\s*([^.;\n]{8,160})/i);
-  // a sentença é anterior à publicação: pega a última data do texto que não passa dela
-  const antes = triDatasTexto(c).filter(x=>!d.pub || x.d <= d.pub);
-  const sent = antes.length ? antes[antes.length-1].d : null;
+  const sent = triDataSentenca(c, d.pub);
   const contra = /recurso ordinario/.test(n) ? 'RO' : /recurso inominado/.test(n) ? 'RI' : /apelacao/.test(n) ? 'AP'
     : /embargos de declaracao/.test(n) ? 'ED' : (d.area==='trabalhista' ? 'RO' : d.juizado ? 'RI' : 'AP');
   const valor = (c.match(/R\$\s*([\d.]+,\d{2})/) || [])[1] || '';
@@ -2543,7 +2560,7 @@ function triDetalhesHTML(){
     sel('alvaraTipo','O crédito',[['','Escolha'],['liq','Dá quitação à lide (liquidação)'],['parc','É apenas parcial']]);
   h += '</div>';
   if(pede.prazo) h += '<p class="calc-nota" style="margin:10px 0 0">Prazo: '+esc(x.prazoFonte)+'.</p>';
-  if(pede.sentenca) h += '<p class="calc-nota" style="margin:6px 0 0">A data da sentença foi lida do texto (a última data anterior à publicação): confira.</p>';
+  if(pede.sentenca) h += (x.sentenca ? '<p class="calc-nota" style="margin:6px 0 0">Data da sentença lida do texto: confira. Datas de jurisprudência citada são ignoradas.</p>' : '<p class="calc-nota" style="margin:6px 0 0">Não achei a data da sentença no texto: preencha.</p>');
   return h;
 }
 
