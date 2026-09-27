@@ -534,6 +534,64 @@ table.sum-tab .obs{display:block;color:var(--label2);font-size:12.5px;line-heigh
 .sum-fonte b{color:var(--label2);font-weight:600}
 mark{background:var(--marca-texto);color:inherit;border-radius:3px;padding:0 1px}
 
+/* ---------- triagem de publicações ---------- */
+.tg-passo{background:var(--elev);border-radius:var(--r-l);box-shadow:var(--sombra);padding:22px 24px;margin:0 0 16px}
+.tg-passo[hidden]{display:none}
+.tg-passo h3{margin:0 0 6px;font-size:19px;font-weight:700;letter-spacing:-.02em;color:var(--tinta);display:flex;gap:10px;align-items:center}
+.tg-n{width:28px;height:28px;border-radius:50%;background:var(--acento);color:var(--dourado);font-size:14px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.tg-dica{font-size:14.5px;color:var(--label2);margin:0 0 14px;line-height:1.5}
+.tg-texto{display:block;width:100%;min-height:200px;resize:vertical;border:none;border-radius:12px;background:var(--fill2);padding:14px 16px;font:inherit;font-size:14px;line-height:1.5;color:var(--label)}
+.tg-texto.tg-resp{min-height:120px;font-family:var(--mono);font-size:12.5px}
+.tg-texto:focus,.tg-grade input:focus,.tg-grade select:focus{outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--dourado) 60%,transparent)}
+.tg-linha{display:flex;gap:12px 18px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.tg-linha a.btn{text-decoration:none}
+.tg-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.tg-grade label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:500;color:var(--label3)}
+.tg-grade input,.tg-grade select{font:inherit;font-size:14.5px;height:38px;padding:0 10px;border:none;border-radius:9px;background:var(--fill2);color:var(--label);min-width:0;width:100%}
+.tg-info{font-size:14px;color:var(--label2);line-height:1.6;margin:14px 0 0}
+.tg-info b{color:var(--label)}
+.tg-aviso{background:var(--laranja-bg);border-radius:12px;padding:11px 14px;font-size:14px;line-height:1.5;margin-top:10px}
+.tg-aviso ul{margin:4px 0 0;padding-left:18px}
+.tg-aviso.roxo{background:var(--roxo-bg);margin:0 0 14px}
+.tg-aviso.vermelho{background:var(--vermelho-bg)}
+.tg-palpites,.tg-cartoes{display:grid;gap:8px}
+.tg-cartoes{margin:0 0 16px}
+.tg-palpite{display:flex;gap:14px;align-items:center;width:100%;text-align:left;padding:12px 14px;border-radius:12px;background:var(--fill2);transition:background .15s}
+.tg-palpite:hover{background:var(--fill)}
+.tg-palpite .cod{font-family:var(--mono);font-weight:600;font-size:13px;flex:none;min-width:30px}
+.tg-palpite b{display:block;font-weight:600;font-size:15px;letter-spacing:-.015em}
+.tg-trecho{display:block;font-size:13px;color:var(--label2);margin-top:2px}
+.tg-palpite small{margin-left:auto;color:var(--label3);font-size:12px;white-space:nowrap;flex:none}
+.tg-resumo{font-size:15.5px;line-height:1.55;margin:0 0 14px}
+.tg-excecao{background:var(--vermelho);color:#fff;font-weight:700;font-size:14px;letter-spacing:.02em;border-radius:12px;padding:12px 16px;margin:0 0 10px}
+.tg-topo-ag{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:6px 0 10px}
+.tg-ag .tipo{margin-bottom:2px}
+.tg-onde{font-size:13px;color:var(--label2);margin:0 0 8px}
+.tg-campo{display:grid;grid-template-columns:130px 1fr auto;gap:6px 14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--sep)}
+.tg-campo .k{font-size:12.5px;color:var(--label3)}
+.tg-campo .v{font-size:15px;font-weight:600;white-space:pre-line;word-break:break-word}
+.tg-campo .v.mono{font-family:var(--mono)}
+.tg-campo .v.tg-vazio{font-weight:400;color:var(--label3)}
+.tg-campo .sub{display:block;font-size:12.5px;font-weight:400;color:var(--label2);margin-top:2px}
+.tg-meta{font-size:13px;color:var(--label2);padding-top:11px;border-top:1px solid var(--sep);display:flex;flex-wrap:wrap;gap:4px 20px}
+.tg-meta b{color:var(--label);font-weight:600}
+.tg-sel{cursor:pointer}
+.tg-sel[aria-checked="true"]{background:var(--acento-bg);box-shadow:inset 0 0 0 2px var(--acento-txt)}
+.tg-marca{width:22px;height:22px;border-radius:50%;flex:none;border:1.5px solid var(--sep-forte);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;background:var(--elev)}
+.tg-sel[aria-checked="true"] .tg-marca{background:var(--acento-txt);border-color:var(--acento-txt)}
+.tg-outro{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:500;color:var(--label3);flex:1 1 260px;min-width:0}
+.tg-outro select{font:inherit;font-size:14.5px;height:38px;padding:0 10px;border:none;border-radius:9px;background:var(--fill2);color:var(--label);width:100%}
+.tg-grade .tg-largo{grid-column:1/-1}
+.tg-aviso.neutro{background:var(--fill2);margin:0 0 12px}
+.btn[disabled]{opacity:.45;cursor:default}
+.ag.tg-curto{box-shadow:0 0 0 2px var(--vermelho),var(--sombra)}
+.tg-verm{color:var(--vermelho)!important}
+@media (max-width:760px){
+  .tg-passo{padding:18px 16px}
+  .tg-campo{grid-template-columns:1fr auto}
+  .tg-campo .k{grid-column:1/-1}
+}
+
 /* ---------- responsivo ---------- */
 .abrir-rail{display:none}
 @media (max-width:960px){
@@ -608,6 +666,8 @@ mark{background:var(--marca-texto);color:inherit;border-radius:3px;padding:0 1px
         <button class="btn abrir-rail" id="abrirRail" aria-label="Abrir índice">Índice</button>
         <div class="migalha" id="migalha">Início</div>
         <div class="acoes">
+          <button class="btn" data-rota="triagem">Triagem</button>
+          <button class="btn so-largo" data-rota="calc">Calculadora</button>
           <button class="btn ouro" data-rota="sumulas">Compêndio<span class="so-largo"> de jurisprudência</span></button>
         </div>
       </div>
@@ -944,7 +1004,7 @@ function pintaIndice(){
   let h = '<button class="item inicio" data-rota="inicio" aria-current="'+(rotaAtual==='inicio')+'">'+
        '<span class="cod">⌂</span><span>Início</span></button>';
   h += '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>Comece por aqui</div>';
-  [['passos','Como tratar uma publicação','1']].forEach(x=>{
+  [['triagem','Triagem de publicações','✎'],['passos','Como tratar uma publicação','1']].forEach(x=>{
     h += '<button class="item" data-rota="'+x[0]+'" aria-current="'+(rotaAtual===x[0])+'">'+
          '<span class="cod">'+x[2]+'</span><span>'+x[1]+'</span></button>';
   });
@@ -1865,10 +1925,839 @@ function telaSumulas(){
   return h+'</div>';
 }
 
+/* ---------- triagem ----------
+   Recebe o texto bruto de uma publicação, separa os dados, reconhece o
+   cartão e monta as agendas nos três campos que o Astrea recebe: título,
+   data e observações. Sem IA e sem custo: as regras de cada cartão estão em
+   TRI_REGRAS, e as datas são sempre calculadas aqui, pelo código. Só as
+   exceções vão para uma IA gratuita, por copiar e colar.
+   Lê D, PECAS, PRAZOS_FIXOS e CHAVES; não altera nenhum deles. */
+
+let triEstado = {texto:'', dados:null, etiqueta:false, sel:[], det:null, excecao:false, respostaTxt:'', resposta:null, erro:''};
+
+let triAtraso = null;
+
+/* a triagem conta só dias úteis sem sábados e domingos (decisão do Ygor):
+   feriados e suspensões ficam com o advogado responsável. Mesma convenção
+   de somaUteis e subUteis: a soma começa no dia seguinte à base, e a
+   subtração não conta a própria base. */
+function triUtil(d){ const w = d.getDay(); return w!==0 && w!==6; }
+function triSomaUteis(base, n){
+  const d = new Date(base.getTime());
+  let c = 0;
+  while(c < n){ d.setDate(d.getDate()+1); if(triUtil(d)) c++; }
+  return d;
+}
+function triSubUteis(base, n){
+  const d = new Date(base.getTime());
+  let c = 0;
+  while(c < n){ d.setDate(d.getDate()-1); if(triUtil(d)) c++; }
+  return d;
+}
+function triMove(base, n){ return n>=0 ? triSomaUteis(base, n) : triSubUteis(base, -n); }
+
+/* "28/09/2026", "28/09/2026 14:30" ou "2026-09-28" */
+function triParse(s){
+  if(!s) return {d:null, hora:''};
+  s = String(s);
+  let m = s.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+  let d = m ? new Date(+m[3], +m[2]-1, +m[1]) : null;
+  if(!d){ m = s.match(/(\d{4})-(\d{2})-(\d{2})/); if(m) d = new Date(+m[1], +m[2]-1, +m[3]); }
+  const h = s.match(/(\d{1,2})[:h](\d{2})/);
+  return {d:d, hora: h ? h[1].padStart(2,'0')+':'+h[2] : ''};
+}
+const triBR = d => d ? fmtData(d) : '';
+const triISO = d => d ? d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0') : '';
+
+/* ---------- 1. leitura da publicação, sem IA ---------- */
+const TRI_AREAS = [['trabalhista','Trabalhista'],['civel','Cível'],['previdenciario','Previdenciário']];
+
+function triCampo(txt, re){ const m = txt.match(re); return m ? m[1].trim() : ''; }
+
+function triExtrai(txt){
+  const t = String(txt||'').replace(/\r/g,'');
+  const d = {avisos:[]};
+  const primeira = (t.split('\n').find(l=>l.trim()) || '').trim();
+  d.diario = triCampo(t, /Di[aá]rio:\s*([^\n]+)/i) || (/di[aá]rio/i.test(primeira) ? primeira : '');
+  d.orgao = triCampo(t, /[OÓ]rg[aã]o:\s*([^\n]+)/i) || triCampo(t, /Vara:\s*(.+?)(?:\s+-\s+Comarca\b[^\n]*)?(?:\n|$)/i);
+  d.disp = triCampo(t, /(?:Divulgad[oa] em|Data de disponibiliza[cç][aã]o):\s*(\d{1,2}\/\d{1,2}\/\d{4})/i);
+  d.pubTxt = triCampo(t, /Publicad[oa] em:\s*(\d{1,2}\/\d{1,2}\/\d{4})/i);
+  d.processo = triCampo(t, /(\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4})/);
+  d.tipoCom = triCampo(t, /Tipo de comunica[cç][aã]o:\s*([^\n]+)/i);
+  d.classe = triCampo(t, /Classe:\s*([^\n]+)/i);
+  d.inteiro = triCampo(t, /Inteiro teor:\s*(\S+)/i);
+  d.partes = [];
+  t.replace(/Parte:\s*(.+?)\s+Polo:\s*([A-Za-zÀ-ú]+)/gi, (_,n,p)=>{ d.partes.push(n.trim()+' ('+p.trim().toLowerCase()+')'); return _; });
+  d.advogados = [];
+  t.replace(/Advogad[oa]s?:\s*([^\n]+)/gi, (_,a)=>{ d.advogados.push(a.trim()); return _; });
+  const iC = t.search(/Conte[uú]do:/i);
+  d.conteudo = (iC>=0 ? t.slice(iC).replace(/^Conte[uú]do:\s*/i,'') : t).replace(/\n?Inteiro teor:[^\n]*/i,'').trim();
+
+  // a publicação é a base de toda contagem
+  d.pub = triParse(d.pubTxt).d;
+  if(!d.pub && d.disp){
+    d.pub = triSomaUteis(triParse(d.disp).d, 1);
+    d.avisos.push('A publicação não traz a data de publicação. Usei o dia útil seguinte à disponibilização ('+d.disp+'). Confira.');
+  }
+  if(!d.pub) d.avisos.push('Não encontrei a data de publicação. Preencha o campo antes de seguir: todas as datas dependem dela.');
+
+  // área provável, pelo segmento J e pelo tribunal TR do número CNJ
+  d.area = ''; d.tribunal = '';
+  const m = d.processo.match(/\.(\d)\.(\d{2})\.\d{4}$/);
+  if(m){
+    const cod = m[1]+'.'+m[2];
+    const acha = bloco => (bloco.linhas.find(l=>l[0]===cod)||[])[1] || '';
+    if(m[1]==='5'){ d.area='trabalhista'; d.tribunal=acha(TRIB.trt); }
+    else if(m[1]==='8'){
+      d.area='civel'; d.tribunal=acha(TRIB.tj);
+      if(/acident|previdenci|\binss\b/.test(norm(d.orgao+' '+d.classe+' '+d.conteudo.slice(0,600))))
+        d.avisos.push('Processo na Justiça Estadual com sinais de matéria previdenciária (acidente do trabalho ou INSS). A área pode ser previdenciária: confira.');
+    }
+    else if(m[1]==='4'){
+      d.area='previdenciario'; d.tribunal=acha(TRIB.trf);
+      d.avisos.push('Justiça Federal: sugeri previdenciário, mas pode ser cível federal. Confira a área na pasta do Astrea.');
+    }
+    else d.avisos.push('O número do processo não é da Justiça do Trabalho, Estadual ou Federal. Escolha a área manualmente.');
+  }else if(t.trim()){
+    d.avisos.push('Não encontrei o número do processo no padrão CNJ. Escolha a área manualmente.');
+  }
+  d.juizado = /juizado especial/.test(norm(d.orgao+' '+d.classe));
+  return d;
+}
+
+/* ---------- 2. palpite de cartão, pelas palavras ---------- */
+const TRI_VAZIAS = ' para pela pelo pelos pelas sobre como mais sera esta este isso essa esse aos das dos nas nos que com sem por uma umas uns ';
+function triPalpites(d){
+  if(!d || !d.conteudo) return [];
+  const alvo = ' '+norm(d.conteudo).replace(/[^a-z0-9]+/g,' ')+' ';
+  return T.filter(t=>!d.area || areasDe(t).indexOf(d.area)>=0).map(t=>{
+    const vistas = {};
+    norm((CHAVES[t.sec]||'')+' '+t.titulo).split(/[^a-z0-9]+/).forEach(p=>{
+      if(p.length>3 && TRI_VAZIAS.indexOf(' '+p+' ')<0 && alvo.indexOf(' '+p)>=0) vistas[p] = 1;
+    });
+    return {t:t, n:Object.keys(vistas).length, p:Object.keys(vistas)};
+  }).filter(x=>x.n>0).sort((a,b)=>b.n-a.n).slice(0,3);
+}
+
+/* ---------- 3. pedido para o Claude, montado a partir de D ---------- */
+const triSemHtml = s => String(s).replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ');
+
+function triSystem(){
+  const regras = MAN.regras.map(r=>r.n+'. '+r.t+'. '+r.p.map(triSemHtml).join(' ')).join('\n');
+  const pessoas = MAN.pessoas.map(p=>'- '+p[0]+': '+(p[1]||'sem nome')+'. '+p[2]).join('\n');
+  const cartoes = JSON.stringify(T.map(t=>({sec:t.sec, fase:t.fase, area:t.area, titulo:t.titulo, id:t.id,
+    agendas:t.agendas, nota:t.nota, semAgenda:t.semAgenda})));
+  const pecas = JSON.stringify(PECAS.map(p=>({sigla:p.sig, nome:p.nome, folga_pz_uteis:p.folga, prazo_legal:p.legal, recursal:p.rec, cartao:p.cart})));
+  const prazos = JSON.stringify(PRAZOS_FIXOS.map(p=>({dias:p.n, sigla:p.sigla, peca:p.peca, obs:p.obs})));
+  return [
+'Você faz a triagem de publicações judiciais de um escritório de advocacia, aplicando exclusivamente o fluxograma abaixo. Você identifica o teor, escolhe o cartão e descreve as agendas. Você NÃO calcula datas: descreve a regra de contagem, e o sistema calcula.',
+'As agendas são criadas no Astrea preenchendo só três campos: título, data e observações. O processo desta publicação já foi conferido e NÃO tem a etiqueta roxa C/ JULIANA TCHANI.',
+'O sócio do escritório é o Dr. André (OAB/SP 284388): a parte representada por ele é, em regra, a cliente.',
+'', '## Regras gerais', regras,
+'', '## Quem é quem', pessoas,
+'', '## Cartões do fluxograma (JSON)', cartoes,
+'', '## Peças: sigla, folga entre PZ e FT em dias úteis, prazo legal, se é recursal', pecas,
+'', '## Prazos legais fixos', prazos,
+'', '## Regras de decisão',
+'- Uma publicação pode acionar mais de um cartão (por exemplo, despacho inaugural que nega a gratuidade, pede documentos e nega a tutela). Liste todos e todas as agendas.',
+'- Juizado especial: não cabe agravo de instrumento, e a sentença gera recurso inominado (RI), não apelação.',
+'- O responsável é sempre definido pela área e pelo cartão; uma única pessoa por agenda (regra 4).',
+'- Se o próprio despacho fixar prazo ("em 5 dias", "em 15 dias"), esse é o prazo legal a usar.',
+'- O cartão 7.7 está pendente de confirmação: trate como exceção.',
+'- Se nenhum cartão se aplicar com segurança, não force: marque excecao = true, raciocine pelas regras gerais e pelo cartão mais análogo, explique a analogia em motivo_excecao e sugira as agendas.',
+'- Se o teor trouxer determinação relevante que o fluxograma não cobre (por exemplo, "certifique-se o trânsito em julgado"), registre em alertas, sem inventar agenda.',
+'- Use apenas siglas e títulos do padrão do escritório. Não inclua PZ e FT no campo sigla: o sistema monta o título.',
+'', '## Como descrever as datas',
+'- regra_fatal.base: "publicacao" (padrão), "sentenca" ou "data_ato" (usam data_ato), ou "outra_agenda" (usa regra_fatal.referencia).',
+'- dias_uteis positivo conta para frente a partir da base; negativo conta para trás. Use null se o prazo legal não estiver claro.',
+'- referencia aponta outra agenda desta mesma lista pelo índice, começando em 0, e pelo campo: "agenda:0:pz" ou "agenda:1:ft". Ex.: "FT = 3 dias úteis antes do PZ do advogado" vira base "outra_agenda", referencia "agenda:0:pz", dias_uteis -3.',
+'- regra_pz.tipo: "antes_do_fatal" (dias_uteis antes do FT), "depois_da_base" (dias_uteis depois da publicação, ou da referencia se houver) ou "igual_a" (mesma data da referencia).',
+'- Agenda sem PZ e FT no título (leva_pz_ft = false): a data da providência sai de regra_pz, ou de regra_fatal se regra_pz vier vazia.',
+'- Audiência e perícia: tipo "AUDIÊNCIA", data_ato com data e hora da publicação ("dd/mm/aaaa hh:mm"), leva_pz_ft = false.',
+'- data_ato também serve para "data da sentença" quando ela consta do conteúdo (cartão 8.2).',
+'- observacao é o texto do campo Observações do Astrea: curto, útil para quem executa, sem repetir o título.',
+'', '## Formato de saída',
+'Responda SOMENTE com um JSON válido, sem texto antes ou depois, neste esquema:',
+JSON.stringify({
+  resumo_do_teor:'uma ou duas frases sobre o que o juiz determinou',
+  cartoes:[{sec:'8.1', confianca:'alta|media|baixa', trecho:'trecho curto da publicação que justifica'}],
+  excecao:false, motivo_excecao:'',
+  agendas:[{cartao:'8.1', tipo:'PRAZO|AUDIÊNCIA', sigla:'ED', leva_pz_ft:true, recursal:true,
+    regra_fatal:{base:'publicacao', dias_uteis:5, referencia:''},
+    regra_pz:{tipo:'antes_do_fatal', dias_uteis:3, referencia:''},
+    data_ato:null, responsavel:'Advogado cível (Dr. Mateus)', observacao:''}],
+  alertas:['pontos que pedem atenção humana'],
+  cartao_sugerido:null
+}, null, 1),
+'Quando excecao = true, cartao_sugerido traz um objeto no mesmo formato dos cartões (sec provisório "X.?", fase, area, titulo, id, agendas, nota) e mais "chaves" com palavras de busca.'
+  ].join('\n');
+}
+
+function triMensagem(d){
+  const nomeArea = (TRI_AREAS.find(a=>a[0]===d.area)||[,'não definida'])[1];
+  return ['A estagiária marcou esta publicação como possível exceção: nenhum cartão pareceu se aplicar com segurança.', '',
+    'DADOS DA PUBLICAÇÃO (conferidos pela estagiária)',
+    'Área: '+nomeArea+(d.tribunal?' ('+d.tribunal+')':''),
+    'Rito: '+(d.juizado?'Juizado especial':'Comum'),
+    'Data da publicação: '+(d.pub ? triBR(d.pub)+' ('+fmtDiaSemana(d.pub).toLowerCase()+')' : 'não informada'),
+    'Processo: '+(d.processo||'não informado'),
+    'Órgão: '+(d.orgao||'não informado'),
+    'Classe: '+(d.classe||'não informada'),
+    'Tipo de comunicação: '+(d.tipoCom||'não informado'),
+    'Partes: '+(d.partes.join('; ')||'não informadas'),
+    'Advogados: '+(d.advogados.join('; ')||'não informados'),
+    '', 'CONTEÚDO INTEGRAL', d.conteudo].join('\n');
+}
+
+function triPedido(d){
+  return 'Siga as instruções abaixo e responda somente com o JSON pedido.\n\n=== INSTRUÇÕES ===\n'+triSystem()+
+         '\n\n=== PUBLICAÇÃO ===\n'+triMensagem(d);
+}
+
+/* ---------- 4. leitura da resposta e cálculo das datas ---------- */
+function triLeJSON(txt){
+  let s = String(txt||'').trim().replace(/^```(?:json)?\s*/i,'').replace(/```\s*$/,'');
+  const a = s.indexOf('{'), b = s.lastIndexOf('}');
+  if(a<0 || b<a) throw new Error('Não encontrei um JSON na resposta. Copie a resposta inteira do Claude, do primeiro { ao último }.');
+  let o;
+  try{ o = JSON.parse(s.slice(a,b+1)); }
+  catch(e){ throw new Error('A resposta não é um JSON válido ('+e.message+'). Peça ao Claude: "responda só com o JSON".'); }
+  if(!Array.isArray(o.agendas)) throw new Error('A resposta não traz a lista "agendas".');
+  return o;
+}
+
+function triCalcula(resp, d){
+  const pub = d.pub;
+  /* agendas podem depender umas das outras, inclusive de forma cruzada (no 7.8,
+     o fatal da Ellen sai do fatal do advogado, e o PZ do advogado sai do fatal
+     da Ellen). Em vez de recursão, calcula em rodadas: cada rodada usa o que a
+     anterior já resolveu, até nada mudar. */
+  let feitas = [];
+  const ref = r => {
+    const m = /agenda:(\d+)(?::(pz|ft|data))?/i.exec(r||'');
+    if(!m) return null;
+    const x = feitas[+m[1]];
+    if(!x) return null;
+    const c = (m[2]||'ft').toLowerCase();
+    return c==='pz' ? (x.pz||x.data) : c==='data' ? x.data : (x.ft||x.data);
+  };
+  const base = (tipo, a, r) =>
+    (tipo==='sentenca' || tipo==='data_ato') ? triParse(a.data_ato).d
+    : tipo==='outra_agenda' ? ref(r) : pub;
+
+  function calc(i){
+    const a = resp.agendas[i];
+    if(!a) return null;
+    const rf = a.regra_fatal || {}, rp = a.regra_pz || {};
+    const x = {a:a, i:i, alertas:[], curto:false};
+    const audiencia = /audi/i.test(a.tipo||'');
+    const bf = base(rf.base||'publicacao', a, rf.referencia);
+    if(bf && rf.dias_uteis!=null && rf.dias_uteis!=='') x.ft = triMove(bf, +rf.dias_uteis);
+    else if(bf && rf.base==='outra_agenda') x.ft = bf;
+    if(rp.tipo==='antes_do_fatal' && x.ft && rp.dias_uteis!=null) x.pz = triSubUteis(x.ft, +rp.dias_uteis);
+    else if(rp.tipo==='depois_da_base' && rp.dias_uteis!=null){
+      // "depois da base" conta da publicação, ou da agenda indicada em referencia
+      const b = rp.referencia ? ref(rp.referencia) : base(rp.base||'publicacao', a, '');
+      if(b) x.pz = triMove(b, +rp.dias_uteis);
+    }
+    else if(rp.tipo==='igual_a') x.pz = ref(rp.referencia);
+
+    if(audiencia){
+      const at = triParse(a.data_ato);
+      x.data = at.d; x.hora = at.hora;
+      x.porque = 'data e hora do ato';
+      if(!at.d) x.alertas.push('Data do ato não informada: confira na publicação e preencha a data.');
+    }else if(a.recursal){
+      x.data = pub; x.porque = 'dia da publicação (regra 3: recurso e contrarrazões)';
+    }else if(a.leva_pz_ft){
+      x.data = x.pz; x.porque = 'o prazo interno (PZ)';
+    }else{
+      x.data = x.pz || x.ft; x.porque = 'data da providência';
+    }
+
+    if(a.leva_pz_ft && !x.ft) x.alertas.push('Prazo legal não identificado: FT a definir com o Ygor.');
+    if(!audiencia && !x.data) x.alertas.push('Não foi possível calcular a data: defina com o Ygor.');
+    if(!audiencia && pub && ((x.pz && x.ft && x.pz>x.ft) || (x.pz && x.pz<pub) || (x.data && x.data<pub))){
+      x.curto = true;
+      x.alertas.push('Prazo curto: as folgas do fluxograma não cabem. Defina as datas com o Ygor.');
+    }
+    const sig = String(a.sigla||'').trim();
+    x.titulo = a.leva_pz_ft
+      ? sig+' PZ '+(x.pz?fmtCurta(x.pz):'dd/mm')+'; FT '+(x.ft?fmtCurta(x.ft):'dd/mm')
+      : sig;
+    x.dataTxt = x.data ? triBR(x.data)+(x.hora?' '+x.hora:'') : 'a definir';
+    return x;
+  }
+  const chave = l => l.map(x=>x ? [x.ft, x.pz, x.data].map(v=>v ? v.getTime() : '').join('|') : '').join(';');
+  for(let rodada=0; rodada<6; rodada++){
+    const antes = chave(feitas);
+    feitas = resp.agendas.map((_,i)=>calc(i));
+    if(chave(feitas)===antes) break;
+  }
+  return feitas.map((x,i)=>x || {a:resp.agendas[i], i:i, titulo:String(resp.agendas[i].sigla||''),
+    dataTxt:'a definir', alertas:['Não foi possível ler esta agenda: defina as datas com o Ygor.'], curto:true});
+}
+
+/* a etiqueta roxa se sobrepõe a tudo: não precisa ler o teor */
+function triEtiqueta(d){
+  const data = d.pub ? triSomaUteis(d.pub, 1) : null;
+  return [{a:{tipo:'PRAZO', responsavel:'Dra. Juliana Tchani', observacao:''}, titulo:'CIÊNCIA E PROVIDÊNCIA',
+    data:data, dataTxt:data ? triBR(data) : 'a definir', porque:'dia útil seguinte à publicação',
+    alertas: data ? [] : ['Preencha a data de publicação.'], curto:false}];
+}
+
+/* ---------- 5. desenho ---------- */
+function triCopiaBtn(txt){ return '<button class="btn-mini" data-copia="'+escA(txt)+'">Copiar</button>'; }
+
+function triCaixa(x){
+  const a = x.a, aud = /audi/i.test(a.tipo||'');
+  const hex = aud ? 'var(--laranja)' : 'var(--acento-txt)';
+  let h = '<div class="ag tg-ag'+(x.curto?' tg-curto':'')+'">'+
+    '<div class="tipo" style="color:'+hex+'">'+(aud?'AUDIÊNCIA':'PRAZO')+(a.cartao?(/ e /.test(a.cartao)?' · cartões ':' · cartão ')+esc(a.cartao):'')+'</div>'+
+    '<div class="tg-onde">No Astrea: Tratamentos › '+(aud?'Adicionar audiência':'Adicionar prazo')+'</div>';
+  h += '<div class="tg-campo"><span class="k">'+(aud?'Título da audiência':'Título do prazo')+'</span>'+
+       '<span class="v mono">'+esc(x.titulo||'—')+'</span>'+triCopiaBtn(x.titulo||'')+'</div>';
+  h += '<div class="tg-campo"><span class="k">'+(aud?'Data':'Data limite')+'</span>'+
+       '<span class="v'+(x.curto?' tg-verm':'')+'">'+esc(x.dataTxt)+'<span class="sub">'+esc(x.porque||'')+'</span></span>'+
+       (x.data?triCopiaBtn(triBR(x.data)):'<span></span>')+'</div>';
+  const obs = String(a.observacao||'').trim();
+  h += '<div class="tg-campo"><span class="k">Observações</span>'+
+       '<span class="v'+(obs?'':' tg-vazio')+'">'+(obs?esc(obs):'nada a preencher')+'</span>'+(obs?triCopiaBtn(obs):'<span></span>')+'</div>';
+  const meta = [];
+  if(x.pz) meta.push('PZ <b class="'+(x.curto?'tg-verm':'')+'">'+triBR(x.pz)+'</b>');
+  if(a.leva_pz_ft || x.ft) meta.push('FT <b class="'+(x.curto?'tg-verm':'')+'">'+(x.ft?triBR(x.ft):'a definir')+'</b>');
+  if(a.responsavel) meta.push('Responsável no Astrea: <b>'+esc(a.responsavel)+'</b>');
+  if(meta.length) h += '<div class="tg-meta">'+meta.join('')+'</div>';
+  x.alertas.forEach(t=>{ h += '<div class="tg-aviso vermelho">'+esc(t)+'</div>'; });
+  return h+'</div>';
+}
+
+function triTextoTudo(lista){
+  return lista.map((x,i)=>{
+    const aud = /audi/i.test(x.a.tipo||'');
+    return (i+1)+'. '+(aud?'AUDIÊNCIA':'PRAZO')+'\nTítulo: '+x.titulo+'\n'+(aud?'Data: ':'Data limite: ')+x.dataTxt+
+      (x.a.observacao?'\nObservações: '+x.a.observacao:'')+(x.a.responsavel?'\nResponsável: '+x.a.responsavel:'');
+  }).join('\n\n');
+}
+
+const TRI_NOTA = '<p class="calc-nota">Contagem só em dias úteis (sem sábados e domingos). Feriados e suspensões não foram considerados: '+
+  'conferência do advogado responsável. Em divergência, vale o Astrea.</p>';
+
+
+function triDadosHTML(){
+  const d = triEstado.dados;
+  if(!d) return '';
+  const inp = (k, rot, v, tipo) => '<label>'+rot+'<input data-tgc="'+k+'" type="'+(tipo||'text')+'" value="'+escA(v||'')+'"></label>';
+  let h = '<div class="tg-grade">'+
+    inp('pub','Data da publicação *', triISO(d.pub), 'date')+
+    '<label>Área<select data-tgc="area"><option value="">Escolha</option>'+
+      TRI_AREAS.map(a=>'<option value="'+a[0]+'"'+(d.area===a[0]?' selected':'')+'>'+a[1]+'</option>').join('')+'</select></label>'+
+    '<label>Rito<select data-tgc="juizado"><option value="0"'+(d.juizado?'':' selected')+'>Comum</option>'+
+      '<option value="1"'+(d.juizado?' selected':'')+'>Juizado especial</option></select></label>'+
+    inp('processo','Processo', d.processo)+
+    inp('orgao','Órgão ou vara', d.orgao)+
+    inp('classe','Classe', d.classe)+
+    '</div>';
+  const info = [];
+  if(d.tribunal) info.push('Tribunal: <b>'+esc(d.tribunal)+'</b>');
+  if(d.diario) info.push('Diário: '+esc(d.diario));
+  if(d.disp) info.push('Disponibilizada em '+esc(d.disp));
+  if(d.pub) info.push('Publicada em '+esc(triBR(d.pub))+', '+esc(fmtDiaSemana(d.pub).toLowerCase()));
+  if(d.tipoCom) info.push('Comunicação: '+esc(d.tipoCom));
+  if(d.partes.length) info.push('Partes: '+esc(d.partes.join('; ')));
+  if(d.advogados.length) info.push('Advogados: '+esc(d.advogados.join('; ')));
+  if(d.inteiro) info.push('<a href="'+escA(d.inteiro)+'" target="_blank" rel="noopener">Inteiro teor</a>');
+  if(info.length) h += '<div class="tg-info">'+info.join('<br>')+'</div>';
+  if(d.juizado) h += '<div class="tg-aviso">Juizado especial: não cabe agravo de instrumento, e a sentença gera recurso inominado (RI).</div>';
+  d.avisos.forEach(a=>{ h += '<div class="tg-aviso">'+esc(a)+'</div>'; });
+  return h;
+}
+
+/* ---------- 6. regras de cada cartão, sem IA ----------
+   Tradução do fluxograma para o código: cada cartão devolve as agendas no
+   mesmo formato que a IA devolveria (regra_fatal, regra_pz), e triCalcula
+   faz as contas. Validado com o Ygor em 27/09/2026:
+   - todos os prazos são em dias úteis, sem exceção;
+   - sem prazo do juiz nem da lei, 5 dias (art. 218, § 3º, do CPC);
+   - no trabalhista não se cria agravo de instrumento;
+   - "referencia" aponta outra agenda do mesmo cartão pelo índice. */
+const TRI_RESP = {
+  recurso:  {trabalhista:'Advogado sênior (Gustavo Freire)', civel:'Advogado cível (Dr. Mateus)', previdenciario:'Advogada previdenciária (Elisangela)'},
+  area:     {trabalhista:'Advogado júnior trabalhista (Ygor Pinheiro)', civel:'Advogado cível (Dr. Mateus)', previdenciario:'Advogada previdenciária (Elisangela)'},
+  calculos: {trabalhista:'Advogado júnior trabalhista (Ygor Pinheiro)', civel:'Advogada previdenciária (Elisangela)', previdenciario:'Advogada previdenciária (Elisangela)'}
+};
+const TRI_ESTAG = 'Estagiária jurídica', TRI_SOCIO = 'Sócio (André)', TRI_YGOR = 'Advogado júnior trabalhista (Ygor Pinheiro)';
+const TRI_DIAS_RECURSO = {RO:8, AP:15, RI:10, ED:5};
+const TRI_SIGLA_AUD = {trabalhista:'RT', civel:'CÍVEL', previdenciario:'PREV'};
+
+const triResp = (tabela, d) => TRI_RESP[tabela][d.area] || TRI_RESP[tabela].civel;
+function triPrazoAg(cartao, sigla, rf, rp, resp, obs){
+  return {cartao, tipo:'PRAZO', sigla, leva_pz_ft:true, recursal:false, regra_fatal:rf, regra_pz:rp,
+          data_ato:null, responsavel:resp, observacao:obs||''};
+}
+function triRecurso(cartao, sigla, dias, resp, folga){
+  const a = triPrazoAg(cartao, sigla, {base:'publicacao', dias_uteis:dias}, {tipo:'antes_do_fatal', dias_uteis:folga||3}, resp);
+  a.recursal = true;
+  return a;
+}
+function triProvid(cartao, sigla, base, dias, resp, obs, dataAto){
+  return {cartao, tipo:'PRAZO', sigla, leva_pz_ft:false, recursal:false, regra_fatal:{base, dias_uteis:dias}, regra_pz:{},
+          data_ato:dataAto||null, responsavel:resp, observacao:obs||''};
+}
+const triAto = (data, hora) => data ? data+(hora?' '+hora:'') : null;
+
+const TRI_REGRAS = {
+  '7.1': ()=>({agendas:[], infos:['Distribuição do processo: nenhuma agenda. Só conclua a publicação.']}),
+  '7.2': (d, x)=>{
+    const ato = triAto(x.audData, x.audHora);
+    return {agendas:[
+      {cartao:'7.2', tipo:'AUDIÊNCIA', sigla:x.audTitulo, leva_pz_ft:false, recursal:false, regra_fatal:{}, regra_pz:{},
+       data_ato:ato, responsavel:TRI_SOCIO, observacao:''},
+      triProvid('7.2', 'CONTATO CLIENTE AUDIÊNCIA', 'data_ato', -30, TRI_ESTAG,
+        'Registrar se o cliente confirmou o comparecimento dele e das testemunhas, e o nome de cada testemunha. '+
+        'Depois reagendar para 15, 7 e 1 dia útil antes da audiência.', ato)
+    ]};
+  },
+  '7.3': (d)=>triAgravo('7.3', d),
+  '7.4': (d, x)=>({agendas:[
+    triPrazoAg('7.4', 'JUNTAR DOCS COMPLEMENTARES HIPO', {base:'publicacao', dias_uteis:x.prazo},
+      {tipo:'antes_do_fatal', dias_uteis:3}, triResp('area', d)),
+    triPrazoAg('7.4', 'SOLICITAR AO CLIENTE OS DOCS PEDIDOS PELO JUIZ', {base:'outra_agenda', referencia:'agenda:0:pz', dias_uteis:-3},
+      {tipo:'depois_da_base', dias_uteis:2}, TRI_ESTAG, 'Pedir ao cliente os documentos de renda determinados pelo juiz.')
+  ]}),
+  '7.5': (d)=>triAgravo('7.5', d),
+  '7.6': (d, x)=>{
+    const ato = triAto(x.perData, x.perHora);
+    const r = {agendas:[
+      {cartao:'7.6', tipo:'AUDIÊNCIA', sigla:'PERÍCIA'+(x.perTipo?' '+x.perTipo:''), leva_pz_ft:false, recursal:false,
+       regra_fatal:{}, regra_pz:{}, data_ato:ato, responsavel:TRI_SOCIO+', só para controle',
+       observacao: x.perEnd ? 'Endereço da perícia: '+x.perEnd : ''},
+      triProvid('7.6', 'CONTATO CLIENTE PERÍCIA', 'data_ato', -10, TRI_ESTAG,
+        'Pedir o comparecimento e explicar que ele descreverá suas atividades e onde trabalhava'+
+        (x.perTipo==='MÉDICA' ? '; orientar que leve todos os documentos médicos.' : '.'), ato),
+      triProvid('7.6', 'COMUNICAR ELLEN', 'data_ato', -5, TRI_ESTAG,
+        'Verificar se a Ellen foi contratada e se o perito a comunicou por e-mail; se não, enviar e-mail pedindo que compareça.', ato)
+    ], alertas:[]};
+    if(!x.perEnd) r.alertas.push('Informe o endereço da perícia no passo 4: ele vai no campo Observações.');
+    if(!x.perTipo) r.alertas.push('Escolha o tipo da perícia no passo 4, para completar o título.');
+    return r;
+  },
+  '7.8': (d, x)=>({agendas:[
+    triPrazoAg('7.8', 'SOLICITAR QUESITOS DE IMPUGNAÇÃO ELLEN', {base:'outra_agenda', referencia:'agenda:1:ft', dias_uteis:-3},
+      {tipo:'depois_da_base', dias_uteis:1}, TRI_ESTAG),
+    triPrazoAg('7.8', 'IMPUGNAÇÃO AO LAUDO', {base:'publicacao', dias_uteis:x.prazo},
+      {tipo:'igual_a', referencia:'agenda:0:ft'}, TRI_YGOR)
+  ]}),
+  '8.1': (d)=>({agendas:[triRecurso('8.1', 'ED', 5, triResp('recurso', d))]}),
+  '8.2': (d, x)=>{
+    const r = {agendas:[
+      triRecurso('8.2', 'ED', 5, TRI_RESP.recurso.trabalhista),
+      triRecurso('8.2', 'RO', 8, TRI_RESP.recurso.trabalhista),
+      triProvid('8.2', 'INICIAR CUMPRIMENTO DE SENTENÇA', 'sentenca', 20, 'Advogado júnior (Ygor Pinheiro)', '', x.sentenca),
+      triProvid('8.2', 'LIQUIDAR SENTENÇA', 'sentenca', 15, 'Contador externo (Rui)', '', x.sentenca)
+    ], alertas:[]};
+    if(!x.sentenca) r.alertas.push('Informe a data da sentença no passo 4: as duas últimas agendas contam dela, não da publicação.');
+    return r;
+  },
+  '8.3': (d)=>({agendas:[triRecurso('8.3', 'ED', 5, TRI_RESP.recurso.civel),
+    d.juizado ? triRecurso('8.3', 'RI', 10, TRI_RESP.recurso.civel) : triRecurso('8.3', 'AP', 15, TRI_RESP.recurso.civel)]}),
+  '8.4': (d)=>({agendas:[triRecurso('8.4', 'ED', 5, TRI_RESP.recurso.previdenciario),
+    d.juizado ? triRecurso('8.4', 'RI', 10, TRI_RESP.recurso.previdenciario) : triRecurso('8.4', 'AP', 15, TRI_RESP.recurso.previdenciario)]}),
+  '8.5': ()=>({agendas:[triRecurso('8.5', 'ED', 5, TRI_RESP.recurso.trabalhista),
+    triProvid('8.5', 'VERIFICAR SE HÁ CUMP. PROVISÓRIO DE SENTENÇA', 'publicacao', 9, 'Advogado júnior (Ygor Pinheiro)')]}),
+  '8.6': ()=>({agendas:[triRecurso('8.6', 'ED', 5, TRI_RESP.recurso.civel),
+    triProvid('8.6', 'INICIAR CUMPRIMENTO DE SENTENÇA', 'publicacao', 16, 'Advogada previdenciária (Elisangela)')]}),
+  '8.7': ()=>({agendas:[triRecurso('8.7', 'ED', 5, TRI_RESP.recurso.previdenciario),
+    triProvid('8.7', 'INICIAR CUMPRIMENTO DE SENTENÇA', 'publicacao', 16, 'Advogada previdenciária (Elisangela)')]}),
+  '8.8': (d, x)=>({agendas:[triRecurso('8.8', 'CONTRARRAZÕES '+x.contra, TRI_DIAS_RECURSO[x.contra]||null, triResp('recurso', d))]}),
+  '9.1': (d, x)=>({agendas:[
+    triPrazoAg('9.1', 'ELABORAR SUBSÍDIOS DE CÁLCULOS', {base:'outra_agenda', referencia:'agenda:1:pz', dias_uteis:0},
+      {tipo:'depois_da_base', dias_uteis:1}, 'Contador externo (Rui)'),
+    triPrazoAg('9.1', 'MANIFES CÁLCULOS', {base:'publicacao', dias_uteis:x.prazo}, {tipo:'antes_do_fatal', dias_uteis:2}, 'Advogado júnior (Ygor Pinheiro)')
+  ]}),
+  '9.2': (d, x)=>({agendas:[triPrazoAg('9.2', 'MANIFES CÁLCULOS', {base:'publicacao', dias_uteis:x.prazo},
+    {tipo:'antes_do_fatal', dias_uteis:2}, 'Advogada previdenciária (Elisangela)')]}),
+  '9.3': (d, x)=>{
+    const tipo = x.alvaraTipo==='liq' ? 'LIQUIDAÇÃO' : x.alvaraTipo==='parc' ? 'CRÉDITO PARCIAL' : 'LIQUIDAÇÃO OU CRÉDITO PARCIAL';
+    const r = {agendas:[triProvid('9.3', 'ACOMPANHAR CREDITO EM CONTA'+(x.valor?' R$ '+x.valor:'')+' ('+tipo+')', 'publicacao', 5,
+      'Financeiro (Igor Marran)', x.alvaraTipo==='liq' ? 'O crédito dá quitação à lide.' : x.alvaraTipo==='parc' ? 'Crédito apenas parcial: não dá quitação.' : '')], alertas:[]};
+    if(!x.alvaraTipo) r.alertas.push('Escolha no passo 4 se o crédito dá quitação (liquidação) ou é parcial: isso define tudo o que vem depois.');
+    if(!x.valor) r.alertas.push('Informe o valor do alvará no passo 4.');
+    return r;
+  },
+  '9.4': (d, x)=>({agendas:[triPrazoAg('9.4', 'CONFERIR PAGTO E SANEAR O FEITO', {base:'publicacao', dias_uteis:x.prazo},
+    {tipo:'antes_do_fatal', dias_uteis:2}, triResp('calculos', d))]}),
+  '9.5': (d, x)=>({agendas:[triPrazoAg('9.5', 'MANIFESTAÇÃO', {base:'publicacao', dias_uteis:x.prazo},
+    {tipo:'antes_do_fatal', dias_uteis:2}, 'Advogado júnior (Ygor Pinheiro)', 'Teor: parcelamento do artigo 916 do CPC.')]}),
+  '9.6': ()=>({agendas:[triProvid('9.6', 'CIÊNCIA ARQUIVAMENTO/EXTINÇÃO', 'publicacao', 5, TRI_ESTAG,
+    'Verificar se o pagamento da condenação foi realizado e se a pasta está encerrada no sistema.')]})
+};
+function triAgravo(sec, d){
+  if(d.area==='trabalhista') return {agendas:[], infos:['No trabalhista não cabe agravo de instrumento contra esta decisão: nenhuma agenda a criar.']};
+  if(d.juizado) return {agendas:[], alertas:['Juizado especial: não cabe agravo de instrumento. Não crie a agenda e fale com o Ygor.']};
+  return {agendas:[triRecurso(sec, 'AI', 15, triResp('area', d), 5)]};
+}
+
+/* o que cada cartão precisa que a estagiária confira no passo 4 */
+const TRI_PEDE = {'7.2':['aud'], '7.4':['prazo'], '7.6':['per'], '7.8':['prazo'], '8.2':['sentenca'], '8.8':['contra'],
+  '9.1':['prazo'], '9.2':['prazo'], '9.3':['alvara'], '9.4':['prazo'], '9.5':['prazo']};
+
+/* ---------- 7. detalhes lidos do texto ---------- */
+const TRI_NUMEROS = {dois:2, tres:3, cinco:5, oito:8, dez:10, quinze:15, vinte:20, trinta:30};
+const TRI_MESES = ['janeiro','fevereiro','marco','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+
+function triPrazoJuiz(conteudo){
+  const t = norm(conteudo).replace(/\s+/g,' ');
+  const re = /(?:prazo(?: \w+){0,4}? de|no prazo de|em|dentro de) (\d{1,3}|dois|tres|cinco|oito|dez|quinze|vinte|trinta) ?(?:\([a-z ]{2,25}\) ?)?dias/;
+  const m = t.match(re);
+  if(m){
+    const n = /^\d+$/.test(m[1]) ? +m[1] : TRI_NUMEROS[m[1]];
+    const i = Math.max(0, m.index-30);
+    return {dias:n, fonte:'lido do texto: “…'+t.slice(i, m.index+m[0].length)+'”'};
+  }
+  return {dias:5, fonte:'o juiz não fixou prazo: 5 dias, pelo art. 218, § 3º, do CPC'};
+}
+
+/* todas as datas do conteúdo, com a hora que vier logo depois */
+function triDatasTexto(conteudo){
+  const t = String(conteudo), out = [];
+  t.replace(/(\d{1,2})\/(\d{1,2})\/(\d{4})/g, (m, dd, mm, aa, i)=>{ out.push({d:new Date(+aa, +mm-1, +dd), i, fim:i+m.length}); return m; });
+  const n = norm(t);
+  n.replace(/(\d{1,2}) de (janeiro|fevereiro|marco|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro) de (\d{4})/g,
+    (m, dd, mes, aa, i)=>{ out.push({d:new Date(+aa, TRI_MESES.indexOf(mes), +dd), i, fim:i+m.length}); return m; });
+  out.forEach(x=>{
+    const h = n.slice(x.fim, x.fim+45).match(/(\d{1,2}) ?(?:h|:|horas?) ?(\d{2})?/);
+    x.hora = h ? h[1].padStart(2,'0')+':'+(h[2]||'00') : '';
+  });
+  return out.sort((a,b)=>a.i-b.i);
+}
+/* a data de um ato (audiência, perícia): a primeira depois da publicação perto da palavra-chave */
+function triDataAto(conteudo, chave, pub){
+  const ds = triDatasTexto(conteudo), n = norm(conteudo);
+  const futuras = ds.filter(x=>!pub || x.d >= pub);
+  const perto = futuras.find(x=>n.slice(Math.max(0, x.i-220), x.i).indexOf(chave)>=0);
+  return perto || futuras.find(x=>x.hora) || futuras[0] || null;
+}
+
+function triDetalhes(d){
+  const c = d.conteudo, n = norm(c);
+  const pr = triPrazoJuiz(c);
+  const aud = triDataAto(c, 'audiencia', d.pub), per = triDataAto(c, 'peric', d.pub);
+  let tipoAud = /cejusc/.test(n) ? 'CONCILIAÇÃO CEJUSC' : /audiencia una|\buna\b/.test(n) ? 'UNA'
+    : /instrucao/.test(n) ? 'INSTRUÇÃO' : /conciliacao/.test(n) ? 'CONCILIAÇÃO' : /inicial/.test(n) ? 'INICIAL' : '';
+  const modal = /telepresencial|videoconferencia|virtual|remot|teams|zoom|link de acesso/.test(n) ? 'VIRTUAL'
+    : /hibrid/.test(n) ? 'HÍBRIDA' : /presencial/.test(n) ? 'PRESENCIAL' : '';
+  const perTipo = /insalubr/.test(n) ? 'INSALUBRIDADE' : /periculos/.test(n) ? 'PERICULOSIDADE' : /medic/.test(n) ? 'MÉDICA' : '';
+  const end = c.match(/(?:endere[cç]o|local)(?: da per[ií]cia)?\s*[:\-]\s*([^.;\n]{8,160})/i);
+  // a sentença é anterior à publicação: pega a última data do texto que não passa dela
+  const antes = triDatasTexto(c).filter(x=>!d.pub || x.d <= d.pub);
+  const sent = antes.length ? antes[antes.length-1].d : null;
+  const contra = /recurso ordinario/.test(n) ? 'RO' : /recurso inominado/.test(n) ? 'RI' : /apelacao/.test(n) ? 'AP'
+    : /embargos de declaracao/.test(n) ? 'ED' : (d.area==='trabalhista' ? 'RO' : d.juizado ? 'RI' : 'AP');
+  const valor = (c.match(/R\$\s*([\d.]+,\d{2})/) || [])[1] || '';
+  return {
+    prazo:pr.dias, prazoFonte:pr.fonte,
+    audData: aud ? triISO(aud.d) : '', audHora: aud ? aud.hora : '',
+    audTitulo: [TRI_SIGLA_AUD[d.area]||'', 'AUD', tipoAud, modal].filter(Boolean).join(' '),
+    perData: per ? triISO(per.d) : '', perHora: per ? per.hora : '', perTipo, perEnd: end ? end[1].trim() : '',
+    sentenca: sent ? triISO(sent) : '', contra, valor, alvaraTipo:''
+  };
+}
+
+/* junta as agendas de todos os cartões marcados, acertando as referências internas */
+function triMontaLocal(d, x, secs){
+  const r = {cartoes:[], excecao:false, agendas:[], alertas:[], infos:[]};
+  secs.forEach(sec=>{
+    const regra = TRI_REGRAS[sec];
+    if(!regra) return;
+    const p = regra(d, x), base = r.agendas.length;
+    const ajusta = o => { if(o && o.referencia) o.referencia = o.referencia.replace(/agenda:(\d+)/, (m, k)=>'agenda:'+(+k+base)); };
+    p.agendas.forEach(a=>{
+      ajusta(a.regra_fatal); ajusta(a.regra_pz);
+      // a mesma agenda por dois cartões (AI do 7.3 e do 7.5 contra a mesma decisão) vira uma só
+      const igual = r.agendas.find(o=>o.sigla===a.sigla && o.responsavel===a.responsavel &&
+        JSON.stringify(o.regra_fatal)===JSON.stringify(a.regra_fatal) && JSON.stringify(o.regra_pz)===JSON.stringify(a.regra_pz));
+      if(igual){ igual.cartao += ' e '+a.cartao; return; }
+      r.agendas.push(a);
+    });
+    (p.alertas||[]).forEach(a=>{ if(r.alertas.indexOf(a)<0) r.alertas.push(a); });
+    (p.infos||[]).forEach(a=>{ if(r.infos.indexOf(a)<0) r.infos.push(a); });
+  });
+  return r;
+}
+
+/* ---------- 8. telas ---------- */
+function triCartoesHTML(){
+  const e = triEstado, d = e.dados;
+  const ps = triPalpites(d).concat(triPalpitesExtra(d));
+  const lista = [];
+  ps.forEach(p=>{ if(lista.indexOf(p.t.sec)<0) lista.push(p.t.sec); });
+  e.sel.forEach(s=>{ if(lista.indexOf(s)<0) lista.push(s); });
+  let h = '';
+  if(!lista.length) h += '<p class="tg-info" style="margin:0 0 12px">Nenhum cartão bate pelas palavras da publicação. Escolha um na lista abaixo ou marque como exceção.</p>';
+  h += '<div class="tg-palpites">'+lista.map(sec=>{
+    const t = T.find(x=>x.sec===sec), p = ps.find(x=>x.t.sec===sec), on = e.sel.indexOf(sec)>=0;
+    return '<button class="tg-palpite tg-sel" role="checkbox" aria-checked="'+on+'" data-tgsel="'+sec+'">'+
+      '<span class="tg-marca" aria-hidden="true">'+(on?'✓':'')+'</span>'+
+      '<span class="cod" style="color:'+FASE[t.fase].hex+'">'+sec+'</span>'+
+      '<span><b>'+esc(t.titulo)+'</b>'+(p?'<span class="tg-trecho">'+esc(p.p.slice(0,6).join(', '))+'</span>':'')+'</span>'+
+      '<small>'+(p?p.n+(p.n>1?' palavras':' palavra'):'escolhido')+'</small></button>';
+  }).join('')+'</div>';
+  h += '<div class="tg-linha">'+
+    '<label class="tg-outro">Outro cartão<select id="tgOutro"><option value="">Escolha…</option>'+
+      T.map(t=>'<option value="'+t.sec+'">'+t.sec+' · '+esc(t.titulo)+'</option>').join('')+'</select></label>'+
+    '<button class="btn" data-tg="excecao">Nenhum destes: é uma exceção</button></div>'+
+    '<p class="calc-nota" style="margin:10px 0 0">Palpite pelas palavras da publicação. Confira o cartão e marque todos os que se aplicam: '+
+    'um despacho inaugural pode, por exemplo, negar a gratuidade, pedir documentos e negar a tutela ao mesmo tempo.</p>';
+  return h;
+}
+/* os cartões 7.3, 7.4 e 7.5 costumam vir juntos: se um aparece, os outros entram na lista */
+function triPalpitesExtra(d){
+  const n = norm(d.conteudo), out = [];
+  const add = (sec, re) => { if(re.test(n)){ const t = T.find(x=>x.sec===sec); if(t) out.push({t, n:0, p:[]}); } };
+  add('7.3', /indefiro (?:o pedido de |os beneficios da )?(?:justica gratuita|gratuidade)/);
+  add('7.4', /(?:comprove|juntar?|apresente)[^.]{0,80}(?:hipossuficien|imposto de renda|extratos?|holerite|ctps)/);
+  add('7.5', /indefiro (?:a |o pedido de )?(?:tutela|liminar)/);
+  return out;
+}
+
+function triDetalhesHTML(){
+  const e = triEstado, x = e.det;
+  const pede = {};
+  e.sel.forEach(s=>(TRI_PEDE[s]||[]).forEach(k=>{ pede[k] = true; }));
+  if(!Object.keys(pede).length) return '';
+  const inp = (k, rot, tipo, extra) => '<label>'+rot+'<input data-tgd="'+k+'" type="'+(tipo||'text')+'" value="'+escA(x[k]||'')+'"'+(extra||'')+'></label>';
+  const sel = (k, rot, ops) => '<label>'+rot+'<select data-tgd="'+k+'">'+
+    ops.map(o=>'<option value="'+escA(o[0])+'"'+(x[k]===o[0]?' selected':'')+'>'+esc(o[1])+'</option>').join('')+'</select></label>';
+  let h = '<div class="tg-grade">';
+  if(pede.prazo) h += inp('prazo','Prazo do ato, em dias úteis','number',' min="1"');
+  if(pede.aud) h += inp('audData','Data da audiência','date')+inp('audHora','Hora','time')+
+    '<label class="tg-largo">Título da audiência<input data-tgd="audTitulo" type="text" value="'+escA(x.audTitulo)+'"></label>';
+  if(pede.per) h += inp('perData','Data da perícia','date')+inp('perHora','Hora','time')+
+    sel('perTipo','Tipo',[['','Escolha'],['INSALUBRIDADE','Insalubridade'],['PERICULOSIDADE','Periculosidade'],['MÉDICA','Médica']])+
+    '<label class="tg-largo">Endereço da perícia<input data-tgd="perEnd" type="text" value="'+escA(x.perEnd)+'"></label>';
+  if(pede.sentenca) h += inp('sentenca','Data da sentença','date');
+  if(pede.contra) h += sel('contra','Recurso respondido',[['RO','RO · recurso ordinário, 8 dias'],['AP','AP · apelação, 15 dias'],
+    ['RI','RI · recurso inominado, 10 dias'],['ED','ED · embargos de declaração, 5 dias']]);
+  if(pede.alvara) h += inp('valor','Valor (R$)')+
+    sel('alvaraTipo','O crédito',[['','Escolha'],['liq','Dá quitação à lide (liquidação)'],['parc','É apenas parcial']]);
+  h += '</div>';
+  if(pede.prazo) h += '<p class="calc-nota" style="margin:10px 0 0">Prazo: '+esc(x.prazoFonte)+'.</p>';
+  if(pede.sentenca) h += '<p class="calc-nota" style="margin:6px 0 0">A data da sentença foi lida do texto (a última data anterior à publicação): confira.</p>';
+  return h;
+}
+
+function triExcecaoHTML(){
+  const e = triEstado;
+  return '<div class="tg-excecao">EXCEÇÃO: validar com o Ygor antes de criar as agendas</div>'+
+    '<p class="tg-dica">Nenhum cartão se aplica com segurança. Peça a análise a uma IA gratuita: copie o pedido, cole numa conversa nova '+
+    '(Claude, ChatGPT ou Gemini), envie, e cole aqui embaixo a resposta inteira.</p>'+
+    '<div class="tg-linha" style="margin:0 0 12px"><button class="btn ouro" data-tg="pedido">Copiar pedido para a IA</button>'+
+    '<a class="btn" href="https://claude.ai/new" target="_blank" rel="noopener">Claude</a>'+
+    '<a class="btn" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>'+
+    '<a class="btn" href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a></div>'+
+    '<textarea class="tg-texto tg-resp" id="tgResposta" spellcheck="false" placeholder="Cole aqui a resposta da IA">'+esc(e.respostaTxt)+'</textarea>'+
+    '<div class="tg-linha"><button class="btn ouro" data-tg="montar">Montar agendas</button>'+
+    '<button class="btn-mini" data-tg="voltar">Voltar aos cartões</button></div>';
+}
+
+function triResultadoHTML(){
+  const e = triEstado, d = e.dados;
+  if(!d) return '';
+  if(e.etiqueta){
+    return '<div class="tg-aviso roxo"><b>Etiqueta roxa C/ JULIANA TCHANI.</b> Ela se sobrepõe a todos os cartões: '+
+      'não é preciso ler o teor. Crie só esta agenda e conclua a publicação.</div>'+triEtiqueta(d).map(triCaixa).join('')+TRI_NOTA;
+  }
+  let r;
+  if(e.excecao){
+    if(e.erro) return '<div class="tg-aviso vermelho">'+esc(e.erro)+'</div>';
+    if(!e.resposta) return '<div class="calc-vazio">As agendas aparecem aqui depois que você colar a resposta da IA.</div>';
+    r = e.resposta;
+  }else{
+    if(!e.sel.length) return '<div class="calc-vazio">Marque o cartão no passo 3 para ver as agendas.</div>';
+    r = triMontaLocal(d, e.det, e.sel);
+  }
+  let h = '';
+  if(e.excecao && r.excecao !== false){
+    h += '<div class="tg-excecao">EXCEÇÃO: validar com o Ygor antes de criar as agendas</div>';
+    if(r.motivo_excecao) h += '<p class="tg-info" style="margin:0 0 12px">'+esc(r.motivo_excecao)+'</p>';
+  }
+  if(r.resumo_do_teor) h += '<p class="tg-resumo"><b>O que o juiz determinou.</b> '+esc(r.resumo_do_teor)+'</p>';
+  (r.infos||[]).forEach(t=>{ h += '<div class="tg-aviso neutro">'+esc(t)+'</div>'; });
+  const lista = triCalcula(r, d);
+  if(lista.length){
+    h += '<div class="tg-topo-ag"><span class="rot" style="margin:0">Agendas ('+lista.length+')</span>'+
+         '<button class="btn-mini" data-copia="'+escA(triTextoTudo(lista))+'">Copiar tudo</button></div>';
+    h += lista.map(triCaixa).join('');
+  }else if(!(r.infos||[]).length && !(r.alertas||[]).length){
+    h += '<div class="sem-agenda"><strong>Nenhuma agenda a criar</strong><span>Conclua a publicação para que ela conste no histórico da pasta.</span></div>';
+  }
+  if(r.alertas && r.alertas.length){
+    h += '<div class="tg-aviso"><b>Pontos de atenção</b><ul>'+r.alertas.map(a=>'<li>'+esc(a)+'</li>').join('')+'</ul></div>';
+  }
+  if(r.cartao_sugerido){
+    h += '<div class="tg-linha"><button class="btn" data-copia="'+escA(JSON.stringify(r.cartao_sugerido, null, 1))+'">Copiar cartão sugerido</button>'+
+         '<span class="calc-nota" style="margin:0">Para o Ygor avaliar e, se aprovar, incorporar ao fluxograma.</span></div>';
+  }
+  return h+TRI_NOTA;
+}
+
+function triPinta(){
+  const e = triEstado, tem = !!(e.dados && e.texto.trim());
+  const el = id => document.getElementById(id);
+  if(!el('tgDados')) return;
+  const det = tem && !e.etiqueta && !e.excecao ? triDetalhesHTML() : '';
+  el('tgPasso2').hidden = !tem;
+  el('tgPasso3').hidden = !tem || e.etiqueta || e.excecao;
+  el('tgPasso4').hidden = !det;
+  el('tgPassoExc').hidden = !tem || e.etiqueta || !e.excecao;
+  el('tgPasso5').hidden = !tem;
+  el('tgNum5').textContent = e.etiqueta ? '3' : e.excecao ? '5' : det ? '5' : '4';
+  el('tgDados').innerHTML = tem ? triDadosHTML() : '';
+  el('tgCartoes').innerHTML = tem && !e.etiqueta && !e.excecao ? triCartoesHTML() : '';
+  el('tgDetalhes').innerHTML = det;
+  if(tem && e.excecao && !el('tgResposta')) el('tgExc').innerHTML = triExcecaoHTML();
+  el('tgResultado').innerHTML = tem ? triResultadoHTML() : '';
+}
+function triPintaResultado(){
+  const r = document.getElementById('tgResultado');
+  if(r) r.innerHTML = triResultadoHTML();
+}
+
+function telaTriagem(){
+  const e = triEstado;
+  let h = '<div class="man"><h2>Triagem de publicações</h2>'+
+    '<p class="intro">Cole a publicação como ela chega. A triagem separa os dados, indica o cartão e monta cada agenda com '+
+    'título, data e observações para o Astrea. Ela sugere; quem confere e cria as agendas é você.</p></div>';
+  h += '<section class="tg-passo"><h3><span class="tg-n">1</span>Cole a publicação</h3>'+
+    '<p class="tg-dica">O texto inteiro, com o cabeçalho do diário: é dele que saem a data de publicação, o processo e a vara.</p>'+
+    '<textarea class="tg-texto" id="tgTexto" spellcheck="false" placeholder="Diário do Tribunal… Publicado em: … Processo: … Conteúdo: …">'+esc(e.texto)+'</textarea>'+
+    '<div class="tg-linha">'+
+      '<button class="chave" role="switch" data-tg="etiqueta" aria-checked="'+(e.etiqueta?'true':'false')+'"><i aria-hidden="true"></i>'+
+      'O processo tem a etiqueta roxa <span class="pilula" style="margin-left:4px">C/ JULIANA TCHANI</span></button>'+
+      '<button class="btn-mini" data-tg="limpar">Limpar tudo</button>'+
+    '</div>'+
+    '<p class="calc-nota" style="margin:10px 0 0">A etiqueta não aparece na publicação, só na pasta do Astrea: confira sempre.</p></section>';
+  h += '<section class="tg-passo" id="tgPasso2" hidden><h3><span class="tg-n">2</span>Confira os dados</h3>'+
+    '<p class="tg-dica">Lidos automaticamente. Corrija o que estiver errado: a data de publicação é a base de todas as contas.</p>'+
+    '<div id="tgDados"></div></section>';
+  h += '<section class="tg-passo" id="tgPasso3" hidden><h3><span class="tg-n">3</span>Confirme o cartão</h3><div id="tgCartoes"></div></section>';
+  h += '<section class="tg-passo" id="tgPasso4" hidden><h3><span class="tg-n">4</span>Confira os detalhes</h3>'+
+    '<p class="tg-dica">Lidos do texto da publicação. Confira e corrija se preciso: as agendas se atualizam na hora.</p>'+
+    '<div id="tgDetalhes"></div></section>';
+  h += '<section class="tg-passo" id="tgPassoExc" hidden><h3><span class="tg-n">4</span>Análise da exceção</h3><div id="tgExc">'+
+    (e.excecao ? triExcecaoHTML() : '')+'</div></section>';
+  h += '<section class="tg-passo" id="tgPasso5" hidden><h3><span class="tg-n" id="tgNum5">5</span>Agendas para o Astrea</h3>'+
+    '<div id="tgResultado"></div></section>';
+  return h;
+}
+
+/* texto novo: tudo é relido, e o cartão mais provável já vem marcado */
+function triAtualiza(){
+  const e = triEstado;
+  e.dados = e.texto.trim() ? triExtrai(e.texto) : null;
+  e.det = e.dados ? triDetalhes(e.dados) : null;
+  const ps = e.dados ? triPalpites(e.dados) : [];
+  e.sel = ps.length ? [ps[0].t.sec] : [];
+  // despacho inaugural: gratuidade, documentos e tutela costumam vir juntos
+  if(e.dados && ['7.3','7.4','7.5'].indexOf(e.sel[0])>=0)
+    triPalpitesExtra(e.dados).forEach(x=>{ if(e.sel.indexOf(x.t.sec)<0) e.sel.push(x.t.sec); });
+  e.excecao = e.sel[0]==='7.7';
+  e.resposta = null; e.respostaTxt = ''; e.erro = '';
+  const ex = document.getElementById('tgExc');
+  if(ex) ex.innerHTML = e.excecao ? triExcecaoHTML() : '';
+  triPinta();
+}
+
+document.addEventListener('input', e=>{
+  if(e.target.id==='tgTexto'){
+    triEstado.texto = e.target.value;
+    clearTimeout(triAtraso);
+    triAtraso = setTimeout(triAtualiza, 250);
+    return;
+  }
+  if(e.target.id==='tgResposta'){ triEstado.respostaTxt = e.target.value; return; }
+  const k = e.target.dataset && e.target.dataset.tgc;
+  if(k && triEstado.dados && e.target.tagName==='INPUT'){
+    const d = triEstado.dados;
+    if(k==='pub') d.pub = e.target.value ? triParse(e.target.value).d : null;
+    else d[k] = e.target.value;
+    triPintaResultado();
+    return;
+  }
+  const dk = e.target.dataset && e.target.dataset.tgd;
+  if(dk && triEstado.det && e.target.tagName==='INPUT'){
+    triEstado.det[dk] = dk==='prazo' ? (parseInt(e.target.value,10) || null) : e.target.value;
+    if(dk==='prazo') triEstado.det.prazoFonte = 'informado pela estagiária';
+    triPintaResultado();
+  }
+});
+document.addEventListener('change', e=>{
+  if(e.target.id==='tgOutro' && e.target.value){
+    if(triEstado.sel.indexOf(e.target.value)<0) triEstado.sel.push(e.target.value);
+    if(e.target.value==='7.7') triEstado.excecao = true;
+    triPinta();
+    return;
+  }
+  const dk = e.target.dataset && e.target.dataset.tgd;
+  if(dk && triEstado.det && e.target.tagName==='SELECT'){
+    triEstado.det[dk] = e.target.value;
+    triPintaResultado();
+    return;
+  }
+  const k = e.target.dataset && e.target.dataset.tgc;
+  if(!k || !triEstado.dados || e.target.tagName!=='SELECT') return;
+  if(k==='juizado') triEstado.dados.juizado = e.target.value==='1';
+  else triEstado.dados[k] = e.target.value;
+  triPinta();
+});
+document.addEventListener('click', e=>{
+  const s = e.target.closest('[data-tgsel]');
+  if(s){
+    const sec = s.dataset.tgsel, sel = triEstado.sel, i = sel.indexOf(sec);
+    if(i>=0) sel.splice(i,1); else sel.push(sec);
+    if(sec==='7.7' && i<0) triEstado.excecao = true;
+    triPinta();
+    return;
+  }
+  const b = e.target.closest('[data-tg]');
+  if(!b) return;
+  const v = b.dataset.tg;
+  if(v==='etiqueta'){
+    triEstado.etiqueta = !triEstado.etiqueta;
+    b.setAttribute('aria-checked', triEstado.etiqueta ? 'true' : 'false');
+    triPinta();
+  }
+  if(v==='limpar'){
+    triEstado = {texto:'', dados:null, etiqueta:false, sel:[], det:null, excecao:false, respostaTxt:'', resposta:null, erro:''};
+    ir('triagem', true);
+  }
+  if(v==='excecao' || v==='voltar'){
+    triEstado.excecao = v==='excecao';
+    if(v==='voltar') triEstado.sel = triEstado.sel.filter(x=>x!=='7.7');
+    const ex = document.getElementById('tgExc');
+    if(ex) ex.innerHTML = triEstado.excecao ? triExcecaoHTML() : '';
+    triPinta();
+    const alvo = document.getElementById(triEstado.excecao ? 'tgPassoExc' : 'tgPasso3');
+    if(alvo) alvo.scrollIntoView({block:'start', behavior:'smooth'});
+  }
+  if(v==='pedido' && triEstado.dados) copiaTexto(triPedido(triEstado.dados), b);
+  if(v==='montar'){
+    const campo = document.getElementById('tgResposta');
+    triEstado.respostaTxt = campo ? campo.value : triEstado.respostaTxt;
+    try{ triEstado.resposta = triLeJSON(triEstado.respostaTxt); triEstado.erro = ''; }
+    catch(err){ triEstado.resposta = null; triEstado.erro = err.message; }
+    triPintaResultado();
+    const r = document.getElementById('tgPasso5');
+    if(r) r.scrollIntoView({block:'start', behavior:'smooth'});
+  }
+});
+
 /* ---------- roteamento ---------- */
 function migalhaDe(rota){
   if(rota==='inicio') return 'Início · todos os cartões';
   if(rota==='calc') return 'Calculadora de prazos';
+  if(rota==='triagem') return 'Triagem de publicações';
   if(rota==='tribunais') return 'Tribunais e OAB';
   if(rota==='passos') return 'Como tratar uma publicação';
   if(rota==='sumulas') return 'Compêndio de jurisprudência';
@@ -1892,6 +2781,7 @@ function ir(rota, semScroll){
   palco.innerHTML = rota==='inicio' ? telaInicio()
                   : rota==='calc' ? telaCalculadora()
                   : rota==='passos' ? telaPassos()
+                  : rota==='triagem' ? telaTriagem()
                   : rota==='tribunais' ? telaTribunais()
                   : rota==='sumulas' || rota.startsWith('s/') ? telaSumulas()
                   : rota.startsWith('t/') ? telaTeor(rota.slice(2))
@@ -1900,6 +2790,7 @@ function ir(rota, semScroll){
   pintaIndice();
   document.getElementById('rail').classList.remove('on');
   if(!semScroll) window.scrollTo({top:0,behavior:'instant'});
+  if(rota==='triagem') triPinta();
   if(rota==='sumulas' || rota.startsWith('s/')){
     sumDesenha();
     if(rota.startsWith('s/')) sumVaiPara(rota.slice(2));
@@ -2074,7 +2965,7 @@ document.getElementById('busca').addEventListener('input', e=>{
 document.getElementById('abrirRail').addEventListener('click', ()=>document.getElementById('rail').classList.toggle('on'));
 
 document.addEventListener('keydown', e=>{
-  if(e.key==='/' && document.activeElement.id!=='busca' && document.activeElement.id!=='sumBusca'){
+  if(e.key==='/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
     e.preventDefault();
     // dentro do compêndio, a barra foca a busca do próprio compêndio
     const sb = document.getElementById('sumBusca');
@@ -2126,7 +3017,7 @@ setInterval(()=>{
 /* ---------- arranque ---------- */
 pintaFiltros();
 const inicial = location.hash.slice(1);
-const ROTAS_FIXAS = ['inicio','calc','tribunais','passos','sumulas'];
+const ROTAS_FIXAS = ['inicio','calc','tribunais','passos','sumulas','triagem'];
 const rotaSumula = inicial.indexOf('s/')===0 && sumDados().some(v=>'s/'+v.id===inicial);
 ir(inicial && (ROTAS_FIXAS.indexOf(inicial)>=0 || rotaSumula || T.some(t=>'t/'+t.sec===inicial) || SECOES_MANUAL.some(s=>'m/'+s.id===inicial)) ? inicial : 'inicio');
 

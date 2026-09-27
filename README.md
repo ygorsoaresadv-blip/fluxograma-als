@@ -5,6 +5,14 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 
 ## O que tem dentro
 
+- **Triagem de publicações.** Cola-se a publicação inteira, como chega; a aba lê a data de
+  publicação, o processo, a vara, a área (pelo número CNJ) e o rito, sugere o cartão (a estagiária
+  confirma com um clique) e monta cada agenda com os três campos que usamos no Astrea: título,
+  data e observações. Sem IA e sem custo: as regras de cada cartão estão no código e as datas são
+  calculadas ali, em dias úteis sem sábados e domingos (feriados ficam com o advogado responsável).
+  Com a etiqueta roxa marcada, sai só o `CIÊNCIA E PROVIDÊNCIA`. Nas exceções, a aba monta um
+  pedido para colar numa IA gratuita (Claude, ChatGPT ou Gemini) e desenha as agendas a partir da
+  resposta, com a tarja de validar com o Ygor.
 - **Como tratar uma publicação.** As seis etapas do trabalho, da abertura no Astrea até a
   conclusão, na ordem em que acontecem.
 - **22 cartões de teor**, um por tipo de publicação, agrupados nas três fases do processo
@@ -32,6 +40,8 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 
 | Ação | Como |
 |---|---|
+| Tratar uma publicação | **Triagem**, no topo: cole, confira os dados e o cartão, copie título, data e observações |
+| Publicação que não se encaixa | Na triagem, **Nenhum destes: é uma exceção**, e cole o pedido numa IA gratuita |
 | Buscar um teor | Digite na busca da coluna esquerda, ou tecle `/` |
 | Buscar pelas palavras do juiz | A busca aceita trechos da publicação, como `manifestem sobre os cálculos` |
 | Filtrar por área | Trabalhista, cível ou previdenciário, nas pastilhas do topo do índice |
@@ -45,7 +55,7 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 | Percorrer os resultados pelo teclado | Setas ↑ ↓ a partir da busca; Enter abre o verbete, Esc volta à busca |
 | Ver se o termo buscado também é jurisprudência | A busca da coluna esquerda mostra quantos verbetes casam e leva até eles |
 | Citar em peça | Botão **Copiar teor** no rodapé do cartão; sai com tribunal, número, teor e fonte |
-| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as outras telas usam `#passos`, `#calc` e `#tribunais`, e cada verbete tem o seu, como `#s/tst-331`, `#s/oj-sdi1-191`, `#s/pn-119` e `#s/irr-128` |
+| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as outras telas usam `#triagem`, `#passos`, `#calc` e `#tribunais`, e cada verbete tem o seu, como `#s/tst-331`, `#s/oj-sdi1-191`, `#s/pn-119` e `#s/irr-128` |
 
 Funciona em celular e mantém sempre o tema claro, nas cores da identidade do escritório. A contagem de prazos é sempre em dias úteis.
 
@@ -102,8 +112,12 @@ O arquivo já se chama `index.html` e o `.nojekyll` evita que o GitHub tente pro
 Ao mudar uma conduta, altere o cartão correspondente e registre o motivo na mensagem do commit.
 Assim o histórico do repositório passa a ser o registro de por que o fluxo é como é.
 
-Ao criar um cartão novo, lembre de dois lugares: o objeto `D.teores` e o vocabulário de busca
-em `CHAVES`. Sem o segundo, a busca não acha o cartão pelas palavras da publicação.
+Ao criar um cartão novo, lembre de três lugares: o objeto `D.teores`, o vocabulário de busca
+em `CHAVES` e a regra da triagem em `TRI_REGRAS` (com `TRI_PEDE`, se o cartão precisar de um
+detalhe como data de audiência ou prazo do juiz). Sem o segundo, nem a busca nem a triagem acham o
+cartão pelas palavras da publicação; sem o terceiro, a triagem reconhece o cartão mas não monta as
+agendas. Na triagem, todo prazo é em dias úteis; sem prazo do juiz nem da lei, valem 5 dias
+(art. 218, § 3º, do CPC).
 
 Ao mexer no compêndio, altere apenas o bloco `sumulasDados`, que guarda
 `{verificadoEm, fontes, registros}`. Cada verbete é um objeto com `id`, `tribunal`, `tipo`,
