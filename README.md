@@ -15,7 +15,7 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
   resposta, com a tarja de validar com o Ygor.
 - **Como tratar uma publicação.** As seis etapas do trabalho, da abertura no Astrea até a
   conclusão, na ordem em que acontecem.
-- **22 cartões de teor**, um por tipo de publicação, agrupados nas três fases do processo
+- **23 cartões de teor**, um por tipo de publicação (e o fluxo de habilitação de reclamada, que abre a fase de conhecimento), agrupados nas três fases do processo
   (conhecimento, recursal e execução), com as agendas a criar, as datas e o responsável.
   Cada cartão traz um passo a passo marcável e o que ter em mãos antes de perguntar ao Ygor.
 - **Calculadora de prazos**, com duas contas: do prazo fatal para o prazo interno, que
