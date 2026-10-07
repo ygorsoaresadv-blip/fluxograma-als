@@ -37,7 +37,7 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 - **Organização de docs da reclamada**, no fim do índice: os três conjuntos de documentos pedidos à
   reclamada para a contestação, a lógica de organização, a ordem de separação em 16 itens (um PDF
   por item), as boas práticas de nome e qualidade dos arquivos e a lista de pendências que a
-  estagiária só registra e leva ao advogado. Link direto: `#docs`.
+  responsável só registra e leva ao advogado. Link direto: `#docs`.
 - **Tribunais e OAB**: código de segmento e sigla de TJ, TRF e TRT, e as inscrições do André.
 
 ## Como usar
