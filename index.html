@@ -592,6 +592,25 @@ mark{background:var(--marca-texto);color:inherit;border-radius:3px;padding:0 1px
   .tg-campo .k{grid-column:1/-1}
 }
 
+/* ---------- organização de documentos da reclamada ---------- */
+.conjuntos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin:16px 0 0}
+.conjunto{background:var(--elev);border-radius:var(--r-l);box-shadow:var(--sombra);padding:18px 20px;min-width:0}
+.conjunto .rot-c{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dourado-txt)}
+.conjunto h3{margin:4px 0 10px;font-size:17px;line-height:1.28;letter-spacing:-.02em}
+.conjunto ul{margin:0;padding-left:18px;font-size:14.5px;line-height:1.55}
+.conjunto li+li{margin-top:3px}
+.conjunto ul ul{margin-top:4px}
+.conjunto .se{color:var(--label3)}
+.bp{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;max-width:680px}
+.bp li{background:var(--elev);border-radius:var(--r-m);box-shadow:var(--sombra);padding:14px 18px;font-size:15px;line-height:1.55}
+.bp li b{display:block;font-weight:600;margin-bottom:2px;color:var(--tinta)}
+table.docs td:first-child{font-family:var(--mono);font-weight:600;color:var(--label2);width:1%;white-space:nowrap}
+table.docs td:nth-child(2){font-weight:600}
+table.docs td:nth-child(3){text-align:center;white-space:nowrap}
+.pend{margin:14px 0 0;max-width:680px}
+.pend ul{margin:8px 0 0;padding-left:18px;font-size:15px}
+.pend li+li{margin-top:4px}
+
 /* ---------- responsivo ---------- */
 .abrir-rail{display:none}
 @media (max-width:960px){
@@ -1043,6 +1062,9 @@ function pintaIndice(){
        '<span class="cod">＋</span><span>Calculadora de prazos</span></button>';
   h += '<button class="item" data-rota="tribunais" aria-current="'+(rotaAtual==='tribunais')+'">'+
        '<span class="cod">⚖</span><span>Tribunais e OAB</span></button>';
+  h += '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>Reclamada</div>';
+  h += '<button class="item" data-rota="docs" aria-current="'+(rotaAtual==='docs')+'">'+
+       '<span class="cod">▤</span><span>Organização de docs da reclamada</span></button>';
   alvo.innerHTML = h;
 }
 
@@ -2779,12 +2801,80 @@ document.addEventListener('click', e=>{
   }
 });
 
+/* ---------- organização de documentos da reclamada ---------- */
+const DOCS_CONJUNTOS = [
+  {n:1, t:'Contrato, jornada, pagamento e rescisão', itens:['Ficha de empregado','Contrato de trabalho','Acordo de prorrogação de horas',
+    'Acordo de compensação de horas','Holerites','Cartões de ponto','TRCT','Comprovante de pagamento do TRCT','Extrato de FGTS',
+    'Comprovante de entrega de uniformes','Guia do seguro-desemprego','Carta de pedido de demissão (se houver)','ASOs']},
+  {n:2, t:'Saúde e segurança do trabalho', itens:['Fichas de EPIs','PPRA','PGR','LTCAT']},
+  {n:3, t:'Benefícios', itens:['Extratos de benefícios:'], sub:['Vale-refeição','Vale-alimentação','Cesta básica','Vale-transporte']}
+];
+const DOCS_ORDEM = [
+  ['01','Contrato de trabalho','1','Documento de abertura. Contrato de experiência e prorrogação primeiro, se houver, e depois o contrato por prazo indeterminado.'],
+  ['02','Ficha de empregado','1','Data de admissão, função e salário inicial.'],
+  ['03','Acordo de prorrogação de horas','1','Por data de assinatura.'],
+  ['04','Acordo de compensação de horas','1','Por data de assinatura.'],
+  ['05','Cartões de ponto','1','Mês a mês, da admissão à demissão, sem pular nenhum mês.'],
+  ['06','Holerites','1','Mês a mês, em ordem cronológica. Manter juntos os de férias, 13º e adiantamentos, na data correspondente.'],
+  ['07','Carta de pedido de demissão (se houver)','1','Antecede o TRCT.'],
+  ['08','TRCT','1','Com o termo de quitação ou homologação, se houver.'],
+  ['09','Comprovante de pagamento do TRCT','1','Logo depois do TRCT, para comprovar a data do pagamento.'],
+  ['10','Guia do seguro-desemprego','1','Fecha a rescisão.'],
+  ['11','Extrato de FGTS','1','Do primeiro ao último depósito, com a multa de 40% se houver.'],
+  ['12','ASOs','1','Admissional, depois periódicos por data e, por fim, o demissional.'],
+  ['13','Fichas de EPIs','2','Por data de entrega, da primeira à última.'],
+  ['14','Comprovante de entrega de uniformes','1','Por data de entrega.'],
+  ['15','PPRA, PGR e LTCAT','2','Cada um em arquivo próprio, nesta ordem. Separar apenas os que cobrem o período contratual.'],
+  ['16','Extratos de benefícios','3','Vale-refeição, vale-alimentação, cesta básica e vale-transporte, nesta ordem, cada um em ordem cronológica.']
+];
+
+function telaDocs(){
+  let h = '<div class="man"><h2>Organização de documentos para a contestação</h2>'+
+    '<p class="intro">Como separar e ordenar os documentos que a reclamada envia, antes de juntar a contestação. Três conjuntos, uma ordem fixa e um arquivo PDF por item.</p>';
+
+  h += '<h3>1. Conjuntos de documentos solicitados</h3><div class="conjuntos">';
+  DOCS_CONJUNTOS.forEach(c=>{
+    h += '<div class="conjunto"><span class="rot-c">Conjunto '+c.n+'</span><h3>'+esc(c.t)+'</h3><ul>'+
+      c.itens.map((i,k)=>'<li>'+esc(i)+(c.sub && k===c.itens.length-1 ? '<ul>'+c.sub.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>' : '')+'</li>').join('')+
+      '</ul></div>';
+  });
+  h += '</div>';
+
+  h += '<h3>2. Lógica de organização</h3>';
+  [['Do principal ao subsidiário','Primeiro os documentos que provam o que mais se discute: contrato, função, salário, jornada e rescisão. Depois os de saúde e segurança, e por último os benefícios.'],
+   ['Cronologia dentro de cada item','Sempre do mais antigo para o mais novo, da admissão à demissão.'],
+   ['Um item é um arquivo PDF','Cada item vira um arquivo PDF, numerado na ordem da tabela abaixo.']].forEach((r,i)=>{
+    h += '<div class="regra"><div class="num">'+(i+1)+'</div><div><h3>'+esc(r[0])+'</h3><p>'+esc(r[1])+'</p></div></div>';
+  });
+
+  h += '<h3>3. Ordem de separação</h3>'+
+    '<table class="docs"><thead><tr><th>Nº</th><th>Documento</th><th>Conjunto</th><th>Como organizar</th></tr></thead><tbody>'+
+    DOCS_ORDEM.map(l=>'<tr><td>'+l[0]+'</td><td>'+esc(l[1])+'</td><td>'+l[2]+'</td><td>'+esc(l[3])+'</td></tr>').join('')+
+    '</tbody></table>';
+
+  h += '<h3>4. Boas práticas</h3><ul class="bp">'+
+    '<li><b>Nome dos arquivos</b>Use <span class="mono-inline">01 - Contrato de trabalho.pdf</span> ou <span class="mono-inline">05 - Cartões de ponto (parte 1 de 2).pdf</span>. O número garante a ordem no upload.</li>'+
+    '<li><b>Qualidade</b>Documentos legíveis, na posição correta, sem páginas cortadas e com assinatura quando houver.</li>'+
+    '<li><b>Tamanho</b>Se passar do limite do PJe, divida em partes, sempre em ordem cronológica.</li>'+
+    '<li><b>Dados</b>Confira nome, CPF e datas do reclamante. Não misture documentos de outros empregados.</li>'+
+    '</ul>';
+
+  h += '<h3>5. Lista de pendências e divergências</h3>'+
+    '<div class="aviso-roxo pend" style="background:var(--laranja-bg);border-color:transparent"><div class="k" style="color:var(--laranja)">A estagiária não resolve esses pontos</div>'+
+    '<p>Apenas registra e avisa o advogado:</p><ul>'+
+    '<li>Documento não enviado pela empresa (mês de ponto ou holerite faltando, ASO ausente).</li>'+
+    '<li>Pedido de demissão sem assinatura do reclamante ou sem data.</li></ul></div>';
+
+  return h+'</div>';
+}
+
 /* ---------- roteamento ---------- */
 function migalhaDe(rota){
   if(rota==='inicio') return 'Início · todos os cartões';
   if(rota==='calc') return 'Calculadora de prazos';
   if(rota==='triagem') return 'Triagem de publicações';
   if(rota==='tribunais') return 'Tribunais e OAB';
+  if(rota==='docs') return 'Organização de documentos para a contestação';
   if(rota==='passos') return 'Como tratar uma publicação';
   if(rota==='sumulas') return 'Compêndio de jurisprudência';
   if(rota.startsWith('s/')){
@@ -2809,6 +2899,7 @@ function ir(rota, semScroll){
                   : rota==='passos' ? telaPassos()
                   : rota==='triagem' ? telaTriagem()
                   : rota==='tribunais' ? telaTribunais()
+                  : rota==='docs' ? telaDocs()
                   : rota==='sumulas' || rota.startsWith('s/') ? telaSumulas()
                   : rota.startsWith('t/') ? telaTeor(rota.slice(2))
                   : telaManual(rota.slice(2));
@@ -3043,7 +3134,7 @@ setInterval(()=>{
 /* ---------- arranque ---------- */
 pintaFiltros();
 const inicial = location.hash.slice(1);
-const ROTAS_FIXAS = ['inicio','calc','tribunais','passos','sumulas','triagem'];
+const ROTAS_FIXAS = ['inicio','calc','tribunais','passos','sumulas','triagem','docs'];
 const rotaSumula = inicial.indexOf('s/')===0 && sumDados().some(v=>'s/'+v.id===inicial);
 ir(inicial && (ROTAS_FIXAS.indexOf(inicial)>=0 || rotaSumula || T.some(t=>'t/'+t.sec===inicial) || SECOES_MANUAL.some(s=>'m/'+s.id===inicial)) ? inicial : 'inicio');
 

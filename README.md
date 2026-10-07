@@ -34,6 +34,10 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
   Cada verbete tem botão para copiar o teor pronto para citação e para copiar o link direto.
 - **Fluxo extraordinário da etiqueta roxa** (`C/ JULIANA TCHANI`), que se sobrepõe a todos os cartões.
   A Dra. Juliana Tchani recebe exclusivamente esses processos; o cível é do Dr. Mateus.
+- **Organização de docs da reclamada**, no fim do índice: os três conjuntos de documentos pedidos à
+  reclamada para a contestação, a lógica de organização, a ordem de separação em 16 itens (um PDF
+  por item), as boas práticas de nome e qualidade dos arquivos e a lista de pendências que a
+  estagiária só registra e leva ao advogado. Link direto: `#docs`.
 - **Tribunais e OAB**: código de segmento e sigla de TJ, TRF e TRT, e as inscrições do André.
 
 ## Como usar
@@ -55,7 +59,7 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 | Percorrer os resultados pelo teclado | Setas ↑ ↓ a partir da busca; Enter abre o verbete, Esc volta à busca |
 | Ver se o termo buscado também é jurisprudência | A busca da coluna esquerda mostra quantos verbetes casam e leva até eles |
 | Citar em peça | Botão **Copiar teor** no rodapé do cartão; sai com tribunal, número, teor e fonte |
-| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as outras telas usam `#triagem`, `#passos`, `#calc` e `#tribunais`, e cada verbete tem o seu, como `#s/tst-331`, `#s/oj-sdi1-191`, `#s/pn-119` e `#s/irr-128` |
+| Link direto para um cartão | O endereço muda sozinho, por exemplo `#t/8.2`; o manual usa `#m/regras`, as outras telas usam `#triagem`, `#passos`, `#calc`, `#tribunais` e `#docs`, e cada verbete tem o seu, como `#s/tst-331`, `#s/oj-sdi1-191`, `#s/pn-119` e `#s/irr-128` |
 
 Funciona em celular e mantém sempre o tema claro, nas cores da identidade do escritório. A contagem de prazos é sempre em dias úteis.
 
