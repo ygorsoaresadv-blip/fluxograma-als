@@ -38,6 +38,9 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
   reclamada para a contestação, a lógica de organização, a ordem de separação em 16 itens (um PDF
   por item), as boas práticas de nome e qualidade dos arquivos e a lista de pendências que a
   responsável só registra e leva ao advogado. Link direto: `#docs`.
+  A tela traz também o **prompt de organização**, com botão **Copiar prompt**: cola-se numa IA com a pasta
+  dos documentos conectada, e ela separa os PDFs na ordem do escritório e devolve a relação do que falta
+  e o rascunho do e-mail de cobrança. O texto do prompt fica no bloco `promptDocs` do `index.html`.
 - **Tribunais e OAB**: código de segmento e sigla de TJ, TRF e TRT, e as inscrições do André.
 
 ## Como usar
