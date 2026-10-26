@@ -138,6 +138,11 @@ opções de status e a lista de temas se montam sozinhas a partir dos dados: um 
 opção sem que se toque no código. Espécie nova, porém, pede uma linha em `SUM_ESPECIES` e o
 nome por extenso em `sumNome`.
 
+## Para quem for alterar o projeto
+
+Leia o `PROJETO.md`: estrutura do `index.html`, como criar ou mudar um cartão e a regra da triagem, as regras
+de negócio decididas pelo Ygor, as armadilhas já encontradas e como publicar.
+
 ## Dúvidas sobre o conteúdo
 
 Ponto único: advogado júnior trabalhista (Ygor Pinheiro).
