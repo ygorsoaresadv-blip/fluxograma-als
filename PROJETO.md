@@ -118,15 +118,17 @@ Estilo Apple com as cores da identidade do escritório, **sempre claro** (não h
 ## 8. Regras de negócio decididas pelo Ygor
 
 **Pessoas**
-- Dr. André (sócio): todas as audiências; OAB principal SP 284388.
-- Gustavo Freire: advogado sênior trabalhista, delegador e revisor (recursos e contrarrazões do trabalhista).
-- Dr. Mateus: advogado pleno trabalhista e **advogado cível** (todo o cível, exceto cálculos e cumprimento de sentença).
+- Dr. André (sócio): audiências trabalhistas de instrução/una **presenciais** (da RF ou dos reclamantes); perícias só para controle; OAB principal SP 284388.
+- Gustavo Freire: advogado sênior trabalhista, delegador e revisor (recursos e contrarrazões do trabalhista); audiências trabalhistas de instrução/una **online**, inclusive da RF.
+- Dr. Mateus: advogado pleno trabalhista e **advogado cível** (todo o cível, exceto cálculos e cumprimento de sentença); audiências cíveis (online ou presenciais) e audiências trabalhistas de **conciliação online**, inclusive da RF.
 - Ygor Pinheiro: advogado júnior trabalhista; cumprimento de sentença, manifestação de cálculos, impugnação ao laudo, e o ponto único de dúvida.
 - Elisangela: previdenciário inteiro, e cálculos e cumprimento de sentença do cível.
 - Rui: contador externo (liquidação, só trabalhista). Igor Marran: financeiro. Ellen: assistente técnica externa (sem agenda no Astrea).
 - **Dra. Juliana Tchani: só o fluxo extraordinário da etiqueta roxa** (`C/ JULIANA TCHANI`). Nunca recebe cartões comuns.
 - Letícia Leite: responsável pela agenda SOLICITAR DOCUMENTOS AO CLIENTE (cartão 7.0).
 - Estagiária jurídica: trata as publicações e cria as agendas.
+
+**Responsável pela audiência** (cartões 7.0 e 7.2; função `triRespAud`, que depende de área, tipo e modalidade, informados no passo 4 da triagem): trabalhista instrução/una online → Gustavo; trabalhista instrução/una presencial → André; trabalhista conciliação online → Dr. Mateus; cível, qualquer modalidade → Dr. Mateus. Tipo "Inicial" é tratado como conciliação. Sem regra definida (caem no André, com alerta): conciliação trabalhista presencial e previdenciário.
 
 **Prazos**
 - Toda contagem é em **dias úteis**, sem exceção.
@@ -167,6 +169,8 @@ O Ygor não quer custo com API. A triagem funciona só com regras locais; as exc
 - Na tabela de organização de documentos, o item 14 (uniformes, conjunto 1) vem depois do 13 (EPIs, conjunto 2), como no texto original do Ygor.
 - A triagem não conhece feriados, recesso nem suspensões (decisão): só sábado e domingo.
 - Datas de audiência, perícia e prazo do juiz são lidas do texto por palavras; sempre conferidas pela estagiária no passo 4.
+
+- Audiência trabalhista de **conciliação presencial** e audiência previdenciária não estão na regra de responsáveis: a triagem as deixa com o André e avisa. Confirmar quem fica. O site escreve "Dr. Mateus" (o Ygor citou "Matheus Soares"); conferir a grafia.
 
 ## 12. Artefatos fora do site
 
