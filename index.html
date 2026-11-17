@@ -256,6 +256,18 @@ table.roxa th{color:var(--roxo)}
 .aviso-roxo .k{font-weight:600;color:var(--roxo);font-size:15px;margin-bottom:3px}
 .aviso-roxo p{margin:0;font-size:15px}
 
+/* ---------- legislação ---------- */
+.leis{display:grid;gap:10px;margin-top:22px;max-width:760px}
+.lei{display:flex;align-items:center;gap:16px;background:var(--elev);border-radius:var(--r-m);padding:16px 20px;color:var(--label);text-decoration:none;box-shadow:0 0 0 .5px rgba(0,0,0,.06);transition:box-shadow .25s var(--mola),transform .25s var(--mola)}
+.lei:hover{box-shadow:0 0 0 1px var(--dourado),0 4px 14px rgba(0,0,0,.06)}
+.lei:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--dourado) 60%,transparent)}
+.lei .lei-sig{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--acento-txt);background:var(--fill2);border-radius:6px;padding:3px 9px;white-space:nowrap}
+.lei .lei-tx{flex:1;min-width:0}
+.lei .lei-nome{font-size:16px;font-weight:600;letter-spacing:-.01em}
+.lei .lei-sub{font-size:13px;color:var(--label2);margin-top:2px}
+.lei .lei-seta{color:var(--dourado-txt);font-size:18px}
+.leis-nota{font-size:13px;color:var(--label3);margin-top:18px;max-width:680px}
+
 /* ---------- tribunais e OAB ---------- */
 .trib-busca{
   width:100%;max-width:380px;height:40px;padding:0 14px;border-radius:12px;border:none;
@@ -1222,6 +1234,8 @@ function pintaIndice(){
        '<span class="cod">＋</span><span>Calculadora de prazos</span></button>';
   h += '<button class="item" data-rota="tribunais" aria-current="'+(rotaAtual==='tribunais')+'">'+
        '<span class="cod">⚖</span><span>Tribunais e OAB</span></button>';
+  h += '<button class="item" data-rota="leis" aria-current="'+(rotaAtual==='leis')+'">'+
+       '<span class="cod">§</span><span>Principais legislações</span></button>';
   h += '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>Reclamada</div>';
   h += '<button class="item" data-rota="docs" aria-current="'+(rotaAtual==='docs')+'">'+
        '<span class="cod">▤</span><span>Organização de docs da reclamada</span></button>';
@@ -1512,6 +1526,28 @@ function telaCalculadora(){
 
   h += '<div id="calcSaida">'+calcSaidaHTML()+'</div>';
   h += '</div>';
+  return h;
+}
+
+/* ---------- legislação ---------- */
+const LEIS = [
+  {sig:'CF/88', nome:'Constituição Federal de 1988', sub:'Direitos sociais (art. 7º), competência da Justiça do Trabalho (art. 114) e garantias processuais.', url:'https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm'},
+  {sig:'CLT', nome:'Consolidação das Leis do Trabalho', sub:'Decreto-Lei nº 5.452/1943: direito individual e coletivo do trabalho e processo do trabalho.', url:'https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm'},
+  {sig:'CPC', nome:'Código de Processo Civil', sub:'Lei nº 13.105/2015: aplicado ao processo do trabalho de forma subsidiária e supletiva (art. 15 do CPC; art. 769 da CLT).', url:'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105.htm'},
+  {sig:'CC', nome:'Código Civil', sub:'Lei nº 10.406/2002 (texto compilado): obrigações, contratos e prescrição.', url:'https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm'},
+  {sig:'FGTS', nome:'Lei do FGTS', sub:'Lei nº 8.036/1990 (texto consolidado): depósitos, multa e movimentação da conta.', url:'https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm'}
+];
+
+function telaLegislacao(){
+  let h = '<div class="man"><h2>Principais legislações</h2>'+
+    '<p class="intro">Atalhos para o texto oficial, no site do Planalto. Abrem em outra aba.</p><div class="leis">';
+  LEIS.forEach(l=>{
+    h += '<a class="lei" href="'+escA(l.url)+'" target="_blank" rel="noopener noreferrer">'+
+      '<span class="lei-sig">'+esc(l.sig)+'</span>'+
+      '<span class="lei-tx"><div class="lei-nome">'+esc(l.nome)+'</div><div class="lei-sub">'+esc(l.sub)+'</div></span>'+
+      '<span class="lei-seta" aria-hidden="true">↗</span></a>';
+  });
+  h += '</div><p class="leis-nota">O texto do Planalto pode ter atualizações recentes ainda não consolidadas; confira a vigência antes de citar em peça.</p></div>';
   return h;
 }
 
@@ -3076,6 +3112,7 @@ function migalhaDe(rota){
   if(rota==='calc') return 'Calculadora de prazos';
   if(rota==='triagem') return 'Triagem de publicações';
   if(rota==='tribunais') return 'Tribunais e OAB';
+  if(rota==='leis') return 'Principais legislações';
   if(rota==='docs') return 'Organização de documentos para a contestação';
   if(rota==='passos') return 'Como tratar uma publicação';
   if(rota==='sumulas') return 'Compêndio de jurisprudência';
@@ -3101,6 +3138,7 @@ function ir(rota, semScroll){
                   : rota==='passos' ? telaPassos()
                   : rota==='triagem' ? telaTriagem()
                   : rota==='tribunais' ? telaTribunais()
+                  : rota==='leis' ? telaLegislacao()
                   : rota==='docs' ? telaDocs()
                   : rota==='sumulas' || rota.startsWith('s/') ? telaSumulas()
                   : rota.startsWith('t/') ? telaTeor(rota.slice(2))
@@ -3345,7 +3383,7 @@ setInterval(()=>{
 /* ---------- arranque ---------- */
 pintaFiltros();
 const inicial = location.hash.slice(1);
-const ROTAS_FIXAS = ['inicio','calc','tribunais','passos','sumulas','triagem','docs'];
+const ROTAS_FIXAS = ['inicio','calc','tribunais','leis','passos','sumulas','triagem','docs'];
 const rotaSumula = inicial.indexOf('s/')===0 && sumDados().some(v=>'s/'+v.id===inicial);
 ir(inicial && (ROTAS_FIXAS.indexOf(inicial)>=0 || rotaSumula || T.some(t=>'t/'+t.sec===inicial) || SECOES_MANUAL.some(s=>'m/'+s.id===inicial)) ? inicial : 'inicio');
 

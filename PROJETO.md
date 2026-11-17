@@ -21,6 +21,7 @@ Leia este arquivo primeiro. O `README.md` é o manual de uso para a equipe; este
 | Compêndio de jurisprudência | `#sumulas`, `#s/<id>` | 1.690 verbetes do TST e do STF, com busca estilo Spotlight |
 | Calculadora de prazos | `#calc` | Fatal → prazo interno, e publicação → fatal (com feriados) |
 | Tribunais e OAB | `#tribunais` | Tabelas de códigos CNJ e inscrições da OAB do André |
+| Principais legislações | `#leis` | Links para o texto oficial no Planalto (CF, CLT, CPC, CC, FGTS); lista `LEIS` no código |
 | Organização de docs da reclamada | `#docs` | Manual de organização dos documentos para a contestação, com prompt copiável |
 
 Rotas antigas que não existem mais (`#triagem` antiga, `#treino`, `#m/nomenclatura`, `#m/fora`) caem na tela inicial.

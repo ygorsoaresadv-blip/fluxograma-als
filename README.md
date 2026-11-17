@@ -42,6 +42,7 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
   dos documentos conectada, e ela separa os PDFs na ordem do escritório e devolve a relação do que falta
   e o rascunho do e-mail de cobrança. O texto do prompt fica no bloco `promptDocs` do `index.html`.
 - **Tribunais e OAB**: código de segmento e sigla de TJ, TRF e TRT, e as inscrições do André.
+- **Principais legislações**: links para o texto oficial no Planalto da Constituição, CLT, CPC, Código Civil e Lei do FGTS.
 
 ## Como usar
 
