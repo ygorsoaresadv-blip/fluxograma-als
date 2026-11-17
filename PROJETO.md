@@ -119,8 +119,8 @@ Estilo Apple com as cores da identidade do escritório, **sempre claro** (não h
 
 **Pessoas**
 - Dr. André (sócio): audiências trabalhistas de instrução/una **presenciais** (da RF ou dos reclamantes); perícias só para controle; OAB principal SP 284388.
-- Gustavo Freire: advogado sênior trabalhista, delegador e revisor (recursos e contrarrazões do trabalhista); audiências trabalhistas de instrução/una **online**, inclusive da RF.
-- Dr. Mateus: advogado pleno trabalhista e **advogado cível** (todo o cível, exceto cálculos e cumprimento de sentença); audiências cíveis (online ou presenciais) e audiências trabalhistas de **conciliação online**, inclusive da RF.
+- Gustavo Freire: advogado sênior trabalhista, delegador e revisor (recursos e contrarrazões do trabalhista); audiências trabalhistas de una, inicial e instrução **online**, inclusive da RF.
+- Dr. Mateus: advogado pleno trabalhista e **advogado cível** (todo o cível, exceto cálculos e cumprimento de sentença); audiências cíveis (online ou presenciais) e audiências trabalhistas somente de **conciliação online**, inclusive da RF.
 - Ygor Pinheiro: advogado júnior trabalhista; cumprimento de sentença, manifestação de cálculos, impugnação ao laudo, e o ponto único de dúvida.
 - Elisangela: previdenciário inteiro, e cálculos e cumprimento de sentença do cível.
 - Rui: contador externo (liquidação, só trabalhista). Igor Marran: financeiro. Ellen: assistente técnica externa (sem agenda no Astrea).
@@ -128,7 +128,7 @@ Estilo Apple com as cores da identidade do escritório, **sempre claro** (não h
 - Letícia Leite: responsável pela agenda SOLICITAR DOCUMENTOS AO CLIENTE (cartão 7.0).
 - Estagiária jurídica: trata as publicações e cria as agendas.
 
-**Responsável pela audiência** (cartões 7.0 e 7.2; função `triRespAud`, que depende de área, tipo e modalidade, informados no passo 4 da triagem): trabalhista instrução/una online → Gustavo; trabalhista instrução/una presencial → André; trabalhista conciliação online → Dr. Mateus; cível, qualquer modalidade → Dr. Mateus. Tipo "Inicial" é tratado como conciliação. Sem regra definida (caem no André, com alerta): conciliação trabalhista presencial e previdenciário.
+**Responsável pela audiência** (cartões 7.0 e 7.2; função `triRespAud`, que depende de área, tipo e modalidade, informados no passo 4 da triagem): trabalhista una, inicial ou instrução online → Gustavo; trabalhista una, inicial ou instrução presencial → André; trabalhista **só** conciliação online → Dr. Mateus; cível, qualquer modalidade → Dr. Mateus. Desde 17/11/2026 o tipo "Inicial" segue a regra de instrução/una (antes era tratado como conciliação). Sem regra definida (caem no André, com alerta): conciliação trabalhista presencial e previdenciário.
 
 **Prazos**
 - Toda contagem é em **dias úteis**, sem exceção.
