@@ -17,7 +17,7 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
   conclusão, na ordem em que acontecem.
 - **23 cartões de teor**, um por tipo de publicação (e o fluxo de habilitação de reclamada, que abre a fase de conhecimento), agrupados nas três fases do processo
   (conhecimento, recursal e execução), com as agendas a criar, as datas e o responsável.
-  Cada cartão traz um passo a passo marcável e o que ter em mãos antes de perguntar ao Ygor.
+  Cada cartão traz o que ter em mãos antes de perguntar ao Ygor.
 - **Calculadora de prazos**, com duas contas: do prazo fatal para o prazo interno, que
   devolve o título da agenda pronto para copiar, e da publicação para o prazo fatal.
   Conhece fins de semana, feriados nacionais, Carnaval, Sexta-feira Santa, Corpus Christi
@@ -44,6 +44,23 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 - **Tribunais e OAB**: código de segmento e sigla de TJ, TRF e TRT, e as inscrições do André.
 - **Principais legislações**: links para o texto oficial no Planalto da Constituição, CLT, CPC, Código Civil e Lei do FGTS.
 
+## O índice
+
+A coluna esquerda é organizada pelo uso, do que se abre toda hora ao que se consulta de vez em quando:
+
+| Seção | O que tem |
+|---|---|
+| Dia a dia | Triagem de publicações, Como tratar uma publicação e o fluxo da etiqueta roxa |
+| Cartões de teor | Filtro de área (Todas, Trabalhista, Cível, Previdenciário) e as três fases, que abrem e fecham com um clique e mostram quantos cartões têm |
+| Ferramentas | Calculadora de prazos e Organização de docs da reclamada |
+| Consulta | Compêndio de jurisprudência, Principais legislações e Tribunais e OAB |
+| Manual | As seis regras, Quem é quem e Glossário |
+
+A busca do topo procura em tudo: nos cartões (inclusive pelas palavras do juiz), nos nomes das telas,
+nas pessoas e nos termos do glossário. Ao buscar, as fases com resultado se abrem sozinhas e o que não
+casa sai da lista. A tela inicial repete as mesmas portas, com a triagem em destaque, e tem atalhos
+para pular direto a cada fase.
+
 ## Como usar
 
 | Ação | Como |
@@ -52,9 +69,9 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 | Publicação que não se encaixa | Na triagem, **Nenhum destes: é uma exceção**, e cole o pedido numa IA gratuita |
 | Buscar um teor | Digite na busca da coluna esquerda, ou tecle `/` |
 | Buscar pelas palavras do juiz | A busca aceita trechos da publicação, como `manifestem sobre os cálculos` |
-| Filtrar por área | Trabalhista, cível ou previdenciário, nas pastilhas do topo do índice |
+| Filtrar por área | Trabalhista, cível ou previdenciário, no seletor da seção Cartões de teor |
+| Ver os cartões de uma fase | Clique no nome da fase no índice para abrir ou fechar |
 | Montar o título da agenda | **Calculadora**, aba *Do fatal para o prazo interno* |
-| Acompanhar o tratamento | O passo a passo dentro de cada cartão, que zera ao fechar o arquivo |
 | Consultar a jurisprudência | Botão **Compêndio** no topo, ou `Compêndio de jurisprudência` no índice |
 | Achar o verbete pelo número | Na busca do compêndio: `331`, `OJ 191`, `SDI-2 54`, `PN 119`, `tema 128`, `SV 22` |
 | Achar o verbete pelo teor | Palavras soltas, ou frase entre aspas, como `"empresa interposta"` |

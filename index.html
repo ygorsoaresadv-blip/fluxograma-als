@@ -90,13 +90,9 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;let
 }
 .busca::placeholder{color:var(--label3)}
 .busca:focus{outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--dourado) 60%,transparent)}
-.filtros{padding:0 4px 6px;display:flex;flex-wrap:wrap;gap:4px}
-.filtro-conta{padding:2px 10px 10px;font-size:11.5px;color:var(--label3)}
 .chip{font-size:12px;font-weight:500;padding:4px 10px;border-radius:99px;color:var(--label2);background:transparent;transition:background .2s,color .2s}
 .chip:hover{background:var(--fill2)}
 .chip[aria-pressed="true"]{background:var(--acento);color:#fff}
-.grupo{padding:16px 10px 5px;font-size:11px;font-weight:600;color:var(--label3);letter-spacing:0}
-.grupo .pino{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px}
 .item{
   display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;
   padding:6px 10px;margin:1px 0;font-size:13.5px;line-height:1.35;color:var(--label);border-radius:8px;
@@ -339,43 +335,55 @@ table.oab td.principal{font-weight:700}
 }
 .duvida b{color:var(--dourado-txt);font-weight:600}
 
-/* ---------- portas da tela inicial ---------- */
-.portas{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:28px 0 0}
-.porta,.sum-porta{
-  display:flex;gap:16px;align-items:flex-start;width:100%;text-align:left;background:var(--elev);
-  border-radius:var(--r-l);padding:20px 22px;box-shadow:var(--sombra);transition:transform .35s var(--mola),box-shadow .35s var(--mola);
-}
-.porta:hover,.sum-porta:hover{transform:scale(1.012);box-shadow:var(--sombra-alta)}
-.porta .marca-porta,.sum-porta .sigla{
-  width:40px;height:40px;border-radius:11px;flex:none;display:flex;align-items:center;justify-content:center;
-  font-size:19px;font-weight:700;color:var(--dourado);background:var(--acento);
-}
-.porta.calc .marca-porta{background:var(--dourado);color:var(--acento)}
-.porta .txt b,.sum-porta .txt b{display:block;margin:0 0 3px;font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
-.porta .txt span,.sum-porta .txt span{margin:0;display:block;font-size:14px;color:var(--label2);line-height:1.45}
-.sum-porta{margin-top:14px;align-items:center}
-.sum-porta .sigla{background:linear-gradient(135deg,var(--acento),var(--acento-txt))}
-.sum-porta .txt{flex:1;min-width:0}
-.sum-porta .seta{color:var(--label3);font-size:22px;flex:none}
+/* ---------- índice: seções por uso, fases recolhíveis ----------
+   Ordem pensada pela frequência: o que se usa toda hora fica em cima,
+   os 23 cartões ficam recolhidos por fase e o resto cabe na tela. */
+.secao{margin-top:12px}
+.secao-tit{display:flex;align-items:center;gap:8px;padding:8px 10px 4px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--label3)}
+.secao-tit .n{margin-left:auto;font-size:11px;font-weight:600;letter-spacing:0;text-transform:none;font-variant-numeric:tabular-nums}
+.item.com-ico{align-items:center}
+.item .ico{width:17px;height:17px;flex:none;color:var(--acento-txt);display:flex}
+.item .ico svg{width:100%;height:100%}
+.item[aria-current="true"] .ico{color:var(--dourado)}
+.item.roxo .ico{color:var(--roxo)}
+.item.roxo[aria-current="true"] .ico{color:#fff}
+.seg{display:flex;gap:2px;margin:2px 6px 8px;padding:2px;background:var(--fill);border-radius:9px}
+.seg .chip{flex:1 1 auto;padding:4px 5px;border-radius:7px;font-size:11.5px;white-space:nowrap;text-align:center}
+.seg .chip:hover{background:var(--fill2)}
+.seg .chip[aria-pressed="true"]{background:var(--elev);color:var(--acento);font-weight:600;box-shadow:0 1px 2px rgba(12,59,46,.14)}
+.fase-cab{display:flex;align-items:center;gap:9px;width:100%;text-align:left;padding:7px 10px;margin:1px 0;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--label)}
+.fase-cab:hover{background:var(--fill2)}
+.fase-cab .seta{width:10px;flex:none;color:var(--label3);font-size:9px;transition:transform .25s var(--mola)}
+.fase-cab[aria-expanded="true"] .seta{transform:rotate(90deg)}
+.fase-cab .pino{width:8px;height:8px;border-radius:50%;flex:none}
+.fase-cab .n{margin-left:auto;font-size:11px;font-weight:600;color:var(--label3);background:var(--fill);border-radius:99px;padding:1px 8px;font-variant-numeric:tabular-nums}
+.fase-lista{margin:0 0 4px 14px;padding-left:4px;border-left:1px solid var(--sep)}
+.veu{display:none}
 
-/* ---------- checklist do cartão ---------- */
-.check{margin:28px 0 0;background:var(--elev);border-radius:var(--r-l);overflow:hidden;box-shadow:var(--sombra)}
-.check-topo{display:flex;align-items:center;gap:12px;padding:16px 20px 10px}
-.check-topo .t{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1}
-.check-barra{width:90px;height:6px;background:var(--fill);border-radius:99px;overflow:hidden;flex:none}
-.check-barra i{display:block;height:100%;background:var(--verde);border-radius:99px;transition:width .4s var(--mola)}
-.check-conta{font-size:13px;color:var(--label2);flex:none;min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
-.check-lista{list-style:none;margin:0;padding:0 0 6px}
-.check-item{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;padding:10px 20px;font-size:15px;line-height:1.45}
-.check-item:hover{background:var(--fill2)}
-.check-box{
-  width:22px;height:22px;border:1.5px solid var(--sep-forte);border-radius:50%;flex:none;margin-top:-1px;
-  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;transition:background .2s,border-color .2s;
+/* ---------- atalhos da tela inicial ---------- */
+.atalhos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:32px 0 0}
+.atalho{
+  display:flex;flex-direction:column;gap:10px;text-align:left;background:var(--elev);border-radius:var(--r-l);
+  padding:18px 18px 16px;box-shadow:var(--sombra);transition:transform .35s var(--mola),box-shadow .35s var(--mola);
 }
-.check-item[aria-checked="true"] .check-box{background:var(--verde);border-color:var(--verde)}
-.check-item[aria-checked="true"] .check-txt{color:var(--label3);text-decoration:line-through}
-.check-item .check-txt b{font-weight:600}
-.check-rodape{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 20px;border-top:1px solid var(--sep);font-size:13px;color:var(--label3)}
+.atalho:hover{transform:scale(1.015);box-shadow:var(--sombra-alta)}
+.atalho .ico-box{width:38px;height:38px;border-radius:11px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--acento-bg);color:var(--acento-txt)}
+.atalho .ico-box svg{width:20px;height:20px}
+.atalho .txt b{display:block;font-size:15.5px;font-weight:600;letter-spacing:-.015em;line-height:1.25;margin-bottom:3px}
+.atalho .txt span{display:block;font-size:13px;color:var(--label2);line-height:1.42}
+.atalho.principal{grid-column:1/-1;flex-direction:row;align-items:center;gap:16px;background:var(--acento);color:#fff;padding:22px 24px}
+.atalho.principal .ico-box{width:46px;height:46px;background:rgba(255,255,255,.1);color:var(--dourado)}
+.atalho.principal .ico-box svg{width:24px;height:24px}
+.atalho.principal .txt{flex:1;min-width:0}
+.atalho.principal .txt b{font-size:18px}
+.atalho.principal .txt span{font-size:14px;color:rgba(255,255,255,.78)}
+.atalho.principal .seta{font-size:24px;color:var(--dourado);flex:none}
+.saltos{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.salto{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500;padding:7px 14px;border-radius:99px;background:var(--elev);box-shadow:var(--sombra)}
+.salto:hover{background:var(--elev2)}
+.salto .pino{width:8px;height:8px;border-radius:50%}
+.salto .n{color:var(--label3);font-variant-numeric:tabular-nums}
+.sec-rot.cartoes{margin-top:56px}
 
 /* ---------- como tratar uma publicação ---------- */
 .rota{margin:6px 0 0}
@@ -646,11 +654,15 @@ details.prompt-ver summary{cursor:pointer;font-size:14px;font-weight:500;color:v
   .rail{position:fixed;left:0;top:0;width:292px;z-index:60;transform:translateX(-102%);transition:transform .45s var(--mola);box-shadow:none}
   .rail.on{transform:none;box-shadow:var(--sombra-alta)}
   .abrir-rail{display:inline-flex}
+  .veu{display:block;position:fixed;inset:0;z-index:55;background:rgba(12,30,22,.28);opacity:0;pointer-events:none;transition:opacity .3s}
+  .veu.on{opacity:1;pointer-events:auto}
   .faixa,.barra-in{padding-left:16px;padding-right:16px}
   .duvida{left:16px;right:16px;text-align:center;bottom:12px}
 }
 @media (max-width:760px){
-  .portas{grid-template-columns:1fr}
+  .atalhos{grid-template-columns:1fr 1fr}
+  .atalho{padding:16px}
+  .atalho.principal{padding:18px}
   .calc-campo2 input,.calc-campo2 select{min-width:0;width:100%}
   .calc-campo2{flex:1 1 100%}
   .hero{padding-top:44px}
@@ -680,12 +692,12 @@ details.prompt-ver summary{cursor:pointer;font-size:14px;font-weight:500;color:v
 /* ---------- impressão de uma página (Ctrl+P) ---------- */
 @media print{
   :root{--bg:#fff;--elev:#fff;--sombra:none;--sombra-alta:none}
-  .rail,.barra,.duvida,.navpe,.spot,.check-rodape,.sum-mais{display:none!important}
+  .rail,.veu,.barra,.duvida,.navpe,.spot,.sum-mais{display:none!important}
   .app{display:block}
   body{font-size:11pt}
   .faixa{max-width:none;padding:0}
   .ag,.regra,.atencao,.aviso-roxo,.sem-agenda,.regua,.rota-item,.sum-cartao{break-inside:avoid}
-  .ag,.regra,.check,.cartao,table,.sum-lista{border:.5pt solid #ccc}
+  .ag,.regra,.cartao,table,.sum-lista{border:.5pt solid #ccc}
   .sum-cartao{content-visibility:visible}
 }
 </style>
@@ -700,12 +712,11 @@ details.prompt-ver summary{cursor:pointer;font-size:14px;font-weight:500;color:v
       <p>Manual completo e cartões de consulta, em um arquivo só.</p>
     </button>
     <div class="buscabox">
-      <input class="busca" id="busca" type="search" placeholder="Buscar teor, peça ou pessoa…" aria-label="Buscar" autocomplete="off">
+      <input class="busca" id="busca" type="search" placeholder="Buscar cartão ou ferramenta…" aria-label="Buscar" autocomplete="off">
     </div>
-    <div class="filtros" id="filtros" role="group" aria-label="Filtrar por área"></div>
-    <div class="filtro-conta" id="filtroConta" aria-live="polite"></div>
     <div id="indice"></div>
   </nav>
+  <div class="veu" id="veu"></div>
 
   <div class="palco">
     <div class="barra">
@@ -880,7 +891,6 @@ const T = D.teores, MAN = D.manual, TRIB = D.tribunais;
    1. palavras que aparecem nas publicações, para a busca
    2. contagem de dias úteis com feriados
    3. calculadora com gerador de título
-   4. checklist de tratamento
    ============================================================ */
 
 /* ---------- 1. vocabulário de busca ----------
@@ -1019,40 +1029,9 @@ const PECAS = [
   {sig:'MANIFESTAÇÃO', nome:'Parcelamento do artigo 916',  folga:2, legal:null, rec:false, cart:'9.5'}
 ];
 
-/* ---------- 4. checklist ---------- */
-const CHECK = {};
-function passosDoCartao(t){
-  const l = [];
-  l.push('Conferi que o processo <b>não</b> tem a etiqueta roxa');
-  l.push('Li o teor inteiro e ele corresponde a este cartão');
-  if(t.agendas.length){
-    l.push('Anotei o prazo fatal que a publicação ou o Astrea informa');
-    t.agendas.forEach(a=>{
-      const nome = a.titulo.split('\n')[0];
-      l.push('Criei a agenda <b>'+esc(nome)+'</b> · '+esc(a.resp.split('\n')[0]));
-    });
-  }
-  l.push('Conclui a publicação no Astrea');
-  return l;
-}
-function blocoCheck(t){
-  const st = CHECK[t.sec] || (CHECK[t.sec] = {});
-  const passos = passosDoCartao(t);
-  const feitos = passos.filter((_,i)=>st[i]).length;
-  let h = '<div class="check" data-check="'+t.sec+'">'+
-    '<div class="check-topo"><span class="t">Passo a passo desta publicação</span>'+
-    '<span class="check-barra"><i style="width:'+(feitos/passos.length*100)+'%"></i></span>'+
-    '<span class="check-conta">'+feitos+'/'+passos.length+'</span></div><ul class="check-lista">';
-  passos.forEach((p,i)=>{
-    h += '<li><button class="check-item" data-marca="'+t.sec+'|'+i+'" aria-checked="'+(st[i]?'true':'false')+'" role="checkbox">'+
-         '<span class="check-box">'+(st[i]?'✓':'')+'</span><span class="check-txt">'+p+'</span></button></li>';
-  });
-  h += '</ul><div class="check-rodape"><span>A lista serve para uma publicação por vez e zera quando você fecha o arquivo.</span>'+
-       '<button class="btn-mini" data-zera="'+t.sec+'">Limpar</button></div></div>';
-  return h;
-}
+/* ---------- ajuda para perguntar ao Ygor ---------- */
 function blocoYgor(t){
-  return '<div class="ygor"><div class="k">Se for perguntar ao Ygor, tenha em mãos</div><ul>'+
+  return '<div class="ygor" style="margin-top:28px"><div class="k">Se for perguntar ao Ygor, tenha em mãos</div><ul>'+
     '<li>O número do processo e a área</li>'+
     '<li>A data da publicação e o prazo fatal que o Astrea mostra</li>'+
     '<li>O trecho do teor que gerou a dúvida</li>'+
@@ -1190,62 +1169,166 @@ function regua(txt, hex){
   return h+'</div>';
 }
 
-/* ---------- índice ---------- */
-function pintaIndice(){
-  const alvo = document.getElementById('indice');
-  let h = '<button class="item inicio" data-rota="inicio" aria-current="'+(rotaAtual==='inicio')+'">'+
-       '<span class="cod">⌂</span><span>Início</span></button>';
-  h += '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>Comece por aqui</div>';
-  [['triagem','Triagem de publicações','✎'],['passos','Como tratar uma publicação','1']].forEach(x=>{
-    h += '<button class="item" data-rota="'+x[0]+'" aria-current="'+(rotaAtual===x[0])+'">'+
-         '<span class="cod">'+x[2]+'</span><span>'+x[1]+'</span></button>';
+/* ---------- índice ----------
+   Organizado pelo uso, não pela ordem em que as telas foram criadas:
+   1. Dia a dia: o que se abre a cada publicação
+   2. Cartões de teor: as três fases, recolhíveis, com o filtro de área
+   3. Ferramentas: o que calcula ou monta algo
+   4. Consulta: o que se lê para conferir
+   5. Manual: as regras do escritório
+   A mesma lista (NAV) desenha o índice, os atalhos da tela inicial e
+   alimenta a busca lateral. Tela nova entra aqui, e só aqui. */
+const ICO = (()=>{
+  const p = {
+    inicio:'<path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9v11h13V9"/>',
+    triagem:'<path d="M3 13h5l1.5 3h5L16 13h5"/><path d="M5.5 5h13L21 13v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6z"/>',
+    passos:'<path d="M9.5 6H21M9.5 12H21M9.5 18H21"/><circle cx="4.5" cy="6" r="1.4"/><circle cx="4.5" cy="12" r="1.4"/><circle cx="4.5" cy="18" r="1.4"/>',
+    etiqueta:'<path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+    calc:'<rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/>',
+    docs:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 13h8"/>',
+    compendio:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+    leis:'<path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 17h4.5"/>',
+    tribunais:'<path d="M3 21h18M5 18v-7M9.7 18v-7M14.3 18v-7M19 18v-7M2.5 8.5 12 3l9.5 5.5z"/>',
+    regras:'<path d="M6 3h12v18l-6-4.2L6 21z"/>',
+    pessoas:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 4.6a3.2 3.2 0 0 1 0 6.2M21 20a5.5 5.5 0 0 0-3.6-5.2"/>',
+    glossario:'<path d="M2.5 5h6A3.5 3.5 0 0 1 12 8.5V20a2.5 2.5 0 0 0-2.5-2.5h-7z"/><path d="M21.5 5h-6A3.5 3.5 0 0 0 12 8.5V20a2.5 2.5 0 0 1 2.5-2.5h7z"/>'
+  };
+  const o = {};
+  Object.keys(p).forEach(k=>{
+    o[k] = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p[k]+'</svg>';
   });
-  let achou = 0;
+  return o;
+})();
+
+const NAV = [
+  {sec:'Dia a dia', itens:[
+    {rota:'triagem', t:'Triagem de publicações', ico:'triagem',
+     d:'Cole a publicação inteira: a aba lê os dados, sugere o cartão e monta as agendas para o Astrea.',
+     ch:'colar publicacao agenda astrea ler sugerir excecao'},
+    {rota:'passos', t:'Como tratar uma publicação', ico:'passos',
+     d:'As seis etapas, da abertura no Astrea até a conclusão.',
+     ch:'etapas passo a passo tratar concluir abrir'},
+    {rota:'m/etiqueta', t:'Etiqueta C/ Juliana Tchani', ico:'etiqueta', roxo:true,
+     d:'Fluxo extraordinário. Sobrepõe todos os cartões.',
+     ch:'roxa etiqueta juliana tchani ciencia providencia extraordinario'}
+  ]},
+  {cartoes:true},
+  {sec:'Ferramentas', itens:[
+    {rota:'calc', t:'Calculadora de prazos', ico:'calc',
+     d:'Do fatal para o prazo interno, e da publicação para o fatal.',
+     ch:'prazo fatal interno pz ft dias uteis feriado recesso contar titulo'},
+    {rota:'docs', t:'Organização de docs da reclamada', ico:'docs',
+     d:'Os documentos da contestação, em ordem, com o prompt para a IA.',
+     ch:'documentos contestacao reclamada prompt organizar pdf cliente'}
+  ]},
+  {sec:'Consulta', itens:[
+    {rota:'sumulas', t:'Compêndio de jurisprudência', ico:'compendio',
+     d:'Súmulas, OJs, precedentes e temas do TST e do STF.',
+     ch:'sumula oj orientacao jurisprudencial precedente normativo tema repetitivo tst stf irr'},
+    {rota:'leis', t:'Principais legislações', ico:'leis',
+     d:'CF, CLT, CPC, Código Civil e FGTS, no Planalto.',
+     ch:'lei clt cpc constituicao codigo civil fgts planalto legislacao'},
+    {rota:'tribunais', t:'Tribunais e OAB', ico:'tribunais',
+     d:'Códigos CNJ de TJ, TRF e TRT, e as inscrições da OAB.',
+     ch:'tribunal cnj codigo segmento trt tj trf oab inscricao andre'}
+  ]},
+  {sec:'Manual', itens:[
+    {rota:'m/regras', t:'As seis regras', ico:'regras', ch:'regra geral'},
+    {rota:'m/pessoas', t:'Quem é quem', ico:'pessoas', ch:'pessoa responsavel cargo advogado'},
+    {rota:'m/glossario', t:'Glossário', ico:'glossario', ch:'sigla termo significado'}
+  ]}
+];
+// o que cada tela do manual tem dentro também serve para a busca
+function chavesNav(it){
+  let x = it.t+' '+(it.d||'')+' '+(it.ch||'');
+  try{
+    if(it.rota==='m/pessoas') x += ' '+MAN.pessoas.map(l=>l.join(' ')).join(' ');
+    if(it.rota==='m/glossario') x += ' '+MAN.glossario.map(g=>g.itens.map(i=>i[0]).join(' ')).join(' ');
+    if(it.rota==='m/regras') x += ' '+MAN.regras.map(r=>r.t).join(' ');
+  }catch(e){}
+  return norm(x);
+}
+function casaNav(it){
+  if(!busca) return true;
+  const alvo = it._ch || (it._ch = chavesNav(it));
+  return norm(busca).split(/\s+/).filter(Boolean).every(p=>alvo.indexOf(p)>=0);
+}
+function ativa(rota){
+  return rotaAtual===rota || (rota==='sumulas' && rotaAtual.startsWith('s/'));
+}
+function itemNav(it){
+  return '<button class="item com-ico'+(it.roxo?' roxo':'')+'" data-rota="'+it.rota+'" aria-current="'+ativa(it.rota)+'">'+
+         '<span class="ico">'+ICO[it.ico]+'</span><span>'+esc(it.t)+'</span></button>';
+}
+
+// fases abertas no índice; lembradas entre visitas, quando o navegador deixa
+let faseAberta = {};
+try{ faseAberta = JSON.parse(localStorage.getItem('indice-fases')||'{}') || {}; }catch(e){ faseAberta = {}; }
+function guardaFases(){ try{ localStorage.setItem('indice-fases', JSON.stringify(faseAberta)); }catch(e){} }
+
+function blocoCartoes(){
+  const nomeArea = {todas:'Todas', trabalhista:'Trabalhista', civel:'Cível', previdenciario:'Previdenciário'};
+  let achou = 0, corpo = '';
   Object.keys(FASE).forEach(f=>{
     const lista = T.filter(t=>t.fase===f && casa(t));
     if(!lista.length) return;
     achou += lista.length;
-    h += '<div class="grupo"><span class="pino" style="background:'+FASE[f].hex+'"></span>'+FASE[f].curto+'</div>';
-    lista.forEach(t=>{
-      h += '<button class="item" data-rota="t/'+t.sec+'" aria-current="'+(rotaAtual==='t/'+t.sec)+'">'+
-           '<span class="cod">'+t.sec+'</span><span>'+esc(t.titulo)+'</span></button>';
-    });
+    // buscando, toda fase com resultado se abre sozinha
+    const aberta = !!busca || !!faseAberta[f];
+    corpo += '<button class="fase-cab" data-fase="'+f+'" aria-expanded="'+aberta+'">'+
+      '<span class="seta" aria-hidden="true">▶</span><span class="pino" style="background:'+FASE[f].hex+'"></span>'+
+      '<span>'+FASE[f].curto+'</span><span class="n">'+lista.length+'</span></button>';
+    if(aberta){
+      corpo += '<div class="fase-lista">';
+      lista.forEach(t=>{
+        corpo += '<button class="item" data-rota="t/'+t.sec+'" aria-current="'+(rotaAtual==='t/'+t.sec)+'">'+
+                 '<span class="cod">'+t.sec+'</span><span>'+esc(t.titulo)+'</span></button>';
+      });
+      corpo += '</div>';
+    }
   });
-  if(!achou) h += '<div class="vazio-busca">Nenhum cartão com esse termo. Se a publicação não se encaixa, fale com o Ygor.</div>';
+  let h = '<div class="secao"><div class="secao-tit">Cartões de teor<span class="n">'+
+          (achou===T.length ? T.length : achou+' de '+T.length)+'</span></div>';
+  h += '<div class="seg" role="group" aria-label="Filtrar cartões por área">'+
+    Object.keys(nomeArea).map(k=>'<button class="chip" data-area="'+k+'" aria-pressed="'+(filtroArea===k)+'">'+nomeArea[k]+'</button>').join('')+
+    '</div>';
+  h += corpo || '<div class="vazio-busca">Nenhum cartão com esse termo. Se a publicação não se encaixa, use a triagem ou fale com o Ygor.</div>';
+  return {h:h+'</div>', achou:achou};
+}
+
+function pintaIndice(){
+  const alvo = document.getElementById('indice');
+  let h = '<button class="item com-ico" data-rota="inicio" aria-current="'+(rotaAtual==='inicio')+'">'+
+          '<span class="ico">'+ICO.inicio+'</span><span>Início</span></button>';
+  let outros = 0, cartoes = null;
+  const partes = NAV.map(s=>{
+    if(s.cartoes){ cartoes = blocoCartoes(); return null; }
+    const itens = s.itens.filter(casaNav);
+    outros += itens.length;
+    return itens.length ? '<div class="secao"><div class="secao-tit">'+esc(s.sec)+'</div>'+itens.map(itemNav).join('')+'</div>' : '';
+  });
+  // buscando, se a palavra só existe numa ferramenta, a seção de cartões vazia sai do caminho
+  const escondeCartoes = busca && !cartoes.achou && outros;
+  partes.forEach(p=>{ h += p===null ? (escondeCartoes ? '' : cartoes.h) : p; });
   // a mesma palavra digitada aqui também procura no compêndio
   if(busca){
     const ns = sumQuantas(busca);
-    if(ns) h += '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>No compêndio</div>'+
-      '<button class="item" data-sumq="'+escA(busca)+'"><span class="cod">¶</span>'+
-      '<span>'+ns+(ns===1?' verbete':' verbetes')+' com esse termo</span></button>';
+    if(ns) h += '<div class="secao"><div class="secao-tit">No compêndio</div>'+
+      '<button class="item com-ico" data-sumq="'+escA(busca)+'"><span class="ico">'+ICO.compendio+'</span>'+
+      '<span>'+ns+(ns===1?' verbete':' verbetes')+' com esse termo</span></button></div>';
   }
-  const nomeArea = {todas:'todas as áreas', trabalhista:'trabalhista', civel:'cível', previdenciario:'previdenciário'}[filtroArea];
-  const fc = document.getElementById('filtroConta');
-  if(fc) fc.textContent = achou+(achou===1?' cartão':' cartões')+' · '+nomeArea+(busca?' · filtrado por "'+busca+'"':'');
-  h += '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>Manual</div>';
-  SECOES_MANUAL.forEach(s=>{
-    h += '<button class="item'+(s.roxo?' roxo':'')+'" data-rota="m/'+s.id+'" aria-current="'+(rotaAtual==='m/'+s.id)+'">'+
-         '<span class="cod">'+(s.roxo?'★':'§')+'</span><span>'+esc(s.t)+'</span></button>';
-  });
-  h += '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>Consulta</div>';
-  h += '<button class="item" data-rota="sumulas" aria-current="'+(rotaAtual==='sumulas'||rotaAtual.startsWith('s/'))+'">'+
-       '<span class="cod">¶</span><span>Compêndio de jurisprudência</span></button>';
-  h += '<button class="item" data-rota="calc" aria-current="'+(rotaAtual==='calc')+'">'+
-       '<span class="cod">＋</span><span>Calculadora de prazos</span></button>';
-  h += '<button class="item" data-rota="tribunais" aria-current="'+(rotaAtual==='tribunais')+'">'+
-       '<span class="cod">⚖</span><span>Tribunais e OAB</span></button>';
-  h += '<button class="item" data-rota="leis" aria-current="'+(rotaAtual==='leis')+'">'+
-       '<span class="cod">§</span><span>Principais legislações</span></button>';
-  h += '<div class="grupo"><span class="pino" style="background:var(--ouro)"></span>Reclamada</div>';
-  h += '<button class="item" data-rota="docs" aria-current="'+(rotaAtual==='docs')+'">'+
-       '<span class="cod">▤</span><span>Organização de docs da reclamada</span></button>';
   alvo.innerHTML = h;
+  // o item aberto fica sempre à vista no índice
+  const at = alvo.querySelector('.item[aria-current="true"]');
+  if(at && at.scrollIntoView){
+    const r = at.getBoundingClientRect(), rr = document.getElementById('rail').getBoundingClientRect();
+    if(r.top < rr.top || r.bottom > rr.bottom) at.scrollIntoView({block:'nearest'});
+  }
 }
 
-function pintaFiltros(){
-  const opts = [['todas','Todas'],['trabalhista','Trabalhista'],['civel','Cível'],['previdenciario','Previdenciário']];
-  document.getElementById('filtros').innerHTML = opts.map(o=>
-    '<button class="chip" data-area="'+o[0]+'" aria-pressed="'+(filtroArea===o[0])+'">'+o[1]+'</button>').join('');
+function fechaRail(){
+  document.getElementById('rail').classList.remove('on');
+  document.getElementById('veu').classList.remove('on');
 }
 
 /* ---------- telas ---------- */
@@ -1255,25 +1338,22 @@ function telaInicio(){
     '<h2>Da publicação<br><em>à agenda certa.</em></h2>'+
     '<p class="sub">Abra a publicação, confira a etiqueta do processo, leia o teor, encontre o cartão, crie as agendas indicadas e conclua a publicação. '+
     'São '+T.length+' teores, três fases e um fluxo extraordinário. Toda contagem é em dias úteis. '+
-    'Se em algum momento você não souber o que fazer, a resposta é falar com o Ygor.</p>'+
-    '<div class="regua-hero"><div class="rot">As duas datas de todo prazo</div>'+
-    regua('Dia da publicação, no caso de recurso\nPZ: a data em que o escritório quer a peça pronta\nFT: o último dia possível para protocolar','var(--acento)')+
-    '</div></div>';
+    'Se em algum momento você não souber o que fazer, a resposta é falar com o Ygor.</p></div>';
 
-  h += '<div class="portas">'+
-    '<button class="porta" data-rota="passos"><span class="marca-porta">1</span><span class="txt">'+
-      '<b>Como tratar uma publicação</b>'+
-      '<span>O caminho inteiro, da abertura no Astrea até a conclusão.</span></span></button>'+
-    '<button class="porta calc" data-rota="calc"><span class="marca-porta">+</span><span class="txt">'+
-      '<b>Calcular o prazo interno</b>'+
-      '<span>Informe o fatal e receba o título da agenda pronto para copiar.</span></span></button>'+
-    '</div>';
-
-  h += '<button class="sum-porta" data-rota="sumulas"><span class="sigla">§</span><span class="txt">'+
-    '<b>Compêndio de jurisprudência</b>'+
-    '<span>Súmulas, OJs, precedentes normativos e temas repetitivos do TST e do STF, com teor integral e status. '+
-    'Busque pelo número ou pelas palavras da publicação.</span>'+
-    '</span><span class="seta" aria-hidden="true">›</span></button>';
+  // atalhos: a triagem em destaque, e as demais telas na ordem do índice
+  const porRota = {};
+  NAV.forEach(s=>{ if(s.itens) s.itens.forEach(it=>{ porRota[it.rota] = it; }); });
+  const tri = porRota.triagem;
+  h += '<div class="atalhos">'+
+    '<button class="atalho principal" data-rota="triagem"><span class="ico-box">'+ICO[tri.ico]+'</span>'+
+      '<span class="txt"><b>'+esc(tri.t)+'</b><span>'+esc(tri.d)+'</span></span>'+
+      '<span class="seta" aria-hidden="true">›</span></button>';
+  ['passos','calc','sumulas','docs','leis','tribunais'].forEach(r=>{
+    const it = porRota[r];
+    h += '<button class="atalho" data-rota="'+r+'"><span class="ico-box">'+ICO[it.ico]+'</span>'+
+         '<span class="txt"><b>'+esc(it.t)+'</b><span>'+esc(it.d)+'</span></span></button>';
+  });
+  h += '</div>';
 
   h += '<div class="roxo-alerta"><span class="pilula">C/ JULIANA TCHANI</span><div class="txt">'+
        '<h3>Viu a etiqueta roxa? Pare por aqui.</h3>'+
@@ -1281,12 +1361,28 @@ function telaInicio(){
        'no nome da Dra. Juliana Tchani.</p>'+
        '<button class="btn" data-rota="m/etiqueta">Ver o fluxo extraordinário</button></div></div>';
 
-  Object.keys(FASE).forEach(f=>{
-    const lista = T.filter(t=>t.fase===f && casa(t));
-    if(!lista.length) return;
-    h += '<div class="sec-rot"><span class="pino" style="background:'+FASE[f].hex+'"></span>'+
+  h += '<div class="regua-hero"><div class="rot">As duas datas de todo prazo</div>'+
+    regua('Dia da publicação, no caso de recurso\nPZ: a data em que o escritório quer a peça pronta\nFT: o último dia possível para protocolar','var(--acento)')+
+    '</div>';
+
+  // os cartões, com saltos para cada fase
+  const fases = Object.keys(FASE).map(f=>({f:f, lista:T.filter(t=>t.fase===f && casa(t))})).filter(x=>x.lista.length);
+  const nomeArea = {todas:'', trabalhista:' · trabalhista', civel:' · cível', previdenciario:' · previdenciário'}[filtroArea];
+  h += '<div class="sec-rot cartoes"><b>Cartões de teor</b><span>'+
+       fases.reduce((n,x)=>n+x.lista.length,0)+' de '+T.length+nomeArea+(busca?' · filtrado por "'+esc(busca)+'"':'')+'</span></div>';
+  if(!fases.length){
+    h += '<p class="intro" style="color:var(--label2)">Nenhum cartão com esse termo. Se a publicação não se encaixa, use a triagem ou fale com o Ygor.</p>';
+    return h;
+  }
+  h += '<div class="saltos">'+fases.map(x=>
+    '<button class="salto" data-salto="'+x.f+'"><span class="pino" style="background:'+FASE[x.f].hex+'"></span>'+
+    FASE[x.f].curto+'<span class="n">'+x.lista.length+'</span></button>').join('')+'</div>';
+
+  fases.forEach(x=>{
+    const f = x.f;
+    h += '<div class="sec-rot" id="fase-'+f+'" style="scroll-margin-top:70px"><span class="pino" style="background:'+FASE[f].hex+'"></span>'+
          '<b>'+FASE[f].nome+'</b><span>'+FASE[f].sub+'</span></div><div class="grade">';
-    lista.forEach(t=>{
+    x.lista.forEach(t=>{
       const n = t.agendas.length;
       h += '<button class="cartao" data-rota="t/'+t.sec+'">'+
            '<span class="cod" style="color:'+FASE[f].hex+'">'+t.sec+'</span>'+
@@ -1340,7 +1436,6 @@ function telaTeor(sec, modoApresentacao){
       '<div class="k" style="color:var(--vermelho)">Atenção</div><p style="font-weight:600">'+esc(t.alerta)+'</p></div>' : '');
 
   if(!modoApresentacao){
-    h += blocoCheck(t);
     h += blocoYgor(t);
     const i = T.indexOf(t), ant = T[i-1], prox = T[i+1];
     h += '<div class="navpe">'+
@@ -3124,14 +3219,30 @@ function migalhaDe(rota){
     const t = T.find(x=>x.sec===rota.slice(2));
     return t ? FASE[t.fase].nome+' · '+t.sec+' '+t.titulo : 'Início';
   }
+  if(rota==='m/etiqueta') return 'Dia a dia · Etiqueta C/ Juliana Tchani';
   const s = SECOES_MANUAL.find(x=>x.id===rota.slice(2));
   return 'Manual · '+(s?s.t:'');
 }
 
+function rotaValida(r){
+  if(!r) return false;
+  if(ROTAS_FIXAS.indexOf(r)>=0) return true;
+  if(r.startsWith('t/')) return T.some(t=>'t/'+t.sec===r);
+  if(r.startsWith('m/')) return SECOES_MANUAL.some(s=>'m/'+s.id===r);
+  if(r.startsWith('s/')) return sumDados().some(v=>'s/'+v.id===r);
+  return false;
+}
 function ir(rota, semScroll){
+  // link antigo ou digitado errado cai na tela inicial
+  if(!rotaValida(rota)) rota = 'inicio';
   // um link direto para uma súmula já chega com o estado do compêndio pronto
   if(rota.startsWith('s/')) sumPrepara(rota.slice(2));
   rotaAtual = rota;
+  // ao abrir um cartão, a fase dele se abre no índice
+  if(rota.startsWith('t/')){
+    const tc = T.find(x=>x.sec===rota.slice(2));
+    if(tc && !faseAberta[tc.fase]){ faseAberta[tc.fase] = true; guardaFases(); }
+  }
   const palco = document.getElementById('palco');
   palco.innerHTML = rota==='inicio' ? telaInicio()
                   : rota==='calc' ? telaCalculadora()
@@ -3144,8 +3255,8 @@ function ir(rota, semScroll){
                   : rota.startsWith('t/') ? telaTeor(rota.slice(2))
                   : telaManual(rota.slice(2));
   document.getElementById('migalha').textContent = migalhaDe(rota);
+  fechaRail();
   pintaIndice();
-  document.getElementById('rail').classList.remove('on');
   if(!semScroll) window.scrollTo({top:0,behavior:'instant'});
   if(rota==='triagem') triPinta();
   if(rota==='docs'){ const pv = document.getElementById('promptVer'); if(pv) pv.textContent = textoPrompt(); }
@@ -3223,18 +3334,24 @@ document.addEventListener('click', e=>{
   const r = e.target.closest('[data-rota]');
   if(r){ ir(r.dataset.rota); return; }
   const c = e.target.closest('[data-area]');
-  if(c){ filtroArea = c.dataset.area; pintaFiltros(); pintaIndice(); if(rotaAtual==='inicio') ir('inicio',true); return; }
-
-  const mk = e.target.closest('[data-marca]');
-  if(mk){
-    const par = mk.dataset.marca.split('|'), sec = par[0], i = par[1];
-    const st = CHECK[sec] || (CHECK[sec] = {});
-    st[i] = !st[i];
-    repintaCheck(sec);
+  if(c){ filtroArea = c.dataset.area; pintaIndice(); if(rotaAtual==='inicio') ir('inicio',true); return; }
+  // abre e fecha uma fase no índice
+  const fc = e.target.closest('[data-fase]');
+  if(fc){
+    const f = fc.dataset.fase;
+    faseAberta[f] = fc.getAttribute('aria-expanded')!=='true';
+    guardaFases();
+    pintaIndice();
     return;
   }
-  const zr = e.target.closest('[data-zera]');
-  if(zr){ CHECK[zr.dataset.zera] = {}; repintaCheck(zr.dataset.zera); return; }
+  // na tela inicial, rola até a fase
+  const sa = e.target.closest('[data-salto]');
+  if(sa){
+    const alvo = document.getElementById('fase-'+sa.dataset.salto);
+    if(alvo) alvo.scrollIntoView({behavior:'smooth', block:'start'});
+    return;
+  }
+  if(e.target.id==='veu'){ fechaRail(); return; }
 
   const cm = e.target.closest('[data-cmodo]');
   if(cm){ calcModo = cm.dataset.cmodo; ir('calc', true); return; }
@@ -3242,12 +3359,6 @@ document.addEventListener('click', e=>{
   const cp = e.target.closest('[data-copia]');
   if(cp){ copiaTexto(cp.dataset.copia, cp); return; }
 });
-
-function repintaCheck(sec){
-  const cx = document.querySelector('[data-check="'+sec+'"]');
-  const t = T.find(x=>x.sec===sec);
-  if(cx && t) cx.outerHTML = blocoCheck(t);
-}
 
 function copiaTexto(txt, botao){
   const antes = botao.textContent;
@@ -3328,7 +3439,10 @@ document.getElementById('busca').addEventListener('input', e=>{
   pintaIndice();
   if(rotaAtual==='inicio') ir('inicio',true);
 });
-document.getElementById('abrirRail').addEventListener('click', ()=>document.getElementById('rail').classList.toggle('on'));
+document.getElementById('abrirRail').addEventListener('click', ()=>{
+  const on = document.getElementById('rail').classList.toggle('on');
+  document.getElementById('veu').classList.toggle('on', on);
+});
 
 document.addEventListener('keydown', e=>{
   if(e.key==='/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){
@@ -3358,6 +3472,7 @@ document.addEventListener('keydown', e=>{
     else sb.blur();
     return;
   }
+  if(e.key==='Escape' && document.getElementById('rail').classList.contains('on')){ fechaRail(); return; }
   if(e.key==='Escape' && document.activeElement.id==='busca'){
     document.getElementById('busca').value=''; busca=''; pintaIndice(); if(rotaAtual==='inicio') ir('inicio',true);
     document.getElementById('busca').blur();
@@ -3381,11 +3496,9 @@ setInterval(()=>{
 }, 2600);
 
 /* ---------- arranque ---------- */
-pintaFiltros();
 const inicial = location.hash.slice(1);
 const ROTAS_FIXAS = ['inicio','calc','tribunais','leis','passos','sumulas','triagem','docs'];
-const rotaSumula = inicial.indexOf('s/')===0 && sumDados().some(v=>'s/'+v.id===inicial);
-ir(inicial && (ROTAS_FIXAS.indexOf(inicial)>=0 || rotaSumula || T.some(t=>'t/'+t.sec===inicial) || SECOES_MANUAL.some(s=>'m/'+s.id===inicial)) ? inicial : 'inicio');
+ir(inicial || 'inicio');
 
 // o acervo é grande: interpreta-se fora do caminho da primeira pintura,
 // para que a busca lateral já saiba contar as súmulas na primeira tecla

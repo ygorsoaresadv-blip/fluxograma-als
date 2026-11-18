@@ -41,11 +41,24 @@ Ordem do arquivo: `<style>` → HTML do esqueleto (índice lateral, barra, `#pal
    - `CHAVES`: vocabulário de busca por cartão.
    - Dias úteis com feriados: `pascoa`, `feriadosDoAno`, `emRecesso`, `somaUteis`, `subUteis` (usados pela calculadora).
    - `PECAS`, `PRAZOS_FIXOS`: siglas, folgas e prazos legais (calculadora).
-   - Checklist do cartão, telas (`telaInicio`, `telaTeor`, `telaManual`, `telaCalculadora`, `telaTribunais`, `telaSumulas`), régua PZ/FT (`regua`).
+   - Índice: `ICO` (ícones SVG), `NAV` (seções e telas do índice), `blocoCartoes`, `pintaIndice`, `faseAberta` (ver seção 2.1).
+   - Telas (`telaInicio`, `telaTeor`, `telaManual`, `telaCalculadora`, `telaTribunais`, `telaSumulas`), régua PZ/FT (`regua`).
    - Compêndio: `sumDados`, `sumInterpreta`, `sumBusca`, `sumPainel`, `sumCartao`, `sumDesenha`…
    - **Triagem**: bloco `/* ---------- triagem ---------- */` (seção 5).
    - `telaDocs` e `DOCS_*` (organização de documentos).
-   - Roteamento `ir(rota)`, `migalhaDe`, eventos (`click`, `input`, `change`, `keydown`), arranque (`ROTAS_FIXAS`).
+   - Roteamento `ir(rota)`, `rotaValida`, `migalhaDe`, eventos (`click`, `input`, `change`, `keydown`), arranque (`ROTAS_FIXAS`).
+
+### 2.1 O índice lateral
+
+Organizado pelo uso, em cinco seções: **Dia a dia** (triagem, como tratar, etiqueta roxa), **Cartões de teor**
+(filtro de área + as três fases recolhíveis), **Ferramentas** (calculadora, organização de docs), **Consulta**
+(compêndio, legislações, tribunais) e **Manual** (regras, quem é quem, glossário).
+
+- A lista `NAV` é a fonte única: desenha o índice, os atalhos da tela inicial e alimenta a busca. **Tela nova entra em `NAV`** (com `rota`, `t`, `ico`, `d` e palavras `ch` para a busca) e em `ROTAS_FIXAS` (que `rotaValida` usa).
+- As fases abertas ficam em `faseAberta`, guardado no `localStorage` (`indice-fases`). Abrir um cartão abre a fase dele; buscar abre todas as fases com resultado.
+- A busca lateral filtra cartões (`casa`) e telas (`casaNav`, que também procura nos nomes de `MAN.pessoas`, nos termos do glossário e nos títulos das regras).
+- No celular, o índice abre como gaveta com um véu atrás (`#veu`); tocar no véu ou teclar Esc fecha.
+- Rota inválida ou antiga cai na tela inicial em qualquer caminho (`rotaValida` dentro de `ir`).
 
 ## 3. Como é um cartão (`D.teores[]`)
 
@@ -143,7 +156,7 @@ Estilo Apple com as cores da identidade do escritório, **sempre claro** (não h
 - 7.8 (laudo): Ellen com PZ = publicação +1 e FT = FT da impugnação −3; impugnação com FT = publicação +5.
 - O AI dos cartões 7.3 e 7.5 contra a mesma decisão vira **uma** agenda.
 
-**Conteúdo removido por decisão**: triagem guiada antiga (perguntas), treino, "Nomear e datar", "O que não está aqui", a antiga regra 5 ("Você não calcula o prazo fatal"; ficaram **seis** regras), botões Apresentar e Imprimir.
+**Conteúdo removido por decisão**: triagem guiada antiga (perguntas), treino, "Nomear e datar", "O que não está aqui", a antiga regra 5 ("Você não calcula o prazo fatal"; ficaram **seis** regras), botões Apresentar e Imprimir, e o checklist "Passo a passo desta publicação" dos cartões (18/11/2026).
 
 ## 9. Sem API paga
 
