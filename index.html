@@ -726,7 +726,6 @@ details.prompt-ver summary{cursor:pointer;font-size:14px;font-weight:500;color:v
         <button class="btn abrir-rail" id="abrirRail" aria-label="Abrir índice">Índice</button>
         <div class="migalha" id="migalha">Início</div>
         <div class="acoes">
-          <button class="btn" data-rota="triagem" id="btnTriagem">Triagem</button>
           <a class="btn" href="substabelecimento.html">Substabelecimento</a>
           <button class="btn so-largo" data-rota="calc">Calculadora</button>
           <button class="btn ouro" data-rota="sumulas">Compêndio<span class="so-largo"> de jurisprudência</span></button>
@@ -1204,9 +1203,10 @@ const ICO = (()=>{
   return o;
 })();
 
-/* Triagem de publicações: desativada por decisão do Ygor (o código continua no arquivo).
-   Para reativar, troque para true: volta ao índice, à barra do topo, à busca e à rota #triagem. */
-const TRIAGEM_ATIVA = false;
+/* Triagem de publicações: ativa, mas só pelo índice (decisão do Ygor, 26/11/2026). Não volta à
+   barra do topo nem ao destaque da tela inicial, que ficaram com o Substabelecimento e juntada.
+   Para desativar de todo, troque para false: sai do índice, da busca e da rota #triagem. */
+const TRIAGEM_ATIVA = true;
 
 const NAV = [
   {sec:'Dia a dia', itens:[
@@ -1353,11 +1353,11 @@ function telaInicio(){
     'São '+T.length+' teores, três fases e um fluxo extraordinário. Toda contagem é em dias úteis. '+
     'Se em algum momento você não souber o que fazer, a resposta é falar com o Ygor.</p></div>';
 
-  // atalhos: o gerador de substabelecimento em destaque (a triagem, se ativa, volta a ele),
+  // atalhos: o gerador de substabelecimento em destaque (a triagem fica só no índice),
   // e as demais telas na ordem do índice
   const porRota = {};
   NAV.forEach(s=>{ if(s.itens) s.itens.forEach(it=>{ porRota[it.rota] = it; }); });
-  const tri = TRIAGEM_ATIVA ? porRota.triagem : porRota['ext/substabelecimento'];
+  const tri = porRota['ext/substabelecimento'];
   const abre = tri.href ? '<a class="atalho principal" href="'+escA(tri.href)+'">' : '<button class="atalho principal" data-rota="'+tri.rota+'">';
   h += '<div class="atalhos">'+ abre +
     '<span class="ico-box">'+ICO[tri.ico]+'</span>'+
@@ -3512,9 +3512,7 @@ setInterval(()=>{
 
 /* ---------- arranque ---------- */
 const inicial = location.hash.slice(1);
-const ROTAS_FIXAS = ['inicio','calc','tribunais','leis','passos','sumulas','triagem','docs'].filter(r=>TRIAGEM_ATIVA || r!=='triagem');
-if(!TRIAGEM_ATIVA){ const bt = document.getElementById('btnTriagem'); if(bt) bt.remove(); }
-ir(inicial || 'inicio');
+const ROTAS_FIXAS = ['inicio','calc','tribunais','leis','passos','sumulas','triagem','docs'].filter(r=>TRIAGEM_ATIVA || r!=='triagem');ir(inicial || 'inicio');
 
 // o acervo é grande: interpreta-se fora do caminho da primeira pintura,
 // para que a busca lateral já saiba contar as súmulas na primeira tecla

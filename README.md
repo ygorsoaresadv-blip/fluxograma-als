@@ -5,10 +5,9 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
 
 ## O que tem dentro
 
-> **Triagem desativada.** A triagem de publicações está fora do ar por decisão do Ygor: sai do índice,
-> da barra do topo, da busca e da tela inicial, e `#triagem` cai no início. O código continua no `index.html`;
-> para reativar, troque `const TRIAGEM_ATIVA = false;` para `true`. Em destaque na tela inicial ficou o
-> **Substabelecimento e juntada**.
+> **Triagem só no índice.** Por decisão do Ygor, a triagem de publicações abre só pelo índice (seção
+> *Dia a dia*) e pela busca. A barra do topo e o destaque da tela inicial ficaram com o
+> **Substabelecimento e juntada**. Para tirá-la de todo, troque `const TRIAGEM_ATIVA = true;` para `false`.
 
 
 - **Triagem de publicações.** Cola-se a publicação inteira, como chega; a aba lê a data de
@@ -60,7 +59,7 @@ A coluna esquerda é organizada pelo uso, do que se abre toda hora ao que se con
 
 | Seção | O que tem |
 |---|---|
-| Dia a dia | Como tratar uma publicação e o fluxo da etiqueta roxa (a triagem está desativada) |
+| Dia a dia | Triagem de publicações, como tratar uma publicação e o fluxo da etiqueta roxa |
 | Cartões de teor | Filtro de área (Todas, Trabalhista, Cível, Previdenciário) e as três fases, que abrem e fecham com um clique e mostram quantos cartões têm |
 | Ferramentas | Calculadora de prazos, Organização de docs da reclamada e Substabelecimento e juntada |
 | Consulta | Compêndio de jurisprudência, Principais legislações e Tribunais e OAB |
@@ -68,14 +67,14 @@ A coluna esquerda é organizada pelo uso, do que se abre toda hora ao que se con
 
 A busca do topo procura em tudo: nos cartões (inclusive pelas palavras do juiz), nos nomes das telas,
 nas pessoas e nos termos do glossário. Ao buscar, as fases com resultado se abrem sozinhas e o que não
-casa sai da lista. A tela inicial repete as mesmas portas, com a triagem em destaque, e tem atalhos
+casa sai da lista. A tela inicial repete as mesmas portas, com o Substabelecimento e juntada em destaque, e tem atalhos
 para pular direto a cada fase.
 
 ## Como usar
 
 | Ação | Como |
 |---|---|
-| Tratar uma publicação | (triagem desativada) **Triagem**, no topo: cole, confira os dados e o cartão, copie título, data e observações |
+| Tratar uma publicação | **Triagem de publicações**, no índice (*Dia a dia*): cole, confira os dados e o cartão, copie título, data e observações |
 | Publicação que não se encaixa | Na triagem, **Nenhum destes: é uma exceção**, e cole o pedido numa IA gratuita |
 | Buscar um teor | Digite na busca da coluna esquerda, ou tecle `/` |
 | Buscar pelas palavras do juiz | A busca aceita trechos da publicação, como `manifestem sobre os cálculos` |

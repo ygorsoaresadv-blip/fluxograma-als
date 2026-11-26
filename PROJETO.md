@@ -14,7 +14,7 @@ Leia este arquivo primeiro. O `README.md` é o manual de uso para a equipe; este
 | Tela | Rota (hash) | O que é |
 |---|---|---|
 | Início | `#inicio` | Apresentação, régua PZ/FT, portas de entrada e a grade dos cartões por fase |
-| Triagem de publicações (**desativada**: `TRIAGEM_ATIVA = false`) | `#triagem` | Cola-se a publicação, a aba lê os dados, sugere o cartão e monta as agendas (título, data, observações) |
+| Triagem de publicações (só no índice; `TRIAGEM_ATIVA = false` a tira de todo) | `#triagem` | Cola-se a publicação, a aba lê os dados, sugere o cartão e monta as agendas (título, data, observações) |
 | Como tratar uma publicação | `#passos` | As seis etapas do trabalho |
 | Cartões de teor | `#t/7.0` … `#t/9.6` | 23 cartões, um por tipo de publicação, em três fases |
 | Manual | `#m/regras`, `#m/pessoas`, `#m/glossario`, `#m/etiqueta` | Seis regras, quem é quem, glossário e o fluxo da etiqueta roxa |
@@ -23,7 +23,7 @@ Leia este arquivo primeiro. O `README.md` é o manual de uso para a equipe; este
 | Tribunais e OAB | `#tribunais` | Tabelas de códigos CNJ e inscrições da OAB do André |
 | Principais legislações | `#leis` | Links para o texto oficial no Planalto (CF, CLT, CPC, CC, FGTS); lista `LEIS` no código |
 | Organização de docs da reclamada | `#docs` | Manual de organização dos documentos para a contestação, com prompt copiável |
-| Substabelecimento e juntada | `substabelecimento.html` (página à parte) | Cola-se a ata e baixam-se os dois .docx. Item de `NAV` com `href`, que `itemNav` desenha como link. É o atalho em destaque da tela inicial e o botão da barra do topo enquanto a triagem estiver desativada |
+| Substabelecimento e juntada | `substabelecimento.html` (página à parte) | Cola-se a ata e baixam-se os dois .docx. Item de `NAV` com `href`, que `itemNav` desenha como link. É o atalho em destaque da tela inicial e o botão da barra do topo (a triagem ficou só no índice) |
 
 `substabelecimento.html` é **gerado** pelo projeto "Gerador de Substabelecimento" (pasta `SUBS APP`, com testes e modelos .docx). Não edite à mão: altere lá e rode `node scripts/build.mjs --voltar=index.html --saida=<este repo>/substabelecimento.html`.
 
