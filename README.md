@@ -41,6 +41,10 @@ sem dependências, sem instalação e sem servidor. Abre com duplo clique em qua
   A tela traz também o **prompt de organização**, com botão **Copiar prompt**: cola-se numa IA com a pasta
   dos documentos conectada, e ela separa os PDFs na ordem do escritório e devolve a relação do que falta
   e o rascunho do e-mail de cobrança. O texto do prompt fica no bloco `promptDocs` do `index.html`.
+- **Substabelecimento e juntada** (`substabelecimento.html`, página à parte, aberta pelo índice em
+  *Ferramentas*): cola-se a ata da audiência e o app gera, no timbrado, o substabelecimento com
+  reserva de poderes e a juntada em Word. Lê processo, data, partes, advogados e vara; bloqueia
+  campos vazios e o próprio Dr. André como substabelecido. Sem IA e sem rede: a ata não sai do computador.
 - **Tribunais e OAB**: código de segmento e sigla de TJ, TRF e TRT, e as inscrições do André.
 - **Principais legislações**: links para o texto oficial no Planalto da Constituição, CLT, CPC, Código Civil e Lei do FGTS.
 
@@ -52,7 +56,7 @@ A coluna esquerda é organizada pelo uso, do que se abre toda hora ao que se con
 |---|---|
 | Dia a dia | Triagem de publicações, Como tratar uma publicação e o fluxo da etiqueta roxa |
 | Cartões de teor | Filtro de área (Todas, Trabalhista, Cível, Previdenciário) e as três fases, que abrem e fecham com um clique e mostram quantos cartões têm |
-| Ferramentas | Calculadora de prazos e Organização de docs da reclamada |
+| Ferramentas | Calculadora de prazos, Organização de docs da reclamada e Substabelecimento e juntada |
 | Consulta | Compêndio de jurisprudência, Principais legislações e Tribunais e OAB |
 | Manual | As seis regras, Quem é quem e Glossário |
 
