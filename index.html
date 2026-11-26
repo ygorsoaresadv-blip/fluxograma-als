@@ -100,6 +100,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;let
 }
 .item:hover{background:var(--fill2)}
 a.item{text-decoration:none}
+a.atalho,a.btn{text-decoration:none;color:inherit}
 .item[aria-current="true"]{background:var(--acento);color:#fff;font-weight:500}
 .item .cod{font-family:var(--mono);font-size:11px;color:var(--label3);min-width:24px;flex:none;font-variant-numeric:tabular-nums}
 .item[aria-current="true"] .cod{color:var(--dourado)}
@@ -725,7 +726,8 @@ details.prompt-ver summary{cursor:pointer;font-size:14px;font-weight:500;color:v
         <button class="btn abrir-rail" id="abrirRail" aria-label="Abrir índice">Índice</button>
         <div class="migalha" id="migalha">Início</div>
         <div class="acoes">
-          <button class="btn" data-rota="triagem">Triagem</button>
+          <button class="btn" data-rota="triagem" id="btnTriagem">Triagem</button>
+          <a class="btn" href="substabelecimento.html">Substabelecimento</a>
           <button class="btn so-largo" data-rota="calc">Calculadora</button>
           <button class="btn ouro" data-rota="sumulas">Compêndio<span class="so-largo"> de jurisprudência</span></button>
         </div>
@@ -1202,9 +1204,13 @@ const ICO = (()=>{
   return o;
 })();
 
+/* Triagem de publicações: desativada por decisão do Ygor (o código continua no arquivo).
+   Para reativar, troque para true: volta ao índice, à barra do topo, à busca e à rota #triagem. */
+const TRIAGEM_ATIVA = false;
+
 const NAV = [
   {sec:'Dia a dia', itens:[
-    {rota:'triagem', t:'Triagem de publicações', ico:'triagem',
+    {rota:'triagem', inativo:!TRIAGEM_ATIVA, t:'Triagem de publicações', ico:'triagem',
      d:'Cole a publicação inteira: a aba lê os dados, sugere o cartão e monta as agendas para o Astrea.',
      ch:'colar publicacao agenda astrea ler sugerir excecao'},
     {rota:'passos', t:'Como tratar uma publicação', ico:'passos',
@@ -1299,7 +1305,7 @@ function blocoCartoes(){
   h += '<div class="seg" role="group" aria-label="Filtrar cartões por área">'+
     Object.keys(nomeArea).map(k=>'<button class="chip" data-area="'+k+'" aria-pressed="'+(filtroArea===k)+'">'+nomeArea[k]+'</button>').join('')+
     '</div>';
-  h += corpo || '<div class="vazio-busca">Nenhum cartão com esse termo. Se a publicação não se encaixa, use a triagem ou fale com o Ygor.</div>';
+  h += corpo || '<div class="vazio-busca">Nenhum cartão com esse termo. Se a publicação não se encaixa, '+(TRIAGEM_ATIVA?'use a triagem ou ':'')+'fale com o Ygor.</div>';
   return {h:h+'</div>', achou:achou};
 }
 
@@ -1310,7 +1316,7 @@ function pintaIndice(){
   let outros = 0, cartoes = null;
   const partes = NAV.map(s=>{
     if(s.cartoes){ cartoes = blocoCartoes(); return null; }
-    const itens = s.itens.filter(casaNav);
+    const itens = s.itens.filter(it=>!it.inativo).filter(casaNav);
     outros += itens.length;
     return itens.length ? '<div class="secao"><div class="secao-tit">'+esc(s.sec)+'</div>'+itens.map(itemNav).join('')+'</div>' : '';
   });
@@ -1347,14 +1353,16 @@ function telaInicio(){
     'São '+T.length+' teores, três fases e um fluxo extraordinário. Toda contagem é em dias úteis. '+
     'Se em algum momento você não souber o que fazer, a resposta é falar com o Ygor.</p></div>';
 
-  // atalhos: a triagem em destaque, e as demais telas na ordem do índice
+  // atalhos: o gerador de substabelecimento em destaque (a triagem, se ativa, volta a ele),
+  // e as demais telas na ordem do índice
   const porRota = {};
   NAV.forEach(s=>{ if(s.itens) s.itens.forEach(it=>{ porRota[it.rota] = it; }); });
-  const tri = porRota.triagem;
-  h += '<div class="atalhos">'+
-    '<button class="atalho principal" data-rota="triagem"><span class="ico-box">'+ICO[tri.ico]+'</span>'+
+  const tri = TRIAGEM_ATIVA ? porRota.triagem : porRota['ext/substabelecimento'];
+  const abre = tri.href ? '<a class="atalho principal" href="'+escA(tri.href)+'">' : '<button class="atalho principal" data-rota="'+tri.rota+'">';
+  h += '<div class="atalhos">'+ abre +
+    '<span class="ico-box">'+ICO[tri.ico]+'</span>'+
       '<span class="txt"><b>'+esc(tri.t)+'</b><span>'+esc(tri.d)+'</span></span>'+
-      '<span class="seta" aria-hidden="true">›</span></button>';
+      '<span class="seta" aria-hidden="true">›</span>'+(tri.href ? '</a>' : '</button>');
   ['passos','calc','sumulas','docs','leis','tribunais'].forEach(r=>{
     const it = porRota[r];
     h += '<button class="atalho" data-rota="'+r+'"><span class="ico-box">'+ICO[it.ico]+'</span>'+
@@ -1378,7 +1386,7 @@ function telaInicio(){
   h += '<div class="sec-rot cartoes"><b>Cartões de teor</b><span>'+
        fases.reduce((n,x)=>n+x.lista.length,0)+' de '+T.length+nomeArea+(busca?' · filtrado por "'+esc(busca)+'"':'')+'</span></div>';
   if(!fases.length){
-    h += '<p class="intro" style="color:var(--label2)">Nenhum cartão com esse termo. Se a publicação não se encaixa, use a triagem ou fale com o Ygor.</p>';
+    h += '<p class="intro" style="color:var(--label2)">Nenhum cartão com esse termo. Se a publicação não se encaixa, '+(TRIAGEM_ATIVA?'use a triagem ou ':'')+'fale com o Ygor.</p>';
     return h;
   }
   h += '<div class="saltos">'+fases.map(x=>
@@ -1438,7 +1446,7 @@ function telaTeor(sec, modoApresentacao){
       '<div class="k" style="color:'+hex+'">Atenção</div><p>'+esc(t.nota)+'</p>'+
       (t.notaLista ? '<p class="at-sub">'+esc(t.notaLista.titulo)+'</p><ul class="at-lista">'+
         t.notaLista.itens.map(x=>'<li>'+esc(x).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')+'</li>').join('')+'</ul>'+
-        (t.notaLista.rodape ? '<p>'+esc(t.notaLista.rodape)+'</p>' : '') : '')+'</div>'+
+        (t.notaLista.rodape && (TRIAGEM_ATIVA || !/triagem/i.test(t.notaLista.rodape)) ? '<p>'+esc(t.notaLista.rodape)+'</p>' : '') : '')+'</div>'+
     (t.alerta ? '<div class="atencao" style="background:var(--vermelho-bg);border-color:var(--vermelho)">'+
       '<div class="k" style="color:var(--vermelho)">Atenção</div><p style="font-weight:600">'+esc(t.alerta)+'</p></div>' : '');
 
@@ -3504,7 +3512,8 @@ setInterval(()=>{
 
 /* ---------- arranque ---------- */
 const inicial = location.hash.slice(1);
-const ROTAS_FIXAS = ['inicio','calc','tribunais','leis','passos','sumulas','triagem','docs'];
+const ROTAS_FIXAS = ['inicio','calc','tribunais','leis','passos','sumulas','triagem','docs'].filter(r=>TRIAGEM_ATIVA || r!=='triagem');
+if(!TRIAGEM_ATIVA){ const bt = document.getElementById('btnTriagem'); if(bt) bt.remove(); }
 ir(inicial || 'inicio');
 
 // o acervo é grande: interpreta-se fora do caminho da primeira pintura,
