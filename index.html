@@ -727,6 +727,7 @@ details.prompt-ver summary{cursor:pointer;font-size:14px;font-weight:500;color:v
         <div class="migalha" id="migalha">Início</div>
         <div class="acoes">
           <a class="btn" href="substabelecimento.html">Substabelecimento</a>
+          <a class="btn so-largo" href="formatar.html">Formatar</a>
           <button class="btn so-largo" data-rota="calc">Calculadora</button>
           <button class="btn ouro" data-rota="sumulas">Compêndio<span class="so-largo"> de jurisprudência</span></button>
         </div>
@@ -1189,6 +1190,7 @@ const ICO = (()=>{
     calc:'<rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/>',
     docs:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 13h8"/>',
     subs:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M8.5 17c1.2-1.6 2-1.6 2.6-.4.5 1 1.1 1 2-.3.6-.8 1.2-.9 2.4-.3"/>',
+    formatar:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M8.5 12.5h7M8.5 16h7M10.5 9h3"/>',
     compendio:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
     leis:'<path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 17h4.5"/>',
     tribunais:'<path d="M3 21h18M5 18v-7M9.7 18v-7M14.3 18v-7M19 18v-7M2.5 8.5 12 3l9.5 5.5z"/>',
@@ -1230,7 +1232,10 @@ const NAV = [
      ch:'documentos contestacao reclamada prompt organizar pdf cliente'},
     {href:'substabelecimento.html', rota:'ext/substabelecimento', t:'Substabelecimento e juntada', ico:'subs',
      d:'Cole a ata da audiência e baixe o substabelecimento e a juntada em Word.',
-     ch:'substabelecimento juntada ata audiencia advogado oab reserva poderes word docx'}
+     ch:'substabelecimento juntada ata audiencia advogado oab reserva poderes word docx'},
+    {href:'formatar.html', rota:'ext/formatar', t:'Formatar documento no timbrado', ico:'formatar',
+     d:'Envie um Word e baixe no papel timbrado, na formatação do escritório.',
+     ch:'formatar formatacao timbrado papel word docx fonte times peca documento padrao als'}
   ]},
   {sec:'Consulta', itens:[
     {rota:'sumulas', t:'Compêndio de jurisprudência', ico:'compendio',
@@ -1363,10 +1368,11 @@ function telaInicio(){
     '<span class="ico-box">'+ICO[tri.ico]+'</span>'+
       '<span class="txt"><b>'+esc(tri.t)+'</b><span>'+esc(tri.d)+'</span></span>'+
       '<span class="seta" aria-hidden="true">›</span>'+(tri.href ? '</a>' : '</button>');
-  ['passos','calc','sumulas','docs','leis','tribunais'].forEach(r=>{
+  ['ext/formatar','passos','calc','sumulas','docs','leis','tribunais'].forEach(r=>{
     const it = porRota[r];
-    h += '<button class="atalho" data-rota="'+r+'"><span class="ico-box">'+ICO[it.ico]+'</span>'+
-         '<span class="txt"><b>'+esc(it.t)+'</b><span>'+esc(it.d)+'</span></span></button>';
+    const ab = it.href ? '<a class="atalho" href="'+escA(it.href)+'">' : '<button class="atalho" data-rota="'+r+'">';
+    h += ab+'<span class="ico-box">'+ICO[it.ico]+'</span>'+
+         '<span class="txt"><b>'+esc(it.t)+'</b><span>'+esc(it.d)+'</span></span>'+(it.href ? '</a>' : '</button>');
   });
   h += '</div>';
 
